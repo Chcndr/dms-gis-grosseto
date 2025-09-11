@@ -3082,9 +3082,13 @@ async function loadMercato(){
     try{ 
       map.fitBounds(layer.getBounds(), {padding:[20,20]}); 
     } catch(e) {
-      // Fallback al centro di Grosseto
-      map.setView([42.7639, 11.1093], 16);
+      // Fallback al centro di Grosseto con ZOOM ALTO
+      map.setView([42.7639, 11.1093], 18); // Zoom 18 invece di 16
     }
+    
+    // DEBUG: Verifica dati caricati
+    console.log('🔍 DEBUG: Posteggi caricati:', filteredData.features.length);
+    console.log('🔍 DEBUG: Primi 3 posteggi:', filteredData.features.slice(0,3));
     
     // Statistiche
     const stati = {};
@@ -3302,9 +3306,13 @@ loadMercato = async function() {
     try{ 
       map.fitBounds(layer.getBounds(), {padding:[20,20]}); 
     } catch(e) {
-      // Fallback al centro di Grosseto
-      map.setView([42.7639, 11.1093], 16);
+      // Fallback al centro di Grosseto con ZOOM ALTO
+      map.setView([42.7639, 11.1093], 18); // Zoom 18 invece di 16
     }
+    
+    // DEBUG: Verifica dati caricati
+    console.log('🔍 DEBUG: Posteggi caricati:', filteredData.features.length);
+    console.log('🔍 DEBUG: Primi 3 posteggi:', filteredData.features.slice(0,3));
     
     // Statistiche
     const stati = {};
@@ -3322,6 +3330,7 @@ loadMercato = async function() {
     
     // Popola la sidebar con l'elenco posteggi
     populateSidebar(filteredData.features);
+    console.log('🔍 DEBUG: Sidebar popolata con', filteredData.features.length, 'posteggi');
     
     toast(`Caricati ${filteredData.features?.length || 0} posteggi${totalText} (${statsText})`, true);
     if(DIAG) console.log('GeoJSON', filteredData);
