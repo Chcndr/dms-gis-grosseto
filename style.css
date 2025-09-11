@@ -99,15 +99,15 @@ select{min-width:120px;display:inline-block !important}
 
 /* iPhone e smartphone (max 767px) */
 @media (max-width: 767px) {
-  /* Header mobile - SEMPRE VISIBILE */
-  .topbar{flex-direction:column !important;gap:12px;padding:12px 16px;text-align:center;
+  /* Header mobile - COMPATTO E SEMPRE VISIBILE */
+  .topbar{flex-direction:column !important;gap:8px;padding:8px 12px;text-align:center;
           display:flex !important;background:#083436 !important}
-  .topbar strong{font-size:18px;margin-bottom:8px;color:var(--fg) !important}
+  .topbar strong{font-size:16px;margin-bottom:4px;color:var(--fg) !important}
   
-  /* Controlli mobile - SEMPRE VISIBILI */
-  .actions{justify-content:center;width:100%;gap:8px;display:flex !important}
-  button,select{padding:14px 16px;font-size:16px;min-height:48px;flex:1;min-width:0;
-                display:inline-block !important}
+  /* Controlli mobile - COMPATTI E SEMPRE VISIBILI */
+  .actions{justify-content:center;width:100%;gap:6px;display:flex !important}
+  button,select{padding:8px 12px;font-size:14px;min-height:36px;flex:1;min-width:0;
+                display:inline-block !important;border-radius:6px}
   
   /* Layout a due righe per i controlli */
   .actions{display:grid !important;grid-template-columns:1fr 1fr;gap:8px;width:100%}
@@ -121,8 +121,8 @@ select{min-width:120px;display:inline-block !important}
           padding:12px;background:var(--panel) !important}
   .legend-item{margin-bottom:0;flex:1;justify-content:center;min-width:80px}
   
-  /* Mappa mobile - CORRETTA ALTEZZA */
-  #map{height:calc(100vh - 180px) !important;width:100% !important}
+  /* Mappa mobile - PIÙ SPAZIO DISPONIBILE */
+  #map{height:calc(100vh - 140px) !important;width:100% !important}
   
   /* Popup mobile */
   .leaflet-popup-content{font-size:16px;padding:16px;max-width:280px}
