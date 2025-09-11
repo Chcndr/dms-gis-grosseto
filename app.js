@@ -444,12 +444,13 @@ loadMercato = async function() {
     // Carica sempre il dataset completo per test
     toast('Caricando dataset completo...', true);
     gj = await loadCompleteDataset();
-    
-    // Salva i dati completi
+       // Salva i dati completi
     allData = gj;
     
-    // Applica filtri
-    const mercatoFilter = $('#mercatoSel').value;
+    // Popola la sidebar con i posteggi
+    populateSidebar(gj.features);
+    
+    // Applica filtri se presenti mercatoFilter = $('#mercatoSel').value;
     const statoFilter = $('#statoFilter').value;
     const filteredData = filterData(gj, mercatoFilter, statoFilter);
     
@@ -550,4 +551,133 @@ $('#btnDMSConfig').onclick = () => {
     toast('Modulo DMS non caricato');
   }
 };
+
+
+
+// === FUNZIONI SIDEBAR ===
+
+// Toggle sidebar
+function toggleSidebar() {
+  const sidebar = document.getElementById('sidebar');
+  sidebar.classList.toggle('open');
+}
+
+// Popola la sidebar con i posteggi
+function populateSidebar(features) {
+  const posteggiList = document.getElementById('posteggiList');
+  const sidebarStats = document.getElementById('sidebarStats');
+  
+  // Calcola statistiche
+  const totale = features.length;
+  const liberi = features.filter(f => f.properties.stato === 'Libero').length;
+  const occupati = features.filter(f => f.properties.stato === 'Occupato').length;
+  
+  // Aggiorna statistiche
+  sidebarStats.innerHTML = `
+    <div><strong>Totale posteggi:</strong> ${totale}</div>
+    <div><strong>Liberi:</strong> <span style="color: #44ff44">${liberi}</span></div>
+    <div><strong>Occupati:</strong> <span style="color: #ff4444">${occupati}</span></div>
+  `;
+  
+  // Ordina per numero
+  const sortedFeatures = features.sort((a, b) => 
+    parseInt(a.properties.numero) - parseInt(b.properties.numero)
+  );
+  
+  // Genera lista posteggi
+  posteggiList.innerHTML = sortedFeatures.map(feature => {
+    const p = feature.properties;
+    const statusClass = p.stato.toLowerCase();
+    
+    return `
+      <div class="posteggio-item ${statusClass}" onclick="focusPosteggio(${p.numero})">
+        <div class="posteggio-numero">Posteggio #${p.numero}</div>
+        <div class="posteggio-titolare">
+          ${p.titolare || '<em>Libero</em>'}
+        </div>
+        <div class="posteggio-details">
+          ${p.settore} • ${p.superficie}<br/>
+          ${p.area} • ${p.mercato}<br/>
+          <strong style="color: ${p.stato === 'Occupato' ? '#ff4444' : '#44ff44'}">${p.stato}</strong>
+        </div>
+      </div>
+    `;
+  }).join('');
+  
+  // Aggiungi event listeners per filtri
+  setupSidebarFilters(features);
+}
+
+// Configura filtri sidebar
+function setupSidebarFilters(allFeatures) {
+  const searchInput = document.getElementById('searchInput');
+  const statusFilter = document.getElementById('statusFilter');
+  
+  function filterSidebar() {
+    const searchTerm = searchInput.value.toLowerCase();
+    const statusValue = statusFilter.value;
+    
+    let filtered = allFeatures;
+    
+    // Filtro per testo
+    if (searchTerm) {
+      filtered = filtered.filter(f => 
+        f.properties.numero.includes(searchTerm) ||
+        (f.properties.titolare && f.properties.titolare.toLowerCase().includes(searchTerm)) ||
+        f.properties.settore.toLowerCase().includes(searchTerm)
+      );
+    }
+    
+    // Filtro per stato
+    if (statusValue) {
+      filtered = filtered.filter(f => f.properties.stato === statusValue);
+    }
+    
+    // Aggiorna lista
+    updateSidebarList(filtered);
+  }
+  
+  searchInput.addEventListener('input', filterSidebar);
+  statusFilter.addEventListener('change', filterSidebar);
+}
+
+// Aggiorna lista sidebar
+function updateSidebarList(features) {
+  const posteggiList = document.getElementById('posteggiList');
+  
+  const sortedFeatures = features.sort((a, b) => 
+    parseInt(a.properties.numero) - parseInt(b.properties.numero)
+  );
+  
+  posteggiList.innerHTML = sortedFeatures.map(feature => {
+    const p = feature.properties;
+    const statusClass = p.stato.toLowerCase();
+    
+    return `
+      <div class="posteggio-item ${statusClass}" onclick="focusPosteggio(${p.numero})">
+        <div class="posteggio-numero">Posteggio #${p.numero}</div>
+        <div class="posteggio-titolare">
+          ${p.titolare || '<em>Libero</em>'}
+        </div>
+        <div class="posteggio-details">
+          ${p.settore} • ${p.superficie}<br/>
+          ${p.area} • ${p.mercato}<br/>
+          <strong style="color: ${p.stato === 'Occupato' ? '#ff4444' : '#44ff44'}">${p.stato}</strong>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+// Focalizza su un posteggio specifico
+function focusPosteggio(numero) {
+  if (!layer) return;
+  
+  layer.eachLayer(function(l) {
+    if (l.feature && l.feature.properties.numero === numero.toString()) {
+      map.setView(l.getLatLng(), 18);
+      l.openPopup();
+    }
+  });
+}
 

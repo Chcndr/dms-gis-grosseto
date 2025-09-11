@@ -30,6 +30,34 @@
     </div>
   </header>
 
+  <!-- Sidebar con elenco posteggi -->
+  <div class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <h3>Elenco Posteggi</h3>
+      <button class="close-btn" onclick="toggleSidebar()">×</button>
+    </div>
+    
+    <div class="sidebar-filters">
+      <input type="text" id="searchInput" placeholder="Cerca per numero o titolare..." />
+      <select id="statusFilter">
+        <option value="">Tutti gli stati</option>
+        <option value="Libero">Solo Liberi</option>
+        <option value="Occupato">Solo Occupati</option>
+      </select>
+    </div>
+    
+    <div class="sidebar-stats" id="sidebarStats">
+      <!-- Statistiche dinamiche -->
+    </div>
+    
+    <div class="posteggi-list" id="posteggiList">
+      <!-- Lista posteggi dinamica -->
+    </div>
+  </div>
+
+  <!-- Pulsante per aprire sidebar -->
+  <button class="sidebar-toggle" onclick="toggleSidebar()">📋 Elenco</button>
+
   <div class="legend">
     <div class="legend-item">
       <span class="legend-color" style="background: #44ff44;"></span>
