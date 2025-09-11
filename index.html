@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>DMS • GIS Grosseto</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <meta name="theme-color" content="#0b3b3c">
+</head>
+<body>
+  <header class="topbar">
+    <strong>DMS • GIS Grosseto</strong>
+    <div class="actions">
+      <button id="btnSetToken">Imposta token</button>
+      <span id="tokenStatus" class="pill">Token: assente</span>
+      <select id="mercatoSel" title="Mercato">
+        <option value="grosseto-centrale">Grosseto – Centrale</option>
+      </select>
+      <button id="btnLoad">Carica mappa</button>
+    </div>
+  </header>
+
+  <div id="map"></div>
+  <div id="toast" hidden></div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
+
