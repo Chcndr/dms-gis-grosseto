@@ -346,23 +346,15 @@ loadMercato = async function() {
     layer = L.geoJSON(filteredData, {
       style: f => ({ color:'#19d1b8', weight: f.geometry.type==='Polygon'?1:0, fillOpacity:0.08 }),
       pointToLayer: (feat, latlng)=> {
-        // Cerchietti GIGANTI con colori corretti per stato
-        const p = feat.properties || {};
-        
-        // Colori in base allo stato (come sistema originale)
-        let fillColor = '#44ff44'; // Verde = Libero
-        if (p.stato === 'Occupato') fillColor = '#ff4444'; // Rosso
-        else if (p.stato === 'Riservato') fillColor = '#4444ff'; // Blu  
-        else if (p.stato === 'Temporaneo') fillColor = '#ff8844'; // Arancione
-        
+        // MARKER NERI GIGANTESCHI - IMPOSSIBILI DA NON VEDERE
         return L.circleMarker(latlng, {
-          radius: 20,           // MOLTO GRANDE per essere sicuri
-          fillColor: fillColor, // Colore dinamico
-          color: '#ffffff',     // Bordo bianco
-          weight: 3,            // Bordo spesso
+          radius: 30,           // ENORMI
+          fillColor: '#000000', // NERO PURO
+          color: '#FFFF00',     // BORDO GIALLO ACCESO
+          weight: 5,            // BORDO MOLTO SPESSO
           opacity: 1,
-          fillOpacity: 1,       // Completamente opaco
-          zIndexOffset: 9999    // Z-index altissimo
+          fillOpacity: 1,       // COMPLETAMENTE OPACO
+          zIndexOffset: 99999   // Z-INDEX MASSIMO
         });
       },
       onEachFeature: (feat, lyr)=>{
