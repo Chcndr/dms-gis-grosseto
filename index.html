@@ -12,19 +12,48 @@
   <header class="topbar">
     <strong>DMS • GIS Grosseto</strong>
     <div class="actions">
+      <button id="btnDMSConfig">Configura DMS</button>
       <button id="btnSetToken">Imposta token</button>
       <span id="tokenStatus" class="pill">Token: assente</span>
       <select id="mercatoSel" title="Mercato">
-        <option value="grosseto-centrale">Grosseto – Centrale</option>
+        <option value="tutti">Tutti i mercati</option>
+        <option value="tripoli">Tripoli Giornaliero</option>
+        <option value="esperanto">Esperanto Settimanale-Giovedì</option>
+      </select>
+      <select id="statoFilter" title="Filtro Stato">
+        <option value="tutti">Tutti gli stati</option>
+        <option value="libero">Solo Liberi</option>
+        <option value="occupato">Solo Occupati</option>
       </select>
       <button id="btnLoad">Carica mappa</button>
+      <button id="btnStats">Statistiche</button>
     </div>
   </header>
+
+  <div class="legend">
+    <div class="legend-item">
+      <span class="legend-color" style="background: #44ff44;"></span>
+      <span>Libero</span>
+    </div>
+    <div class="legend-item">
+      <span class="legend-color" style="background: #ff4444;"></span>
+      <span>Occupato</span>
+    </div>
+    <div class="legend-item">
+      <span class="legend-color" style="background: #4444ff;"></span>
+      <span>Riservato</span>
+    </div>
+    <div class="legend-item">
+      <span class="legend-color" style="background: #ff8844;"></span>
+      <span>Temporaneo</span>
+    </div>
+  </div>
 
   <div id="map"></div>
   <div id="toast" hidden></div>
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="api-integration.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
