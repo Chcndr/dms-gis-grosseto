@@ -1,0 +1,106 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "1",
+        "titolare": "",
+        "settore": "Libri e Cartoleria",
+        "stato": "Libero",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Via Mazzini",
+        "superficie": "19 mq",
+        "piva": "",
+        "concessione": "",
+        "scadenza": "",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [11.108686891424048, 42.76325684499463]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "2",
+        "titolare": "",
+        "settore": "Abbigliamento",
+        "stato": "Libero",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Via Mazzini",
+        "superficie": "16 mq",
+        "piva": "",
+        "concessione": "",
+        "scadenza": "",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [11.108314861489067, 42.76292578584349]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "3",
+        "titolare": "Andrea Giada",
+        "settore": "Giocattoli",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Via Mazzini",
+        "superficie": "20 mq",
+        "piva": "19833355163",
+        "concessione": "CON4039",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [11.109010524930712, 42.763513815851226]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "4",
+        "titolare": "Giuseppe Verdi",
+        "settore": "Libri e Cartoleria",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Via Mazzini",
+        "superficie": "18 mq",
+        "piva": "70350566580",
+        "concessione": "CON1292",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [11.10997527296258, 42.76343996967246]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "5",
+        "titolare": "Camilla Topazio",
+        "settore": "Prodotti Agricoli",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Via Mazzini",
+        "superficie": "16 mq",
+        "piva": "48952598770",
+        "concessione": "CON1888",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [11.10831994569722, 42.763364027677596]
+      }
+    }
+  ]
+}
+

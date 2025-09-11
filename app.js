@@ -14,7 +14,8 @@ const DEMO_DATA = {
 // Carica il dataset completo
 async function loadCompleteDataset() {
   try {
-    const response = await fetch('./posteggi_grosseto_completi.json');
+    // TEST: Carica solo 5 posteggi per debug
+    const response = await fetch('./posteggi_test_5.json');
     const data = await response.json();
     return data;
   } catch (error) {
