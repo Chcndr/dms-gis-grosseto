@@ -325,32 +325,14 @@ function showStats() {
 const originalLoadMercato = loadMercato;
 loadMercato = async function() {
   const mercatoId = $('#mercatoSel').value;
-  const token = getToken();
   
   $('#btnLoad').disabled = true;
   try{
     let gj;
     
-    // Carica dataset completo o usa dati generati
-    if(!token || token === 'demo') {
-      toast('Caricando dataset completo...', true);
-      gj = await loadCompleteDataset();
-    } else {
-      // Tentativo di chiamata reale al WFS
-      try {
-        const r = await fetch(ENDPOINT(mercatoId), {
-          headers: token ? { 'Authorization': `Bearer ${token}` } : {},
-          mode: 'cors',
-          cache: 'no-store'
-        });
-        if(!r.ok){ throw new Error(`HTTP ${r.status}`); }
-        gj = await r.json();
-      } catch(err) {
-        console.warn('WFS non disponibile, uso dataset completo:', err);
-        toast('WFS non disponibile, usando dataset completo', true);
-        gj = await loadCompleteDataset();
-      }
-    }
+    // Carica sempre il dataset completo per test
+    toast('Caricando dataset completo...', true);
+    gj = await loadCompleteDataset();
     
     // Salva i dati completi
     allData = gj;
