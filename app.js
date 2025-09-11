@@ -363,30 +363,34 @@ loadMercato = async function() {
     layer = L.geoJSON(filteredData, {
       style: f => ({ color:'#19d1b8', weight: f.geometry.type==='Polygon'?1:0, fillOpacity:0.08 }),
       pointToLayer: (feat, latlng)=> {
-        // TEST: Marker SUPER VISIBILI - rosso acceso e grandi
-        return L.circleMarker(latlng, {
-          radius: 15,           // MOLTO GRANDE
-          fillColor: '#FF0000', // ROSSO ACCESO
-          color: '#FFFFFF',     // BORDO BIANCO
-          weight: 3,            // BORDO SPESSO
+        // Rettangoli realistici come nel sistema di Grosseto
+        const p = feat.properties || {};
+        
+        // Colori in base allo stato (come sistema originale)
+        let fillColor = '#44ff44'; // Verde = Libero
+        if (p.stato === 'Occupato') fillColor = '#ff4444'; // Rosso
+        else if (p.stato === 'Riservato') fillColor = '#4444ff'; // Blu  
+        else if (p.stato === 'Temporaneo') fillColor = '#ff8844'; // Arancione
+        
+        // Dimensioni proporzionali alla superficie
+        const superficie = parseInt(p.superficie) || 16;
+        const width = Math.max(8, superficie * 0.8); // Larghezza proporzionale
+        const height = Math.max(4, superficie * 0.3); // Altezza più piccola
+        
+        // Crea rettangolo orientato lungo la strada
+        const bounds = [
+          [latlng.lat - height/200000, latlng.lng - width/200000],
+          [latlng.lat + height/200000, latlng.lng + width/200000]
+        ];
+        
+        return L.rectangle(bounds, {
+          fillColor: fillColor,
+          color: '#ffffff',
+          weight: 2,
           opacity: 1,
-          fillOpacity: 1,       // COMPLETAMENTE OPACO
-          zIndexOffset: 9999    // Z-INDEX ALTISSIMO
+          fillOpacity: 0.8,
+          zIndexOffset: 9999
         });
-        
-        /* ORIGINALE CON ICONA DMS:
-        const icon = L.icon({
-          iconUrl: './marker-icon.png',
-          iconSize: [48, 48], // Ingrandito da 32x32 a 48x48
-          iconAnchor: [24, 48], // Centrato in basso
-          popupAnchor: [0, -48] // Popup sopra l'icona
-        });
-        
-        return L.marker(latlng, { 
-          icon: icon,
-          zIndexOffset: 1000  // Z-index alto per stare sopra la mappa
-        });
-        */
       },
       onEachFeature: (feat, lyr)=>{
         const p = feat.properties || {};
