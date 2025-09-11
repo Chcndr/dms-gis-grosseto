@@ -363,14 +363,15 @@ loadMercato = async function() {
     layer = L.geoJSON(filteredData, {
       style: f => ({ color:'#19d1b8', weight: f.geometry.type==='Polygon'?1:0, fillOpacity:0.08 }),
       pointToLayer: (feat, latlng)=> {
-        // TEST: Usa circleMarker temporaneo per debug
+        // TEST: Usa circleMarker temporaneo per debug con z-index alto
         return L.circleMarker(latlng, {
           radius: 8,
           fillColor: '#19d1b8',
           color: '#ffffff',
           weight: 2,
           opacity: 1,
-          fillOpacity: 0.8
+          fillOpacity: 0.8,
+          zIndexOffset: 1000  // Z-index alto per stare sopra la mappa
         });
         
         /* ORIGINALE CON ICONA DMS:
@@ -381,7 +382,10 @@ loadMercato = async function() {
           popupAnchor: [0, -48] // Popup sopra l'icona
         });
         
-        return L.marker(latlng, { icon: icon });
+        return L.marker(latlng, { 
+          icon: icon,
+          zIndexOffset: 1000  // Z-index alto per stare sopra la mappa
+        });
         */
       },
       onEachFeature: (feat, lyr)=>{
