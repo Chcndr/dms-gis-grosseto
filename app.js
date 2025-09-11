@@ -363,35 +363,15 @@ loadMercato = async function() {
     layer = L.geoJSON(filteredData, {
       style: f => ({ color:'#19d1b8', weight: f.geometry.type==='Polygon'?1:0, fillOpacity:0.08 }),
       pointToLayer: (feat, latlng)=> {
-        const stato = feat.properties.stato;
-        let color, fillColor;
-        
-        // Colori dinamici basati sullo stato
-        switch(stato) {
-          case 'Occupato':
-            color = fillColor = '#ff4444'; // Rosso per occupato
-            break;
-          case 'Libero':
-            color = fillColor = '#44ff44'; // Verde per libero
-            break;
-          case 'Riservato':
-            color = fillColor = '#4444ff'; // Blu per riservato
-            break;
-          case 'Temporaneo':
-            color = fillColor = '#ff8844'; // Arancione per temporaneo
-            break;
-          default:
-            color = fillColor = '#888888'; // Grigio per sconosciuto
-        }
-        
-        return L.circleMarker(latlng, {
-          radius: 6, 
-          color: color,
-          fillColor: fillColor,
-          fillOpacity: 0.8,
-          weight: 2,
-          opacity: 0.9
+        // Usa il logo DMS per tutti i posteggi con dimensioni maggiori per migliorare il click
+        const icon = L.icon({
+          iconUrl: './marker-icon.png',
+          iconSize: [48, 48], // Ingrandito da 32x32 a 48x48
+          iconAnchor: [24, 48], // Centrato in basso
+          popupAnchor: [0, -48] // Popup sopra l'icona
         });
+        
+        return L.marker(latlng, { icon: icon });
       },
       onEachFeature: (feat, lyr)=>{
         const p = feat.properties || {};
