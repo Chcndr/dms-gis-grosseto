@@ -363,7 +363,7 @@ loadMercato = async function() {
     layer = L.geoJSON(filteredData, {
       style: f => ({ color:'#19d1b8', weight: f.geometry.type==='Polygon'?1:0, fillOpacity:0.08 }),
       pointToLayer: (feat, latlng)=> {
-        // Rettangoli realistici come nel sistema di Grosseto
+        // Cerchietti GIGANTI con colori corretti per stato
         const p = feat.properties || {};
         
         // Colori in base allo stato (come sistema originale)
@@ -372,24 +372,14 @@ loadMercato = async function() {
         else if (p.stato === 'Riservato') fillColor = '#4444ff'; // Blu  
         else if (p.stato === 'Temporaneo') fillColor = '#ff8844'; // Arancione
         
-        // Dimensioni proporzionali alla superficie
-        const superficie = parseInt(p.superficie) || 16;
-        const width = Math.max(8, superficie * 0.8); // Larghezza proporzionale
-        const height = Math.max(4, superficie * 0.3); // Altezza più piccola
-        
-        // Crea rettangolo orientato lungo la strada
-        const bounds = [
-          [latlng.lat - height/200000, latlng.lng - width/200000],
-          [latlng.lat + height/200000, latlng.lng + width/200000]
-        ];
-        
-        return L.rectangle(bounds, {
-          fillColor: fillColor,
-          color: '#ffffff',
-          weight: 2,
+        return L.circleMarker(latlng, {
+          radius: 20,           // MOLTO GRANDE per essere sicuri
+          fillColor: fillColor, // Colore dinamico
+          color: '#ffffff',     // Bordo bianco
+          weight: 3,            // Bordo spesso
           opacity: 1,
-          fillOpacity: 0.8,
-          zIndexOffset: 9999
+          fillOpacity: 1,       // Completamente opaco
+          zIndexOffset: 9999    // Z-index altissimo
         });
       },
       onEachFeature: (feat, lyr)=>{
