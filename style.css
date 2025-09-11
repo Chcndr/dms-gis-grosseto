@@ -1,30 +1,132 @@
 :root{--bg:#062c2d;--fg:#eafff6;--panel:#0e3f41;--line:#1b5a5d;--accent:#19d1b8}
 *{box-sizing:border-box} html,body{height:100%}
 body{margin:0;font-family:system-ui,Segoe UI,Roboto,Arial;background:var(--bg);color:var(--fg)}
-.topbar{display:flex;gap:12px;align-items:center;justify-content:space-between;
-        padding:12px 16px;border-bottom:1px solid var(--line);background:#083436}
-.actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
-button,select{background:var(--panel);color:var(--fg);border:1px solid var(--line);
-              padding:8px 10px;border-radius:10px;font-size:14px}
-button:hover{border-color:var(--accent)}
-button:disabled{opacity:0.5;cursor:not-allowed}
-.pill{padding:6px 10px;border-radius:999px;border:1px solid var(--line);opacity:.8;font-size:12px}
-.legend{position:absolute;top:80px;right:16px;z-index:1000;background:var(--panel);
-        border:1px solid var(--line);border-radius:8px;padding:12px;min-width:120px}
-.legend-item{display:flex;align-items:center;gap:8px;margin-bottom:6px;font-size:13px}
-.legend-item:last-child{margin-bottom:0}
-.legend-color{width:12px;height:12px;border-radius:50%;border:1px solid rgba(255,255,255,0.3)}
-#map{height:calc(100vh - 58px)}
-.leaflet-popup-content{font:14px/1.4 system-ui,Segoe UI,Roboto,Arial;color:#333}
-.leaflet-popup-content h4{color:#333;margin:0 0 8px 0}
-#toast{position:fixed;left:50%;transform:translateX(-50%);bottom:16px;background:#043;
-       border:1px solid var(--line);padding:10px 14px;border-radius:8px;z-index:2000;
-       max-width:80%;text-align:center}
 
-@media (max-width: 768px) {
-  .topbar{flex-direction:column;gap:8px;padding:8px}
-  .actions{justify-content:center;flex-wrap:wrap}
-  .legend{position:relative;top:0;right:0;margin:8px;width:auto}
-  #map{height:calc(100vh - 120px)}
+/* Header responsive */
+.topbar{display:flex;gap:12px;align-items:center;justify-content:space-between;
+        padding:12px 16px;border-bottom:1px solid var(--line);background:#083436;
+        flex-wrap:wrap}
+.actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+
+/* Controlli touch-friendly */
+button,select{background:var(--panel);color:var(--fg);border:1px solid var(--line);
+              padding:12px 16px;border-radius:10px;font-size:16px;min-height:44px;
+              cursor:pointer;transition:all 0.2s ease}
+button:hover,button:focus{border-color:var(--accent);outline:none}
+button:active{transform:scale(0.98)}
+button:disabled{opacity:0.5;cursor:not-allowed}
+
+select{min-width:120px}
+.pill{padding:8px 12px;border-radius:999px;border:1px solid var(--line);opacity:.8;font-size:14px}
+
+/* Legenda responsive */
+.legend{position:absolute;top:80px;right:16px;z-index:1000;background:var(--panel);
+        border:1px solid var(--line);border-radius:8px;padding:12px;min-width:140px;
+        box-shadow:0 4px 12px rgba(0,0,0,0.3)}
+.legend-item{display:flex;align-items:center;gap:10px;margin-bottom:8px;font-size:14px}
+.legend-item:last-child{margin-bottom:0}
+.legend-color{width:14px;height:14px;border-radius:50%;border:1px solid rgba(255,255,255,0.3)}
+
+/* Mappa */
+#map{height:calc(100vh - 70px)}
+
+/* Popup ottimizzato per touch */
+.leaflet-popup-content{font:16px/1.5 system-ui,Segoe UI,Roboto,Arial;color:#333;
+                       max-width:300px;padding:16px}
+.leaflet-popup-content h4{color:#333;margin:0 0 12px 0;font-size:18px}
+
+/* Toast */
+#toast{position:fixed;left:50%;transform:translateX(-50%);bottom:20px;background:#043;
+       border:1px solid var(--line);padding:12px 16px;border-radius:8px;z-index:2000;
+       max-width:90%;text-align:center;font-size:14px}
+
+/* ===== RESPONSIVE DESIGN ===== */
+
+/* iPad (768px - 1024px) */
+@media (max-width: 1024px) and (min-width: 768px) {
+  .topbar{padding:16px;gap:16px}
+  .actions{gap:12px}
+  button,select{padding:14px 18px;font-size:16px;min-height:48px}
+  .legend{top:90px;right:20px;padding:16px}
+  #map{height:calc(100vh - 80px)}
+  .leaflet-popup-content{font-size:17px;padding:18px}
+}
+
+/* iPhone e smartphone (max 767px) */
+@media (max-width: 767px) {
+  /* Header mobile */
+  .topbar{flex-direction:column;gap:12px;padding:12px 16px;text-align:center}
+  .topbar strong{font-size:18px;margin-bottom:8px}
+  
+  /* Controlli mobile */
+  .actions{justify-content:center;width:100%;gap:8px}
+  button,select{padding:14px 16px;font-size:16px;min-height:48px;flex:1;min-width:0}
+  
+  /* Layout a due righe per i controlli */
+  .actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;width:100%}
+  .actions button:first-child,
+  .actions button:nth-child(2){grid-column:span 1}
+  .actions select{grid-column:span 2}
+  
+  /* Legenda mobile */
+  .legend{position:relative;top:0;right:0;margin:12px 16px;width:calc(100% - 32px);
+          display:flex;flex-wrap:wrap;gap:16px;justify-content:space-around;
+          padding:12px}
+  .legend-item{margin-bottom:0;flex:1;justify-content:center;min-width:80px}
+  
+  /* Mappa mobile */
+  #map{height:calc(100vh - 200px)}
+  
+  /* Popup mobile */
+  .leaflet-popup-content{font-size:16px;padding:16px;max-width:280px}
+  .leaflet-popup-content h4{font-size:17px}
+  
+  /* Toast mobile */
+  #toast{bottom:16px;margin:0 16px;max-width:calc(100% - 32px);font-size:14px}
+  
+  /* Pill responsive */
+  .pill{font-size:13px;padding:6px 10px}
+}
+
+/* iPhone piccoli (max 480px) */
+@media (max-width: 480px) {
+  .topbar{padding:10px 12px}
+  .topbar strong{font-size:16px}
+  
+  .actions{grid-template-columns:1fr;gap:6px}
+  .actions button,
+  .actions select{grid-column:span 1;font-size:15px;padding:12px 14px}
+  
+  .legend{margin:8px 12px;padding:10px;gap:12px}
+  .legend-item{font-size:13px}
+  .legend-color{width:12px;height:12px}
+  
+  #map{height:calc(100vh - 220px)}
+  
+  .leaflet-popup-content{font-size:15px;padding:14px;max-width:250px}
+  .leaflet-popup-content h4{font-size:16px}
+}
+
+/* Landscape mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+  .topbar{padding:8px 12px}
+  .legend{display:none} /* Nascondi legenda in landscape per più spazio */
+  #map{height:calc(100vh - 60px)}
+}
+
+/* Touch improvements */
+@media (hover: none) and (pointer: coarse) {
+  /* Dispositivi touch */
+  button,select{min-height:48px;padding:14px 16px}
+  .leaflet-popup-content{padding:18px;line-height:1.6}
+  
+  /* Marker più grandi su touch */
+  .leaflet-marker-icon{transform:scale(1.1) !important}
+}
+
+/* High DPI displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .legend{box-shadow:0 2px 8px rgba(0,0,0,0.4)}
+  #toast{box-shadow:0 2px 8px rgba(0,0,0,0.3)}
 }
 
