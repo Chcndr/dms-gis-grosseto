@@ -363,15 +363,15 @@ loadMercato = async function() {
     layer = L.geoJSON(filteredData, {
       style: f => ({ color:'#19d1b8', weight: f.geometry.type==='Polygon'?1:0, fillOpacity:0.08 }),
       pointToLayer: (feat, latlng)=> {
-        // TEST: Usa circleMarker temporaneo per debug con z-index alto
+        // TEST: Marker SUPER VISIBILI - rosso acceso e grandi
         return L.circleMarker(latlng, {
-          radius: 8,
-          fillColor: '#19d1b8',
-          color: '#ffffff',
-          weight: 2,
+          radius: 15,           // MOLTO GRANDE
+          fillColor: '#FF0000', // ROSSO ACCESO
+          color: '#FFFFFF',     // BORDO BIANCO
+          weight: 3,            // BORDO SPESSO
           opacity: 1,
-          fillOpacity: 0.8,
-          zIndexOffset: 1000  // Z-index alto per stare sopra la mappa
+          fillOpacity: 1,       // COMPLETAMENTE OPACO
+          zIndexOffset: 9999    // Z-INDEX ALTISSIMO
         });
         
         /* ORIGINALE CON ICONA DMS:
