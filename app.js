@@ -3296,6 +3296,9 @@ loadMercato = async function() {
     const totalText = filteredData.features.length !== gj.features.length ? 
       ` (${filteredData.features.length}/${gj.features.length} filtrati)` : '';
     
+    // Popola la sidebar con l'elenco posteggi
+    populateSidebar(filteredData.features);
+    
     toast(`Caricati ${filteredData.features?.length || 0} posteggi${totalText} (${statsText})`, true);
     if(DIAG) console.log('GeoJSON', filteredData);
   }catch(err){
