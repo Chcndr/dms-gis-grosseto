@@ -2,33 +2,34 @@
 *{box-sizing:border-box} html,body{height:100%}
 body{margin:0;font-family:system-ui,Segoe UI,Roboto,Arial;background:var(--bg);color:var(--fg)}
 
-/* Header responsive */
-.topbar{display:flex;gap:12px;align-items:center;justify-content:space-between;
+/* Header responsive - SEMPRE VISIBILE */
+.topbar{display:flex !important;gap:12px;align-items:center;justify-content:space-between;
         padding:12px 16px;border-bottom:1px solid var(--line);background:#083436;
-        flex-wrap:wrap}
+        flex-wrap:wrap;position:relative;z-index:1001;width:100%}
 .actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
 
-/* Controlli touch-friendly */
+/* Controlli touch-friendly - SEMPRE VISIBILI */
 button,select{background:var(--panel);color:var(--fg);border:1px solid var(--line);
               padding:12px 16px;border-radius:10px;font-size:16px;min-height:44px;
-              cursor:pointer;transition:all 0.2s ease}
+              cursor:pointer;transition:all 0.2s ease;display:inline-block !important}
 button:hover,button:focus{border-color:var(--accent);outline:none}
 button:active{transform:scale(0.98)}
 button:disabled{opacity:0.5;cursor:not-allowed}
 
-select{min-width:120px}
-.pill{padding:8px 12px;border-radius:999px;border:1px solid var(--line);opacity:.8;font-size:14px}
+select{min-width:120px;display:inline-block !important}
+.pill{padding:8px 12px;border-radius:999px;border:1px solid var(--line);opacity:.8;font-size:14px;
+      display:inline-block !important}
 
-/* Legenda responsive */
+/* Legenda responsive - SEMPRE VISIBILE */
 .legend{position:absolute;top:80px;right:16px;z-index:1000;background:var(--panel);
         border:1px solid var(--line);border-radius:8px;padding:12px;min-width:140px;
-        box-shadow:0 4px 12px rgba(0,0,0,0.3)}
+        box-shadow:0 4px 12px rgba(0,0,0,0.3);display:block !important}
 .legend-item{display:flex;align-items:center;gap:10px;margin-bottom:8px;font-size:14px}
 .legend-item:last-child{margin-bottom:0}
 .legend-color{width:14px;height:14px;border-radius:50%;border:1px solid rgba(255,255,255,0.3)}
 
-/* Mappa */
-#map{height:calc(100vh - 70px)}
+/* Mappa - CORRETTA ALTEZZA */
+#map{height:calc(100vh - 70px);width:100%;position:relative;z-index:1}
 
 /* Popup ottimizzato per touch */
 .leaflet-popup-content{font:16px/1.5 system-ui,Segoe UI,Roboto,Arial;color:#333;
@@ -39,6 +40,10 @@ select{min-width:120px}
 #toast{position:fixed;left:50%;transform:translateX(-50%);bottom:20px;background:#043;
        border:1px solid var(--line);padding:12px 16px;border-radius:8px;z-index:2000;
        max-width:90%;text-align:center;font-size:14px}
+
+/* Icone Leaflet - SEMPRE VISIBILI */
+.leaflet-marker-icon{z-index:600 !important;display:block !important}
+.leaflet-control{z-index:1000 !important}
 
 /* ===== RESPONSIVE DESIGN ===== */
 
@@ -54,28 +59,30 @@ select{min-width:120px}
 
 /* iPhone e smartphone (max 767px) */
 @media (max-width: 767px) {
-  /* Header mobile */
-  .topbar{flex-direction:column;gap:12px;padding:12px 16px;text-align:center}
-  .topbar strong{font-size:18px;margin-bottom:8px}
+  /* Header mobile - SEMPRE VISIBILE */
+  .topbar{flex-direction:column !important;gap:12px;padding:12px 16px;text-align:center;
+          display:flex !important;background:#083436 !important}
+  .topbar strong{font-size:18px;margin-bottom:8px;color:var(--fg) !important}
   
-  /* Controlli mobile */
-  .actions{justify-content:center;width:100%;gap:8px}
-  button,select{padding:14px 16px;font-size:16px;min-height:48px;flex:1;min-width:0}
+  /* Controlli mobile - SEMPRE VISIBILI */
+  .actions{justify-content:center;width:100%;gap:8px;display:flex !important}
+  button,select{padding:14px 16px;font-size:16px;min-height:48px;flex:1;min-width:0;
+                display:inline-block !important}
   
   /* Layout a due righe per i controlli */
-  .actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;width:100%}
+  .actions{display:grid !important;grid-template-columns:1fr 1fr;gap:8px;width:100%}
   .actions button:first-child,
   .actions button:nth-child(2){grid-column:span 1}
   .actions select{grid-column:span 2}
   
-  /* Legenda mobile */
-  .legend{position:relative;top:0;right:0;margin:12px 16px;width:calc(100% - 32px);
-          display:flex;flex-wrap:wrap;gap:16px;justify-content:space-around;
-          padding:12px}
+  /* Legenda mobile - VISIBILE MA COMPATTA */
+  .legend{position:relative !important;top:0;right:0;margin:12px 16px;width:calc(100% - 32px);
+          display:flex !important;flex-wrap:wrap;gap:16px;justify-content:space-around;
+          padding:12px;background:var(--panel) !important}
   .legend-item{margin-bottom:0;flex:1;justify-content:center;min-width:80px}
   
-  /* Mappa mobile */
-  #map{height:calc(100vh - 200px)}
+  /* Mappa mobile - CORRETTA ALTEZZA */
+  #map{height:calc(100vh - 180px) !important;width:100% !important}
   
   /* Popup mobile */
   .leaflet-popup-content{font-size:16px;padding:16px;max-width:280px}
@@ -85,33 +92,40 @@ select{min-width:120px}
   #toast{bottom:16px;margin:0 16px;max-width:calc(100% - 32px);font-size:14px}
   
   /* Pill responsive */
-  .pill{font-size:13px;padding:6px 10px}
+  .pill{font-size:13px;padding:6px 10px;display:inline-block !important}
+  
+  /* Icone sempre visibili su mobile */
+  .leaflet-marker-icon{display:block !important;z-index:600 !important}
 }
 
 /* iPhone piccoli (max 480px) */
 @media (max-width: 480px) {
-  .topbar{padding:10px 12px}
-  .topbar strong{font-size:16px}
+  .topbar{padding:10px 12px;display:flex !important}
+  .topbar strong{font-size:16px;color:var(--fg) !important}
   
-  .actions{grid-template-columns:1fr;gap:6px}
+  .actions{grid-template-columns:1fr;gap:6px;display:grid !important}
   .actions button,
-  .actions select{grid-column:span 1;font-size:15px;padding:12px 14px}
+  .actions select{grid-column:span 1;font-size:15px;padding:12px 14px;
+                  display:inline-block !important}
   
-  .legend{margin:8px 12px;padding:10px;gap:12px}
+  .legend{margin:8px 12px;padding:10px;gap:12px;display:flex !important}
   .legend-item{font-size:13px}
   .legend-color{width:12px;height:12px}
   
-  #map{height:calc(100vh - 220px)}
+  #map{height:calc(100vh - 200px) !important}
   
   .leaflet-popup-content{font-size:15px;padding:14px;max-width:250px}
   .leaflet-popup-content h4{font-size:16px}
+  
+  /* Icone sempre visibili */
+  .leaflet-marker-icon{display:block !important;z-index:600 !important}
 }
 
-/* Landscape mobile */
+/* Landscape mobile - MANTIENI TUTTO VISIBILE */
 @media (max-height: 500px) and (orientation: landscape) {
-  .topbar{padding:8px 12px}
-  .legend{display:none} /* Nascondi legenda in landscape per più spazio */
-  #map{height:calc(100vh - 60px)}
+  .topbar{padding:8px 12px;display:flex !important}
+  .legend{display:flex !important;margin:4px 8px;padding:6px} /* Compatta ma visibile */
+  #map{height:calc(100vh - 80px) !important}
 }
 
 /* Touch improvements */
