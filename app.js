@@ -3062,6 +3062,22 @@ async function loadMercato(){
       }
     }).addTo(map);
     
+    // Gestione zoom per scalare i posteggi con la mappa
+    map.off('zoomend'); // Rimuove listener precedenti
+    map.on('zoomend', function() {
+      const zoom = map.getZoom();
+      const baseRadius = 15;
+      const scaleFactor = Math.max(0.5, Math.min(2, zoom / 16)); // Scala tra 0.5x e 2x
+      
+      if (layer) {
+        layer.eachLayer(function(marker) {
+          if (marker.setRadius) {
+            marker.setRadius(baseRadius * scaleFactor);
+          }
+        });
+      }
+    });
+    
     // Centra la mappa sui posteggi
     try{ 
       map.fitBounds(layer.getBounds(), {padding:[20,20]}); 
@@ -3238,7 +3254,9 @@ loadMercato = async function() {
           weight: 3,            // Bordo molto visibile
           opacity: 1,
           fillOpacity: 0.9,     // Quasi opaco
-          zIndexOffset: 99999   // Z-index altissimo
+          zIndexOffset: 99999,  // Z-index altissimo
+          interactive: true,    // Assicura interattività
+          bubblingMouseEvents: false // Evita conflitti eventi
         });
       },
       onEachFeature: (feat, lyr)=>{
@@ -3263,6 +3281,22 @@ loadMercato = async function() {
         lyr.bindPopup(html);
       }
     }).addTo(map);
+    
+    // Gestione zoom per scalare i posteggi con la mappa
+    map.off('zoomend'); // Rimuove listener precedenti
+    map.on('zoomend', function() {
+      const zoom = map.getZoom();
+      const baseRadius = 15;
+      const scaleFactor = Math.max(0.5, Math.min(2, zoom / 16)); // Scala tra 0.5x e 2x
+      
+      if (layer) {
+        layer.eachLayer(function(marker) {
+          if (marker.setRadius) {
+            marker.setRadius(baseRadius * scaleFactor);
+          }
+        });
+      }
+    });
     
     // Centra la mappa sui posteggi
     try{ 
