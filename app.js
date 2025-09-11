@@ -363,7 +363,17 @@ loadMercato = async function() {
     layer = L.geoJSON(filteredData, {
       style: f => ({ color:'#19d1b8', weight: f.geometry.type==='Polygon'?1:0, fillOpacity:0.08 }),
       pointToLayer: (feat, latlng)=> {
-        // Usa il logo DMS per tutti i posteggi con dimensioni maggiori per migliorare il click
+        // TEST: Usa circleMarker temporaneo per debug
+        return L.circleMarker(latlng, {
+          radius: 8,
+          fillColor: '#19d1b8',
+          color: '#ffffff',
+          weight: 2,
+          opacity: 1,
+          fillOpacity: 0.8
+        });
+        
+        /* ORIGINALE CON ICONA DMS:
         const icon = L.icon({
           iconUrl: './marker-icon.png',
           iconSize: [48, 48], // Ingrandito da 32x32 a 48x48
@@ -372,6 +382,7 @@ loadMercato = async function() {
         });
         
         return L.marker(latlng, { icon: icon });
+        */
       },
       onEachFeature: (feat, lyr)=>{
         const p = feat.properties || {};
