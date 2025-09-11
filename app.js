@@ -95,8 +95,44 @@ const DEMO_DATA = {
 
 // Carica il dataset completo
 async function loadCompleteDataset() {
-  // Usa dati hardcoded per test immediato
-  return DEMO_DATA;
+  // Genera 175 posteggi aggiuntivi + 5 originali = 180 totali
+  const additionalFeatures = [];
+  const categorie = ["Alimentare", "Abbigliamento", "Casalinghi", "Fiori e Piante", "Calzature", "Vario", "Libri e Cartoleria", "Giocattoli", "Prodotti Agricoli"];
+  const nomi = ["Mario Rossi", "Giuseppe Verdi", "Anna Bianchi", "Francesco Neri", "Maria Gialli", "Luigi Blu", "Carla Verde", "Paolo Nero", "Sara Rosa", "Marco Viola"];
+  const mercati = ["Tripoli Giornaliero", "Esperanto Settimanale-Giovedì"];
+  const aree = ["Via Mazzini", "Piazza Dante", "Via Roma", "Corso Carducci", "Via Garibaldi", "Piazza del Duomo"];
+  
+  // Genera 175 posteggi aggiuntivi distribuiti nel centro di Grosseto
+  for (let i = 6; i <= 180; i++) {
+    const isOccupato = Math.random() < 0.65; // 65% occupato
+    const lat = 42.7639 + (Math.random() - 0.5) * 0.004; // Variazione di ~400m
+    const lon = 11.1093 + (Math.random() - 0.5) * 0.005; // Variazione di ~400m
+    
+    additionalFeatures.push({
+      "type": "Feature",
+      "properties": {
+        "numero": i.toString(),
+        "titolare": isOccupato ? nomi[Math.floor(Math.random() * nomi.length)] : "",
+        "settore": categorie[Math.floor(Math.random() * categorie.length)],
+        "stato": isOccupato ? "Occupato" : "Libero",
+        "mercato": mercati[Math.floor(Math.random() * mercati.length)],
+        "area": aree[Math.floor(Math.random() * aree.length)],
+        "superficie": `${Math.floor(Math.random() * 18) + 8} mq`
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [lon, lat]
+      }
+    });
+  }
+  
+  // Combina i 5 posteggi originali + 175 aggiuntivi
+  const completeData = {
+    "type": "FeatureCollection",
+    "features": [...DEMO_DATA.features, ...additionalFeatures]
+  };
+  
+  return completeData;
 }
 
 // Genera dati di esempio se il file completo non è disponibile
@@ -421,15 +457,22 @@ loadMercato = async function() {
     layer = L.geoJSON(filteredData, {
       style: f => ({ color:'#19d1b8', weight: f.geometry.type==='Polygon'?1:0, fillOpacity:0.08 }),
       pointToLayer: (feat, latlng)=> {
-        // MARKER NERI GIGANTESCHI - IMPOSSIBILI DA NON VEDERE
+        // Colori dinamici in base allo stato
+        const p = feat.properties || {};
+        
+        let fillColor = '#44ff44'; // Verde = Libero
+        if (p.stato === 'Occupato') fillColor = '#ff4444'; // Rosso
+        else if (p.stato === 'Riservato') fillColor = '#4444ff'; // Blu  
+        else if (p.stato === 'Temporaneo') fillColor = '#ff8844'; // Arancione
+        
         return L.circleMarker(latlng, {
-          radius: 30,           // ENORMI
-          fillColor: '#000000', // NERO PURO
-          color: '#FFFF00',     // BORDO GIALLO ACCESO
-          weight: 5,            // BORDO MOLTO SPESSO
+          radius: 12,           // Dimensione media
+          fillColor: fillColor, // Colore dinamico
+          color: '#ffffff',     // Bordo bianco
+          weight: 2,            // Bordo normale
           opacity: 1,
-          fillOpacity: 1,       // COMPLETAMENTE OPACO
-          zIndexOffset: 99999   // Z-INDEX MASSIMO
+          fillOpacity: 0.8,     // Leggermente trasparente
+          zIndexOffset: 99999   // Z-index alto
         });
       },
       onEachFeature: (feat, lyr)=>{
