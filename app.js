@@ -95,6 +95,8 @@ const DEMO_DATA = {
 
 // Carica il dataset completo
 async function loadCompleteDataset() {
+  console.log('Generando 180 posteggi...');
+  
   // Genera 175 posteggi aggiuntivi + 5 originali = 180 totali
   const additionalFeatures = [];
   const categorie = ["Alimentare", "Abbigliamento", "Casalinghi", "Fiori e Piante", "Calzature", "Vario", "Libri e Cartoleria", "Giocattoli", "Prodotti Agricoli"];
@@ -126,12 +128,15 @@ async function loadCompleteDataset() {
     });
   }
   
+  console.log(`Generati ${additionalFeatures.length} posteggi aggiuntivi`);
+  
   // Combina i 5 posteggi originali + 175 aggiuntivi
   const completeData = {
     "type": "FeatureCollection",
     "features": [...DEMO_DATA.features, ...additionalFeatures]
   };
   
+  console.log(`Totale posteggi: ${completeData.features.length}`);
   return completeData;
 }
 
