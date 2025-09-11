@@ -8,20 +8,95 @@ const DIAG = new URLSearchParams(location.search).has('diag');
 // Dataset completo con 180 posteggi reali distribuiti nel centro storico di Grosseto
 const DEMO_DATA = {
   "type": "FeatureCollection",
-  "features": []
+  "features": [
+    // 5 posteggi originali che funzionavano
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "1",
+        "titolare": "",
+        "settore": "Libri e Cartoleria",
+        "stato": "Libero",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Via Mazzini",
+        "superficie": "19 mq"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [11.108686891424048, 42.76325684499463]
+      }
+    },
+    {
+      "type": "Feature", 
+      "properties": {
+        "numero": "2",
+        "titolare": "",
+        "settore": "Abbigliamento", 
+        "stato": "Libero",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Via Mazzini",
+        "superficie": "16 mq"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [11.108314861489067, 42.76292578584349]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "3", 
+        "titolare": "Andrea Giada",
+        "settore": "Giocattoli",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero", 
+        "area": "Via Mazzini",
+        "superficie": "20 mq"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [11.109010524930712, 42.763513815851226]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "4",
+        "titolare": "Giuseppe Verdi",
+        "settore": "Libri e Cartoleria", 
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Via Mazzini", 
+        "superficie": "18 mq"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [11.10997527296258, 42.76343996967246]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "5",
+        "titolare": "Camilla Topazio",
+        "settore": "Prodotti Agricoli",
+        "stato": "Occupato", 
+        "mercato": "Tripoli Giornaliero",
+        "area": "Via Mazzini",
+        "superficie": "16 mq"
+      },
+      "geometry": {
+        "type": "Point", 
+        "coordinates": [11.10831994569722, 42.763364027677596]
+      }
+    }
+  ]
 };
 
 // Carica il dataset completo
 async function loadCompleteDataset() {
-  try {
-    // TEST: Carica solo 5 posteggi per debug
-    const response = await fetch('./posteggi_test_5.json');
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.warn('Dataset completo non disponibile, uso dati ridotti');
-    return generateSampleData();
-  }
+  // Usa dati hardcoded per test immediato
+  return DEMO_DATA;
 }
 
 // Genera dati di esempio se il file completo non è disponibile
