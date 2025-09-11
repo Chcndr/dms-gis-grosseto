@@ -3223,7 +3223,7 @@ loadMercato = async function() {
     layer = L.geoJSON(filteredData, {
       style: f => ({ color:'#19d1b8', weight: f.geometry.type==='Polygon'?1:0, fillOpacity:0.08 }),
       pointToLayer: (feat, latlng)=> {
-        // Colori dinamici in base allo stato
+        // Rettangoli colorati in base allo stato - come sistema Grosseto
         const p = feat.properties || {};
         
         let fillColor = '#44ff44'; // Verde = Libero
@@ -3231,11 +3231,21 @@ loadMercato = async function() {
         else if (p.stato === 'Riservato') fillColor = '#4444ff'; // Blu  
         else if (p.stato === 'Temporaneo') fillColor = '#ff8844'; // Arancione
         
-        return L.circleMarker(latlng, {
-          radius: 12,           // Dimensione media
-          fillColor: fillColor, // Colore dinamico
+        // Dimensioni rettangolo basate sulla superficie
+        const superficie = parseInt(p.superficie) || 16;
+        const width = Math.max(superficie * 0.0001, 0.0008); // Larghezza proporzionale
+        const height = Math.max(superficie * 0.00008, 0.0006); // Altezza proporzionale
+        
+        // Crea rettangolo centrato sulla coordinata
+        const bounds = [
+          [latlng.lat - height/2, latlng.lng - width/2],
+          [latlng.lat + height/2, latlng.lng + width/2]
+        ];
+        
+        return L.rectangle(bounds, {
+          fillColor: fillColor,
           color: '#ffffff',     // Bordo bianco
-          weight: 2,            // Bordo normale
+          weight: 1,            // Bordo sottile
           opacity: 1,
           fillOpacity: 0.8,     // Leggermente trasparente
           zIndexOffset: 99999   // Z-index alto
