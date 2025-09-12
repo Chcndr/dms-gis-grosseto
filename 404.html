@@ -1,31 +1,14 @@
-<!doctype html>
-<html lang="it">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>DMS • GIS Grosseto</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-  <meta name="theme-color" content="#0b3b3c">
-</head>
-<body>
-  <header class="topbar">
-    <strong>DMS • GIS Grosseto</strong>
-    <div class="actions">
-      <button id="btnSetToken">Imposta token</button>
-      <span id="tokenStatus" class="pill">Token: assente</span>
-      <select id="mercatoSel" title="Mercato">
-        <option value="grosseto-centrale">Grosseto – Centrale</option>
-      </select>
-      <button id="btnLoad">Carica mappa</button>
-    </div>
-  </header>
-
-  <div id="map"></div>
-  <div id="toast" hidden></div>
-
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-  <script src="app.js"></script>
-</body>
-</html>
+<!doctype html><meta charset="utf-8">
+<title>404</title>
+<script>
+  // Se è un asset (.js .css .json .map .png .jpg .svg ecc.), NON reindirizzare.
+  const p = location.pathname;
+  if (/\.(js|css|json|map|png|jpg|jpeg|gif|svg|webp|ico|txt)$/i.test(p)) {
+    // Lascia 404 "puro": il browser/console ci dirà subito se il path è sbagliato.
+    document.write('<h1>404 asset</h1><p>'+p+' non trovato.</p>');
+  } else {
+    // SPA fallback: vai alla home del progetto
+    location.replace('/dms-gis-grosseto/');
+  }
+</script>
 

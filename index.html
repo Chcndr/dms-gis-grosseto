@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Cache-Control" content="no-store, max-age=0">
-    <link rel="preload" as="script" href="/dms-gis-grosseto/assets/js/app-v20250912.js">
+    <base href="/dms-gis-grosseto/">
+    <link rel="preload" as="script" href="./assets/js/app-v20250912.js">
     <title>DMS • GIS Grosseto - Sistema Mercati</title>
     
     <!-- Leaflet CSS -->
@@ -225,7 +226,7 @@
     <!-- Scripts -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="https://unpkg.com/proj4@2.9.0/dist/proj4.js"></script>
-    <!-- bootstrap anti-cache + load del JS versionato -->
+    <!-- Boot loader: ripulisce SW/caches e carica il JS versionato con path relativo -->
     <script>
     (async () => {
       try {
@@ -237,13 +238,29 @@
           const keys = await caches.keys();
           await Promise.all(keys.map(k => caches.delete(k)));
         }
-      } catch(e) { /* ignora */ }
+      } catch(e) {}
 
-      const s = document.createElement('script');
-      // Percorso assoluto per GitHub Pages del repo chcndr/dms-gis-grosseto
-      s.src = '/dms-gis-grosseto/assets/js/app-v20250912.js?v=' + Date.now();
-      s.defer = true;
-      document.body.appendChild(s);
+      // 1) Prova con path relativo (corretto per Project Pages)
+      const candidates = [
+        './assets/js/app-v20250912.js?v=' + Date.now(),
+        // 2) fallback assoluto verso la root del progetto (se manca <base>)
+        '/dms-gis-grosseto/assets/js/app-v20250912.js?v=' + Date.now(),
+        // 3) PIANO B: CDN jsDelivr puntando al tag stabile
+        'https://cdn.jsdelivr.net/gh/Chcndr/dms-gis-grosseto@STABLE-20250912-0554-LIVE/assets/js/app-v20250912.js'
+      ];
+
+      for (const url of candidates) {
+        try {
+          const res = await fetch(url, { cache: 'reload' });
+          const ct = (res.headers.get('content-type')||'').toLowerCase();
+          if (!res.ok || !ct.includes('javascript')) throw new Error('not js');
+          const s = document.createElement('script');
+          s.src = url; s.defer = true; document.body.appendChild(s);
+          console.log('JS OK:', url);
+          return;
+        } catch(e) { console.warn('fallback:', url); }
+      }
+      console.error('Impossibile caricare il JS (path/404).');
     })();
     </script>
 </body>
