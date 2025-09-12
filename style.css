@@ -332,7 +332,18 @@ body {
     font-family: monospace;
 }
 
-/* Responsive Design */
+/* CSS per area mercato e hub */
+.dms-area { 
+    background: rgba(15,74,78,.92); 
+    color:#fff; 
+    border:none; 
+    border-radius:10px; 
+    padding:4px 8px; 
+    font-weight:600 
+}
+.dms-hub  { 
+    pointer-events:none 
+}
 @media (max-width: 768px) {
     .main-header {
         padding: 6px 12px;
