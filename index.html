@@ -157,8 +157,13 @@
                 </div>
             </div>
             
-            <!-- Mappa -->
-            <div id="map"></div>
+    <!-- Mappa -->
+    <div id="map"></div>
+    
+    <!-- Display coordinate -->
+    <div class="coordinate-display" style="position: absolute; bottom: 10px; left: 10px; background: rgba(0,0,0,0.7); color: white; padding: 5px 10px; border-radius: 3px; font-size: 12px; z-index: 1000;">
+        X: 0.00, Y: 0.00 [EPSG:3003]
+    </div>
             
             <!-- Barra coordinate -->
             <div class="coordinate-bar">
@@ -241,7 +246,7 @@
       } catch(e) {}
 
       // SOLUZIONE IMMEDIATA: SOLO CDN jsDelivr (bypass GitHub Pages)
-      const url = 'https://cdn.jsdelivr.net/gh/Chcndr/dms-gis-grosseto@STABLE-20250912-0554-LIVE/assets/js/app-v20250912.js';
+      const url = 'https://cdn.jsdelivr.net/gh/Chcndr/dms-gis-grosseto@STABLE-20250912-0557-COMPATTI/assets/js/app-v20250912-fix.js';
       
       try {
         const res = await fetch(url, { cache: 'reload' });
