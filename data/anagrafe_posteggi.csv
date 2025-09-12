@@ -1,0 +1,23 @@
+numero,nome_mer,titolare,ragione,piva,telefono,email,settore,note
+125,Tripoli Giornaliero,Rossi Marco,La Bottega SRL,IT01234567890,3331234567,info@labottega.it,Alimentari,Specialità locali
+126,Tripoli Giornaliero,Bianchi Anna,Bianchi Anna Ditta Ind.,BNCHAN80A01H501Z,3339876543,anna.bianchi@email.it,Abbigliamento,Moda donna
+127,Tripoli Giornaliero,Verdi Giuseppe,Verdi & Figli SNC,IT09876543210,3335551234,giuseppe@verdifigli.it,Calzature,Scarpe artigianali
+128,Tripoli Giornaliero,Neri Francesca,F. Neri Commercio,NREFNC85C15H501A,3337778899,f.neri@commercio.it,Pelletteria,Borse e accessori
+129,Tripoli Giornaliero,Blu Franco,Blu Franco Impresa,BLUFNC70D20F205B,3334445566,franco.blu@impresa.it,Casalinghi,Articoli per la casa
+130,Tripoli Giornaliero,Gialli Lucia,L. Gialli & Co.,IT05555666777,3332223344,lucia@gialli.co.it,Fiori e Piante,Vivaio e decorazioni
+131,Tripoli Giornaliero,Grigi Paolo,Paolo Grigi SRL,GRGPLA75A10H501C,3338889900,p.grigi@srl.it,Libri e Cartoleria,Editoria locale
+132,Tripoli Giornaliero,Rosa Elena,Elena Rosa Ditta,RSELNA82B25F205D,3336667788,elena.rosa@ditta.it,Vario,Articoli vari
+133,Tripoli Giornaliero,Viola Sara,S. Viola Commercio,IT02468135790,3331112233,sara@violacommercio.it,Abbigliamento,Intimo e lingerie
+134,Tripoli Giornaliero,Arancio Mario,Mario Arancio & C.,RNCMRA78E30H501E,3335554433,mario@arancio.com,Alimentari,Prodotti biologici
+135,Tripoli Giornaliero,Verde Carla,Carla Verde SAS,IT08642097531,3337776655,carla@verde.sas.it,Calzature,Calzature sportive
+136,Tripoli Giornaliero,Rosso Andrea,A. Rosso Impresa,RSSAND90F12F205F,3334443322,andrea@rosso.it,Pelletteria,Valigeria
+137,Tripoli Giornaliero,Nero Stefano,Stefano Nero Ditta,NRESTF83G18H501G,3338887766,stefano@nero.ditta.it,Casalinghi,Elettrodomestici
+138,Tripoli Giornaliero,Bianco Giulia,G. Bianco & Associati,IT01357924680,3332221100,giulia@bianco.ass.it,Fiori e Piante,Composizioni floreali
+139,Tripoli Giornaliero,Marrone Roberto,Roberto Marrone SRL,MRRRBR76H25F205H,3336665544,roberto@marrone.srl.it,Libri e Cartoleria,Cancelleria ufficio
+140,Tripoli Giornaliero,Azzurro Luca,Luca Azzurro Commercio,IT09753186420,3335553311,luca@azzurro.com,Vario,Gadget e souvenir
+1,Esperanto Settimanale-Giovedì,Esperanto Marco,Marco Esperanto SNC,SPRMRC85L15H501I,3339998877,marco@esperanto.snc.it,Ortofrutta,Frutta e verdura bio
+2,Esperanto Settimanale-Giovedì,Giovedì Anna,Anna Giovedì Ditta,GVDANN88M20F205J,3334447755,anna@giovedi.it,Alimentari,Prodotti tipici
+3,Esperanto Settimanale-Giovedì,Settimana Giuseppe,G. Settimana & Co.,IT06419753280,3337774422,giuseppe@settimana.co.it,Abbigliamento,Abbigliamento casual
+4,Esperanto Settimanale-Giovedì,Mercato Francesca,F. Mercato Impresa,MRCFNC92N30H501K,3331115599,francesca@mercato.imp.it,Calzature,Sandali artigianali
+5,Esperanto Settimanale-Giovedì,Bancarella Franco,Franco Bancarella SRL,IT08520741963,3338886633,franco@bancarella.srl.it,Vario,Articoli da regalo
+

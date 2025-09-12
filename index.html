@@ -260,6 +260,128 @@
       }
     })();
     </script>
+
+    <!-- ========== JOIN ANAGRAFE POSTEGGI (CSV) ========== -->
+    <script>
+    // Percorso del CSV (adatta se lo metti altrove)
+    const ANAGRAFE_URL = 'data/anagrafe_posteggi.csv?v=' + Date.now(); // cache-buster
+
+    // Normalizza stringhe per la chiave di join
+    function norm(s) {
+      return String(s||'')
+        .normalize('NFD').replace(/[\u0300-\u036f]/g,'') // no accentI
+        .replace(/\s+/g,' ')                             // spazi singoli
+        .trim().toLowerCase();
+    }
+    function keyJoin(nome_mer, numero) {
+      return `${norm(nome_mer)}|${String(numero).trim()}`;
+    }
+
+    // CSV parser semplice (gestisce virgolette)
+    function parseCSV(text) {
+      const rows = [];
+      let cur = '', row = [], inQ = false;
+      for (let i=0;i<text.length;i++) {
+        const c = text[i], n = text[i+1];
+        if (c === '"' ) {
+          if (inQ && n === '"') { cur += '"'; i++; } else { inQ = !inQ; }
+        } else if (c === ',' && !inQ) { row.push(cur); cur=''; }
+          else if ((c === '\n' || c === '\r') && !inQ) {
+            if (cur.length || row.length) { row.push(cur); rows.push(row); }
+            cur=''; row=[];
+            if (c === '\r' && n === '\n') i++; // CRLF
+          }
+          else { cur += c; }
+      }
+      if (cur.length || row.length) { row.push(cur); rows.push(row); }
+      const header = rows.shift().map(h => h.trim());
+      return rows.filter(r => r.length).map(r => {
+        const o = {}; header.forEach((h,idx)=> o[h] = (r[idx]??'').trim()); return o;
+      });
+    }
+
+    // Costruisce mappa anagrafe per join veloce
+    async function loadAnagrafeMap() {
+      const res = await fetch(ANAGRAFE_URL);
+      if (!res.ok) throw new Error('Anagrafe non accessibile: ' + res.status);
+      const text = await res.text();
+      const rows = parseCSV(text);
+      const map = new Map();
+      rows.forEach(r => {
+        const k = keyJoin(r.nome_mer, r.numero);
+        map.set(k, r);
+      });
+      return map;
+    }
+
+    // Colleziona tutte le feature dei posteggi (dalla tua LAYER_POSTEGGI)
+    function collectFeatures() {
+      const feats = [];
+      if (window.posteggiLayer) {
+        window.posteggiLayer.eachLayer(l => {
+          if (l instanceof L.GeoJSON) l.eachLayer(f => feats.push(f));
+          else if (l.feature) feats.push(l);
+          else if (l.getLayers) l.getLayers().forEach(x => x.feature && feats.push(x));
+        });
+      }
+      return feats;
+    }
+
+    // Applica join alle feature e aggiorna popup
+    async function enrichWithOwners() {
+      try {
+        const amap = await loadAnagrafeMap();
+        const feats = collectFeatures();
+
+        feats.forEach(f => {
+          const p = f.feature?.properties || {};
+          const k = keyJoin(p.nome_mer, p.numero);
+          const aggiunta = amap.get(k);
+          if (aggiunta) {
+            // copia campi utili dentro properties
+            Object.assign(p, {
+              titolare : aggiunta.titolare || p.titolare,
+              ragione  : aggiunta.ragione  || p.ragione,
+              piva     : aggiunta.piva     || p.piva,
+              telefono : aggiunta.telefono || p.telefono,
+              email    : aggiunta.email    || p.email,
+              settore  : aggiunta.settore  || p.settore,
+              note     : aggiunta.note     || p.note
+            });
+            // rebind popup con info arricchite
+            const html = `
+              <div style="min-width:240px">
+                <div><strong>Posteggio</strong> #${p.numero ?? '—'} — ${p.nome_mer ?? '—'}</div>
+                ${p.titolare ? `<div><strong>Titolare:</strong> ${p.titolare}</div>`:''}
+                ${p.ragione  ? `<div><strong>Ragione:</strong> ${p.ragione}</div>`:''}
+                ${p.piva     ? `<div><strong>P.IVA:</strong> ${p.piva}</div>`:''}
+                ${p.telefono ? `<div><strong>Tel:</strong> ${p.telefono}</div>`:''}
+                ${p.email    ? `<div><strong>Email:</strong> ${p.email}</div>`:''}
+                <hr>
+                <div><small>Superficie:</small> ${p.superficie_posteggio ?? '—'} m²</div>
+                ${p.settore ? `<div><small>Settore:</small> ${p.settore}</div>`:''}
+                ${p.note    ? `<div><small>Note:</small> ${p.note}</div>`:''}
+              </div>`;
+            f.bindPopup(html);
+          }
+        });
+
+        console.log('✅ Join anagrafe completato per', feats.length, 'posteggi');
+
+      } catch(e) {
+        console.error('❌ Errore join anagrafe:', e);
+        // badge diagnostico
+        const b = document.createElement('div');
+        b.textContent = 'join-anagrafe: errore caricamento';
+        b.style.cssText='position:fixed;left:8px;bottom:8px;background:#c00;color:#fff;padding:4px 8px;border-radius:6px;font:12px system-ui;z-index:9999';
+        document.body.appendChild(b);
+        setTimeout(()=>b.remove(),4000);
+      }
+    }
+
+    // Avvia il join dopo un breve delay per assicurarsi che i posteggi siano caricati
+    setTimeout(enrichWithOwners, 2000);
+    </script>
 </body>
 </html>
 
