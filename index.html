@@ -1,88 +1,214 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>DMS • GIS Grosseto</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-  <meta name="theme-color" content="#0b3b3c">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DMS • GIS Grosseto - Sistema Mercati</title>
+    
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    
+    <!-- Font Awesome per icone -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- CSS personalizzato -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header class="topbar">
-    <strong>DMS • GIS Grosseto</strong>
-    <div class="actions">
-      <button id="btnDMSConfig">Configura DMS</button>
-      <button id="btnSetToken">Imposta token</button>
-      <span id="tokenStatus" class="pill">Token: assente</span>
-      <select id="mercatoSel" title="Mercato">
-        <option value="tutti">Tutti i mercati</option>
-        <option value="tripoli">Tripoli Giornaliero</option>
-        <option value="esperanto">Esperanto Settimanale-Giovedì</option>
-      </select>
-      <select id="statoFilter" title="Filtro Stato">
-        <option value="tutti">Tutti gli stati</option>
-        <option value="libero">Solo Liberi</option>
-        <option value="occupato">Solo Occupati</option>
-      </select>
-      <button id="btnLoad">Carica mappa</button>
-      <button id="btnStats">Statistiche</button>
-    </div>
-  </header>
+    <!-- Header principale -->
+    <header class="main-header">
+        <div class="header-left">
+            <img src="marker-icon.png" alt="DMS Logo" class="logo">
+            <h1>DMS • GIS Grosseto</h1>
+        </div>
+        <div class="header-right">
+            <button id="btnConfigDMS" class="btn-primary">
+                <i class="fas fa-cog"></i> Configura DMS
+            </button>
+            <button id="btnStats" class="btn-secondary">
+                <i class="fas fa-chart-bar"></i> Statistiche
+            </button>
+        </div>
+    </header>
 
-  <!-- Sidebar con elenco posteggi -->
-  <div class="sidebar" id="sidebar">
-    <div class="sidebar-header">
-      <h3>Elenco Posteggi</h3>
-      <button class="close-btn" onclick="toggleSidebar()">✕</button>
-    </div>
-    
-    <div class="sidebar-filters">
-      <input type="text" id="searchInput" placeholder="Cerca per numero o titolare..." />
-      <select id="statusFilter">
-        <option value="">Tutti gli stati</option>
-        <option value="Libero">Solo Liberi</option>
-        <option value="Occupato">Solo Occupati</option>
-      </select>
-    </div>
-    
-    <div class="sidebar-stats" id="sidebarStats">
-      <!-- Statistiche dinamiche -->
-    </div>
-    
-    <div class="posteggi-list" id="posteggiList">
-      <!-- Lista posteggi dinamica -->
-    </div>
-  </div>
+    <!-- Layout principale con sidebar -->
+    <div class="main-layout">
+        <!-- Sidebar sinistra (stile g3w-suite) -->
+        <div class="sidebar-left" id="sidebarLeft">
+            <div class="sidebar-header">
+                <h3><i class="fas fa-layer-group"></i> Strati</h3>
+                <button class="sidebar-toggle" onclick="toggleSidebar()">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+            </div>
+            
+            <!-- Controlli layer -->
+            <div class="layer-controls">
+                <div class="layer-group">
+                    <div class="layer-group-header">
+                        <i class="fas fa-folder-open"></i>
+                        <span>Mercati_test_v3</span>
+                    </div>
+                    
+                    <div class="layer-group-content">
+                        <!-- Layer Mercati -->
+                        <div class="layer-item">
+                            <div class="layer-checkbox">
+                                <input type="checkbox" id="layerMercati" checked>
+                                <label for="layerMercati">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    Mercati
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <!-- Layer Posteggi Mercati -->
+                        <div class="layer-item">
+                            <div class="layer-group-header">
+                                <i class="fas fa-folder"></i>
+                                <span>Posteggi Mercati</span>
+                            </div>
+                            <div class="layer-subgroup">
+                                <div class="layer-checkbox">
+                                    <input type="checkbox" id="layerEsperanto" checked>
+                                    <label for="layerEsperanto">
+                                        <i class="fas fa-square"></i>
+                                        Esperanto Settimanale-Giovedì
+                                    </label>
+                                </div>
+                                <div class="layer-checkbox">
+                                    <input type="checkbox" id="layerTripoli" checked>
+                                    <label for="layerTripoli">
+                                        <i class="fas fa-square"></i>
+                                        Tripoli Giornaliero
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Tabella Posteggi -->
+                        <div class="layer-item">
+                            <div class="layer-checkbox">
+                                <input type="checkbox" id="layerTabella">
+                                <label for="layerTabella">
+                                    <i class="fas fa-table"></i>
+                                    Tabella Posteggi
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Ricerche -->
+            <div class="search-section">
+                <h4><i class="fas fa-search"></i> Ricerche</h4>
+                <div class="search-controls">
+                    <select id="searchType">
+                        <option value="numero">Numero Posteggio</option>
+                        <option value="titolare">Titolare</option>
+                        <option value="mercato">Mercato</option>
+                    </select>
+                    <input type="text" id="searchInput" placeholder="Inserisci valore...">
+                    <button id="btnSearch" class="btn-search">
+                        <i class="fas fa-search"></i> Cerca
+                    </button>
+                </div>
+            </div>
+        </div>
 
-  <!-- Pulsante per aprire sidebar -->
-  <button class="sidebar-toggle" onclick="toggleSidebar()">📋 Elenco</button>
+        <!-- Area mappa principale -->
+        <div class="map-container">
+            <!-- Controlli mappa -->
+            <div class="map-controls">
+                <div class="zoom-controls">
+                    <button id="zoomIn" class="zoom-btn">
+                        <i class="fas fa-plus"></i>
+                    </button>
+                    <button id="zoomOut" class="zoom-btn">
+                        <i class="fas fa-minus"></i>
+                    </button>
+                </div>
+                
+                <!-- Search box indirizzi -->
+                <div class="address-search">
+                    <input type="text" id="addressInput" placeholder="Indirizzo ...">
+                    <button id="btnAddressSearch">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Mappa -->
+            <div id="map"></div>
+            
+            <!-- Barra coordinate -->
+            <div class="coordinate-bar">
+                <span id="coordinates">X: 1673000.00, Y: 4736500.00 [EPSG:3003]</span>
+                <span id="scale">1:16203</span>
+            </div>
+        </div>
+    </div>
 
-  <div class="legend">
-    <div class="legend-item">
-      <span class="legend-color" style="background: #44ff44;"></span>
-      <span>Libero</span>
+    <!-- Sidebar destra per elenco posteggi -->
+    <div class="sidebar-right" id="sidebarRight">
+        <div class="sidebar-header">
+            <h3><i class="fas fa-list"></i> Elenco Posteggi</h3>
+            <button class="close-btn" onclick="toggleRightSidebar()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <div class="sidebar-stats" id="sidebarStats">
+            <!-- Statistiche dinamiche -->
+        </div>
+        
+        <div class="sidebar-filters">
+            <input type="text" id="filterInput" placeholder="Filtra per numero o titolare...">
+            <select id="statusFilter">
+                <option value="">Tutti gli stati</option>
+                <option value="Libero">Solo Liberi</option>
+                <option value="Occupato">Solo Occupati</option>
+            </select>
+        </div>
+        
+        <div class="posteggi-list" id="posteggiList">
+            <!-- Lista posteggi dinamica -->
+        </div>
     </div>
-    <div class="legend-item">
-      <span class="legend-color" style="background: #ff4444;"></span>
-      <span>Occupato</span>
-    </div>
-    <div class="legend-item">
-      <span class="legend-color" style="background: #4444ff;"></span>
-      <span>Riservato</span>
-    </div>
-    <div class="legend-item">
-      <span class="legend-color" style="background: #ff8844;"></span>
-      <span>Temporaneo</span>
-    </div>
-  </div>
 
-  <div id="map"></div>
-  <div id="toast" hidden></div>
+    <!-- Pulsante per aprire elenco posteggi -->
+    <button class="list-toggle" onclick="toggleRightSidebar()">
+        <i class="fas fa-list"></i> Elenco
+    </button>
 
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-  <script src="api-integration.js"></script>
-  <script src="app.js"></script>
+    <!-- Legenda -->
+    <div class="legend">
+        <h4><i class="fas fa-palette"></i> Legenda</h4>
+        <div class="legend-items">
+            <div class="legend-item">
+                <span class="legend-color libero"></span>
+                <span>Libero</span>
+            </div>
+            <div class="legend-item">
+                <span class="legend-color occupato"></span>
+                <span>Occupato</span>
+            </div>
+            <div class="legend-item">
+                <span class="legend-color riservato"></span>
+                <span>Riservato</span>
+            </div>
+            <div class="legend-item">
+                <span class="legend-color temporaneo"></span>
+                <span>Temporaneo</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/proj4@2.9.0/dist/proj4.js"></script>
+    <script src="app.js"></script>
 </body>
 </html>
 
