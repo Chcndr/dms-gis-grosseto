@@ -1,4 +1,4 @@
-/* DMS-GIS • build=lock5
+/* DMS-GIS • build=lock5a
  * - controlli duplicati rimossi (solo Leaflet default)
  * - aree mercato (concave hull) Tripoli/Esperanto
  * - 2 marker centrali (no pin blu diffusi)
@@ -8,7 +8,7 @@
  */
 
 (function(){
-  const build = 'lock5';
+  const build = 'lock5a';
 
   // ---- mappa base
   const map = L.map('map', { zoomControl: true }).setView([42.7639, 11.1136], 16);
@@ -81,7 +81,7 @@
   };
 
   // ---- carica dati
-  const JSON_URL = './dati_reali_posteggi_grosseto.json?v=lock5';
+  const JSON_URL = './dati_reali_posteggi_grosseto.json?v=lock5a';
   fetch(JSON_URL).then(r=>r.json()).then(data=>{
     // mappa campi robusta
     const rows = data.map(r=>{

@@ -207,9 +207,14 @@
 
     <!-- Scripts -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <script src="./libs/proj4.min.js"></script>
-    <script src="./libs/turf.min.js"></script>
-    <script src="./app.lock5.js?v=lock5"></script>
+    <script src="./libs/proj4.min.js?v=lock5a"></script>
+    <script src="./libs/turf.min.js?v=lock5a"></script>
+    <script src="./app.lock5.js?v=lock5a"></script>
+    
+    <style>
+      /* nasconde controlli top-right residui */
+      .leaflet-top.leaflet-right { display:none !important; }
+    </style>
 </body>
 </html>
 
