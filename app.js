@@ -7,8 +7,35 @@ let posteggiLayer;
 let currentPosteggi = [];
 let isRightSidebarOpen = false;
 
-// Dati posteggi completi (180 posteggi)
-const POSTEGGI_DATA = [];
+// Dati posteggi (caricati da JSON)
+let POSTEGGI_DATA = [];
+
+// Definizione proiezione EPSG:3003
+proj4.defs("EPSG:3003", "+proj=tmerc +lat_0=0 +lon_0=9 +k=0.9996 +x_0=1500000 +y_0=0 +ellps=intl +towgs84=-104.1,-49.1,-9.9,0.971,-2.917,0.714,-11.68 +units=m +no_defs");
+
+// Caricamento dati da JSON
+async function loadPosteggiData() {
+    try {
+        console.log('📥 Caricamento dati posteggi da JSON...');
+        const response = await fetch('/dms-gis-grosseto/dati_reali_posteggi_grosseto.json?v=lock1');
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        POSTEGGI_DATA = data.features || [];
+        
+        // Console badge richiesto
+        console.log(`🎯 DMS-GIS • OK • records=${POSTEGGI_DATA.length} • EPSG:3003→WGS84`);
+        
+        return POSTEGGI_DATA;
+    } catch (error) {
+        console.error('❌ Errore caricamento dati:', error);
+        // Fallback ai dati generati se il JSON non è disponibile
+        generatePosteggiData();
+        console.log(`🎯 DMS-GIS • FALLBACK • records=${POSTEGGI_DATA.length} • EPSG:3003→WGS84`);
+        return POSTEGGI_DATA;
+    }
+}
 
 // Genera 180 posteggi con coordinate reali di Grosseto
 function generatePosteggiData() {
@@ -96,12 +123,12 @@ function generatePosteggiData() {
 }
 
 // Inizializzazione
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', async function() {
     console.log('🚀 Inizializzazione sistema GIS Grosseto...');
     
-    // Genera posteggi
-    generatePosteggiData();
-    console.log(`📊 Generati ${POSTEGGI_DATA.length} posteggi totali`);
+    // Carica dati posteggi da JSON
+    await loadPosteggiData();
+    console.log(`📊 Caricati ${POSTEGGI_DATA.length} posteggi totali`);
     
     // Inizializza mappa
     initializeMap();

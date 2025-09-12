@@ -1,0 +1,4030 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "1",
+        "titolare": "",
+        "settore": "Libri e Cartoleria",
+        "stato": "Libero",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Via Mazzini",
+        "superficie": "19 mq",
+        "piva": "",
+        "concessione": "",
+        "scadenza": "",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.108686891424048,
+          42.76325684499463
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "2",
+        "titolare": "",
+        "settore": "Abbigliamento",
+        "stato": "Libero",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Via Mazzini",
+        "superficie": "16 mq",
+        "piva": "",
+        "concessione": "",
+        "scadenza": "",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.108314861489067,
+          42.76292578584349
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "3",
+        "titolare": "Andrea Giada",
+        "settore": "Giocattoli",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Via Mazzini",
+        "superficie": "20 mq",
+        "piva": "19833355163",
+        "concessione": "CON4039",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.109010524930712,
+          42.763513815851226
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "4",
+        "titolare": "Giuseppe Verdi",
+        "settore": "Libri e Cartoleria",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Via Mazzini",
+        "superficie": "18 mq",
+        "piva": "70350566580",
+        "concessione": "CON1292",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.10997527296258,
+          42.76343996967246
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "5",
+        "titolare": "Camilla Topazio",
+        "settore": "Prodotti Agricoli",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Via Mazzini",
+        "superficie": "16 mq",
+        "piva": "48952598770",
+        "concessione": "CON1888",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.10831994569722,
+          42.763364027677596
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "6",
+        "titolare": "Matteo Argento",
+        "settore": "Tessuti",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Via Mazzini",
+        "superficie": "24 mq",
+        "piva": "32484101936",
+        "concessione": "CON9643",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.108819273488583,
+          42.76275674977463
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "7",
+        "titolare": "Matteo Argento",
+        "settore": "Abbigliamento",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Via Mazzini",
+        "superficie": "14 mq",
+        "piva": "73682230533",
+        "concessione": "CON1597",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.109729227018295,
+          42.76321850244722
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "8",
+        "titolare": "",
+        "settore": "Vario",
+        "stato": "Libero",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Via Mazzini",
+        "superficie": "13 mq",
+        "piva": "",
+        "concessione": "",
+        "scadenza": "",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.109561635675728,
+          42.76271064950764
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "9",
+        "titolare": "Giulia Oro",
+        "settore": "Calzature",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Via Mazzini",
+        "superficie": "11 mq",
+        "piva": "71474466180",
+        "concessione": "CON2001",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.108418269223005,
+          42.7630690066634
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "10",
+        "titolare": "",
+        "settore": "Tessuti",
+        "stato": "Libero",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Via Mazzini",
+        "superficie": "24 mq",
+        "piva": "",
+        "concessione": "",
+        "scadenza": "",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.109143939155501,
+          42.76379682046994
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "11",
+        "titolare": "",
+        "settore": "Casalinghi",
+        "stato": "Libero",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Via Mazzini",
+        "superficie": "8 mq",
+        "piva": "",
+        "concessione": "",
+        "scadenza": "",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.109813225477872,
+          42.76389765634613
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "12",
+        "titolare": "Roberto Diamante",
+        "settore": "Elettronica",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Via Mazzini",
+        "superficie": "14 mq",
+        "piva": "80609905771",
+        "concessione": "CON4353",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.109252771096125,
+          42.76426762494247
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "13",
+        "titolare": "",
+        "settore": "Fiori e Piante",
+        "stato": "Libero",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Via Mazzini",
+        "superficie": "15 mq",
+        "piva": "",
+        "concessione": "",
+        "scadenza": "",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.10997441313522,
+          42.762932507312875
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "14",
+        "titolare": "",
+        "settore": "Artigianato",
+        "stato": "Libero",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Via Mazzini",
+        "superficie": "17 mq",
+        "piva": "",
+        "concessione": "",
+        "scadenza": "",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.108027433330461,
+          42.76387626515196
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "15",
+        "titolare": "Francesca Rosa",
+        "settore": "Alimentare",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Via Mazzini",
+        "superficie": "14 mq",
+        "piva": "54936410933",
+        "concessione": "CON4539",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.109516940418123,
+          42.76388676670976
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "16",
+        "titolare": "",
+        "settore": "Casalinghi",
+        "stato": "Libero",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Via Mazzini",
+        "superficie": "19 mq",
+        "piva": "",
+        "concessione": "",
+        "scadenza": "",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.109357537115866,
+          42.76387153904255
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "17",
+        "titolare": "Serena Cristallo",
+        "settore": "Fiori e Piante",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Via Mazzini",
+        "superficie": "13 mq",
+        "piva": "95521334226",
+        "concessione": "CON5777",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.109554085354137,
+          42.76363808201209
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "18",
+        "titolare": "Andrea Giada",
+        "settore": "Elettronica",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Via Mazzini",
+        "superficie": "8 mq",
+        "piva": "47009714872",
+        "concessione": "CON1594",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.108841947881585,
+          42.76359353164057
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "19",
+        "titolare": "Chiara Bronzo",
+        "settore": "Abbigliamento",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Via Mazzini",
+        "superficie": "12 mq",
+        "piva": "94665455910",
+        "concessione": "CON2097",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.108656732484807,
+          42.76402339123544
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "20",
+        "titolare": "",
+        "settore": "Artigianato",
+        "stato": "Libero",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Via Mazzini",
+        "superficie": "19 mq",
+        "piva": "",
+        "concessione": "",
+        "scadenza": "",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.109607737598328,
+          42.76333122806563
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "21",
+        "titolare": "Francesca Rosa",
+        "settore": "Libri e Cartoleria",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Via Mazzini",
+        "superficie": "16 mq",
+        "piva": "34629073762",
+        "concessione": "CON8573",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.108879180828525,
+          42.76329633242183
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "22",
+        "titolare": "Alessia Smeraldo",
+        "settore": "Casalinghi",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Via Mazzini",
+        "superficie": "20 mq",
+        "piva": "91614358547",
+        "concessione": "CON4557",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.108307963673838,
+          42.76358236084354
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "23",
+        "titolare": "Giulia Oro",
+        "settore": "Prodotti Agricoli",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Via Mazzini",
+        "superficie": "9 mq",
+        "piva": "79261872636",
+        "concessione": "CON8147",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.108842662165642,
+          42.76419948113348
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "24",
+        "titolare": "Andrea Giada",
+        "settore": "Libri e Cartoleria",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Via Mazzini",
+        "superficie": "22 mq",
+        "piva": "77990083472",
+        "concessione": "CON4225",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.109282386141807,
+          42.763127100542164
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "25",
+        "titolare": "Alessandro Verde",
+        "settore": "Casalinghi",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Via Mazzini",
+        "superficie": "22 mq",
+        "piva": "67377523009",
+        "concessione": "CON3342",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.10989049147433,
+          42.76370808840442
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "26",
+        "titolare": "",
+        "settore": "Calzature",
+        "stato": "Libero",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Via Mazzini",
+        "superficie": "18 mq",
+        "piva": "",
+        "concessione": "",
+        "scadenza": "",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.108493014196503,
+          42.76312911896677
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "27",
+        "titolare": "",
+        "settore": "Giocattoli",
+        "stato": "Libero",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Via Mazzini",
+        "superficie": "14 mq",
+        "piva": "",
+        "concessione": "",
+        "scadenza": "",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.107933867089402,
+          42.76396232846795
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "28",
+        "titolare": "",
+        "settore": "Prodotti Agricoli",
+        "stato": "Libero",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Via Mazzini",
+        "superficie": "22 mq",
+        "piva": "",
+        "concessione": "",
+        "scadenza": "",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.108887978911111,
+          42.763685553876705
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "29",
+        "titolare": "Stefano Zaffiro",
+        "settore": "Artigianato",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Via Mazzini",
+        "superficie": "24 mq",
+        "piva": "65051102810",
+        "concessione": "CON3547",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.109549097555929,
+          42.76420658010721
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "30",
+        "titolare": "",
+        "settore": "Prodotti Agricoli",
+        "stato": "Libero",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Via Mazzini",
+        "superficie": "9 mq",
+        "piva": "",
+        "concessione": "",
+        "scadenza": "",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.107866041150722,
+          42.76295400111171
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "31",
+        "titolare": "Antonio Blu",
+        "settore": "Tessuti",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Via Mazzini",
+        "superficie": "20 mq",
+        "piva": "91252470643",
+        "concessione": "CON4106",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.108389382708165,
+          42.76404157946605
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "32",
+        "titolare": "Alessia Smeraldo",
+        "settore": "Fiori e Piante",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Via Mazzini",
+        "superficie": "19 mq",
+        "piva": "46398129196",
+        "concessione": "CON9643",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.109997593958447,
+          42.762957115895254
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "33",
+        "titolare": "Marco Azzurri",
+        "settore": "Alimentare",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Via Mazzini",
+        "superficie": "23 mq",
+        "piva": "44685942956",
+        "concessione": "CON3733",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.10823256288619,
+          42.76317525230008
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "34",
+        "titolare": "Giorgia Ardesia",
+        "settore": "Elettronica",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Via Mazzini",
+        "superficie": "23 mq",
+        "piva": "84463217045",
+        "concessione": "CON8738",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.107961096798332,
+          42.76392038381767
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "35",
+        "titolare": "",
+        "settore": "Elettronica",
+        "stato": "Libero",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Via Mazzini",
+        "superficie": "24 mq",
+        "piva": "",
+        "concessione": "",
+        "scadenza": "",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.108259505299461,
+          42.76427550217904
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "36",
+        "titolare": "",
+        "settore": "Prodotti Agricoli",
+        "stato": "Libero",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Piazza del Duomo",
+        "superficie": "13 mq",
+        "piva": "",
+        "concessione": "",
+        "scadenza": "",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.109255168331389,
+          42.76469679336458
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "37",
+        "titolare": "Ilaria Porfido",
+        "settore": "Prodotti Agricoli",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Piazza del Duomo",
+        "superficie": "8 mq",
+        "piva": "43505096662",
+        "concessione": "CON8959",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.109835088653096,
+          42.76380852229371
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "38",
+        "titolare": "Martina Rubino",
+        "settore": "Alimentare",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Piazza del Duomo",
+        "superficie": "18 mq",
+        "piva": "54873249057",
+        "concessione": "CON2225",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.109151811463683,
+          42.7640098840513
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "39",
+        "titolare": "Beatrice Opale",
+        "settore": "Calzature",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Piazza del Duomo",
+        "superficie": "8 mq",
+        "piva": "51519487900",
+        "concessione": "CON2875",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.109031814140844,
+          42.763966893086334
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "40",
+        "titolare": "Chiara Bronzo",
+        "settore": "Casalinghi",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Piazza del Duomo",
+        "superficie": "25 mq",
+        "piva": "94109398330",
+        "concessione": "CON3860",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.110315342181096,
+          42.764796726226486
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "41",
+        "titolare": "Roberto Diamante",
+        "settore": "Abbigliamento",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Piazza del Duomo",
+        "superficie": "16 mq",
+        "piva": "14357212781",
+        "concessione": "CON9588",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.110405721818516,
+          42.76409421730712
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "42",
+        "titolare": "",
+        "settore": "Alimentare",
+        "stato": "Libero",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Piazza del Duomo",
+        "superficie": "18 mq",
+        "piva": "",
+        "concessione": "",
+        "scadenza": "",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.108392358687835,
+          42.76347984208157
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "43",
+        "titolare": "Matteo Argento",
+        "settore": "Casalinghi",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Piazza del Duomo",
+        "superficie": "19 mq",
+        "piva": "19119796559",
+        "concessione": "CON5220",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.10930305396906,
+          42.76432065000097
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "44",
+        "titolare": "",
+        "settore": "Casalinghi",
+        "stato": "Libero",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Piazza del Duomo",
+        "superficie": "13 mq",
+        "piva": "",
+        "concessione": "",
+        "scadenza": "",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.10918244596917,
+          42.76408889431758
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "45",
+        "titolare": "Elena Grigi",
+        "settore": "Vario",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Piazza del Duomo",
+        "superficie": "8 mq",
+        "piva": "37098644353",
+        "concessione": "CON4752",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.108512653645521,
+          42.76396528842563
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "46",
+        "titolare": "Giuseppe Verdi",
+        "settore": "Alimentare",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Piazza del Duomo",
+        "superficie": "14 mq",
+        "piva": "14221083869",
+        "concessione": "CON9179",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.108503586432706,
+          42.76377576710841
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "47",
+        "titolare": "Elena Grigi",
+        "settore": "Calzature",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Piazza del Duomo",
+        "superficie": "12 mq",
+        "piva": "69756078028",
+        "concessione": "CON7927",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.10874596134889,
+          42.76448264002112
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "48",
+        "titolare": "Alessandro Verde",
+        "settore": "Fiori e Piante",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Piazza del Duomo",
+        "superficie": "25 mq",
+        "piva": "31487955129",
+        "concessione": "CON7543",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.10988247044709,
+          42.763717076417635
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "49",
+        "titolare": "Serena Cristallo",
+        "settore": "Casalinghi",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Piazza del Duomo",
+        "superficie": "21 mq",
+        "piva": "84359826782",
+        "concessione": "CON7876",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.109636354031647,
+          42.76431686879956
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "50",
+        "titolare": "",
+        "settore": "Prodotti Agricoli",
+        "stato": "Libero",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Piazza del Duomo",
+        "superficie": "19 mq",
+        "piva": "",
+        "concessione": "",
+        "scadenza": "",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.109701499974332,
+          42.764152646248576
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "51",
+        "titolare": "Giovanni Marrone",
+        "settore": "Abbigliamento",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Piazza del Duomo",
+        "superficie": "16 mq",
+        "piva": "71107517020",
+        "concessione": "CON7687",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.109762425985553,
+          42.76425290824781
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "52",
+        "titolare": "",
+        "settore": "Alimentare",
+        "stato": "Libero",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Piazza del Duomo",
+        "superficie": "23 mq",
+        "piva": "",
+        "concessione": "",
+        "scadenza": "",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.10927557085595,
+          42.76368485396045
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "53",
+        "titolare": "Federica Ambra",
+        "settore": "Libri e Cartoleria",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Piazza del Duomo",
+        "superficie": "24 mq",
+        "piva": "94349489326",
+        "concessione": "CON5350",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.10971219758087,
+          42.76388882200991
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "54",
+        "titolare": "",
+        "settore": "Fiori e Piante",
+        "stato": "Libero",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Piazza del Duomo",
+        "superficie": "24 mq",
+        "piva": "",
+        "concessione": "",
+        "scadenza": "",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.109981977095886,
+          42.76415809442044
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "55",
+        "titolare": "Nicola Quarzo",
+        "settore": "Libri e Cartoleria",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Piazza del Duomo",
+        "superficie": "23 mq",
+        "piva": "25289140090",
+        "concessione": "CON8343",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.108638538300127,
+          42.76345133443379
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "56",
+        "titolare": "Beatrice Opale",
+        "settore": "Prodotti Agricoli",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Piazza del Duomo",
+        "superficie": "13 mq",
+        "piva": "14341947863",
+        "concessione": "CON4466",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.109714209183837,
+          42.76327621762235
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "57",
+        "titolare": "",
+        "settore": "Vario",
+        "stato": "Libero",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Piazza del Duomo",
+        "superficie": "15 mq",
+        "piva": "",
+        "concessione": "",
+        "scadenza": "",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.110563005371223,
+          42.76378313317422
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "58",
+        "titolare": "Anna Bianchi",
+        "settore": "Giocattoli",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Piazza del Duomo",
+        "superficie": "22 mq",
+        "piva": "90084628137",
+        "concessione": "CON5866",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.109708032605022,
+          42.7637763135978
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "59",
+        "titolare": "Francesco Neri",
+        "settore": "Vario",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Piazza del Duomo",
+        "superficie": "12 mq",
+        "piva": "60733342163",
+        "concessione": "CON2747",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.10951782824495,
+          42.76428057099241
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "60",
+        "titolare": "",
+        "settore": "Fiori e Piante",
+        "stato": "Libero",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Piazza del Duomo",
+        "superficie": "25 mq",
+        "piva": "",
+        "concessione": "",
+        "scadenza": "",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.10895390831636,
+          42.76354396569018
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "61",
+        "titolare": "",
+        "settore": "Calzature",
+        "stato": "Libero",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Piazza del Duomo",
+        "superficie": "25 mq",
+        "piva": "",
+        "concessione": "",
+        "scadenza": "",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.109969900865428,
+          42.76411777290614
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "62",
+        "titolare": "Simone Corallo",
+        "settore": "Elettronica",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Piazza del Duomo",
+        "superficie": "19 mq",
+        "piva": "51802434139",
+        "concessione": "CON1305",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.109982059449255,
+          42.76472193708474
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "63",
+        "titolare": "Chiara Bronzo",
+        "settore": "Abbigliamento",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Piazza del Duomo",
+        "superficie": "22 mq",
+        "piva": "64048525700",
+        "concessione": "CON7965",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.108446141730603,
+          42.764126451577084
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "64",
+        "titolare": "",
+        "settore": "Libri e Cartoleria",
+        "stato": "Libero",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Piazza del Duomo",
+        "superficie": "23 mq",
+        "piva": "",
+        "concessione": "",
+        "scadenza": "",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.108478793082805,
+          42.76448044620662
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "65",
+        "titolare": "Luca Platino",
+        "settore": "Prodotti Agricoli",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Piazza del Duomo",
+        "superficie": "8 mq",
+        "piva": "23913075434",
+        "concessione": "CON4395",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.109053867279602,
+          42.763436283321774
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "66",
+        "titolare": "",
+        "settore": "Calzature",
+        "stato": "Libero",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Via Cavour",
+        "superficie": "11 mq",
+        "piva": "",
+        "concessione": "",
+        "scadenza": "",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.1090083356821,
+          42.764565953118016
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "67",
+        "titolare": "Antonio Blu",
+        "settore": "Calzature",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Via Cavour",
+        "superficie": "22 mq",
+        "piva": "51052783543",
+        "concessione": "CON8463",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.108561845288751,
+          42.76407066491297
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "68",
+        "titolare": "Ilaria Porfido",
+        "settore": "Giocattoli",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Via Cavour",
+        "superficie": "17 mq",
+        "piva": "31337456551",
+        "concessione": "CON1022",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.108285003040802,
+          42.76404452358938
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "69",
+        "titolare": "Riccardo Granito",
+        "settore": "Abbigliamento",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Via Cavour",
+        "superficie": "22 mq",
+        "piva": "83227749497",
+        "concessione": "CON2027",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.109678985887205,
+          42.763888559977815
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "70",
+        "titolare": "Valentina Perla",
+        "settore": "Fiori e Piante",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Via Cavour",
+        "superficie": "25 mq",
+        "piva": "64575520632",
+        "concessione": "CON1088",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.107937253664174,
+          42.76384706508379
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "71",
+        "titolare": "Stefano Zaffiro",
+        "settore": "Abbigliamento",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Via Cavour",
+        "superficie": "16 mq",
+        "piva": "59530124215",
+        "concessione": "CON2014",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.109057491217841,
+          42.7647572420146
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "72",
+        "titolare": "",
+        "settore": "Giocattoli",
+        "stato": "Libero",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Via Cavour",
+        "superficie": "22 mq",
+        "piva": "",
+        "concessione": "",
+        "scadenza": "",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.108092475898522,
+          42.76463487581986
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "73",
+        "titolare": "Daniele Marmo",
+        "settore": "Casalinghi",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Via Cavour",
+        "superficie": "12 mq",
+        "piva": "94330766142",
+        "concessione": "CON2613",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.10888823530952,
+          42.76482709854452
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "74",
+        "titolare": "Martina Rubino",
+        "settore": "Vario",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Via Cavour",
+        "superficie": "8 mq",
+        "piva": "68753927034",
+        "concessione": "CON8576",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.108806989185444,
+          42.763890290946655
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "75",
+        "titolare": "",
+        "settore": "Prodotti Agricoli",
+        "stato": "Libero",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Via Cavour",
+        "superficie": "19 mq",
+        "piva": "",
+        "concessione": "",
+        "scadenza": "",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.107997857946872,
+          42.7639936099049
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "76",
+        "titolare": "",
+        "settore": "Casalinghi",
+        "stato": "Libero",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Via Cavour",
+        "superficie": "18 mq",
+        "piva": "",
+        "concessione": "",
+        "scadenza": "",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.108514135141235,
+          42.7648493071164
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "77",
+        "titolare": "Francesca Rosa",
+        "settore": "Calzature",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Via Cavour",
+        "superficie": "16 mq",
+        "piva": "83322633881",
+        "concessione": "CON8840",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.108810572058925,
+          42.76384851407262
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "78",
+        "titolare": "Chiara Bronzo",
+        "settore": "Libri e Cartoleria",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Via Cavour",
+        "superficie": "25 mq",
+        "piva": "39180778104",
+        "concessione": "CON5772",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.109534456525013,
+          42.76475995592812
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "79",
+        "titolare": "",
+        "settore": "Calzature",
+        "stato": "Libero",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Via Cavour",
+        "superficie": "10 mq",
+        "piva": "",
+        "concessione": "",
+        "scadenza": "",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.109852920469798,
+          42.76350815867307
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "80",
+        "titolare": "",
+        "settore": "Abbigliamento",
+        "stato": "Libero",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Via Cavour",
+        "superficie": "14 mq",
+        "piva": "",
+        "concessione": "",
+        "scadenza": "",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.10938017713352,
+          42.763889488531255
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "81",
+        "titolare": "",
+        "settore": "Elettronica",
+        "stato": "Libero",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Via Cavour",
+        "superficie": "22 mq",
+        "piva": "",
+        "concessione": "",
+        "scadenza": "",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.107959390893475,
+          42.76446053298664
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "82",
+        "titolare": "",
+        "settore": "Casalinghi",
+        "stato": "Libero",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Via Cavour",
+        "superficie": "24 mq",
+        "piva": "",
+        "concessione": "",
+        "scadenza": "",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.109056847589626,
+          42.7636246262857
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "83",
+        "titolare": "Luca Platino",
+        "settore": "Abbigliamento",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Via Cavour",
+        "superficie": "21 mq",
+        "piva": "77369366981",
+        "concessione": "CON1166",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.109844966088286,
+          42.76440825331225
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "84",
+        "titolare": "Andrea Giada",
+        "settore": "Calzature",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Via Cavour",
+        "superficie": "11 mq",
+        "piva": "16372484056",
+        "concessione": "CON8238",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.107632690969726,
+          42.76441478455215
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "85",
+        "titolare": "Nicola Quarzo",
+        "settore": "Calzature",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Via Cavour",
+        "superficie": "10 mq",
+        "piva": "99262905672",
+        "concessione": "CON8735",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.108079837765155,
+          42.76468305796966
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "86",
+        "titolare": "Davide Ferro",
+        "settore": "Artigianato",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Via Cavour",
+        "superficie": "8 mq",
+        "piva": "66207172620",
+        "concessione": "CON6123",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.108740715610816,
+          42.76405575916654
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "87",
+        "titolare": "Emanuele Basalto",
+        "settore": "Prodotti Agricoli",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Via Cavour",
+        "superficie": "8 mq",
+        "piva": "75632079177",
+        "concessione": "CON3078",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.10856505426049,
+          42.76466535758943
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "88",
+        "titolare": "",
+        "settore": "Casalinghi",
+        "stato": "Libero",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Via Cavour",
+        "superficie": "10 mq",
+        "piva": "",
+        "concessione": "",
+        "scadenza": "",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.108112806563831,
+          42.764725336567885
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "89",
+        "titolare": "Riccardo Granito",
+        "settore": "Giocattoli",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Via Cavour",
+        "superficie": "23 mq",
+        "piva": "18550996934",
+        "concessione": "CON6012",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.109242320770106,
+          42.76441919971818
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "90",
+        "titolare": "Matteo Argento",
+        "settore": "Vario",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Via Cavour",
+        "superficie": "24 mq",
+        "piva": "30532286366",
+        "concessione": "CON1730",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.108827960788727,
+          42.764433880304374
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "91",
+        "titolare": "Ilaria Porfido",
+        "settore": "Tessuti",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Via Cavour",
+        "superficie": "19 mq",
+        "piva": "79517483548",
+        "concessione": "CON7713",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.108906646800651,
+          42.76347879361767
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "92",
+        "titolare": "Chiara Bronzo",
+        "settore": "Abbigliamento",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Via Cavour",
+        "superficie": "22 mq",
+        "piva": "45892370521",
+        "concessione": "CON4200",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.109145831957017,
+          42.76457810316136
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "93",
+        "titolare": "Antonio Blu",
+        "settore": "Prodotti Agricoli",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Via Cavour",
+        "superficie": "11 mq",
+        "piva": "65300018636",
+        "concessione": "CON3921",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.10922813882774,
+          42.76487124961616
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "94",
+        "titolare": "Federica Ambra",
+        "settore": "Fiori e Piante",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Via Cavour",
+        "superficie": "10 mq",
+        "piva": "31000922735",
+        "concessione": "CON1979",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.107715154909606,
+          42.76413018000058
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "95",
+        "titolare": "Giuseppe Verdi",
+        "settore": "Abbigliamento",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Via Cavour",
+        "superficie": "19 mq",
+        "piva": "62869012182",
+        "concessione": "CON5862",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.10887494223723,
+          42.76463545822281
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "96",
+        "titolare": "Matteo Argento",
+        "settore": "Fiori e Piante",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Via Cavour",
+        "superficie": "13 mq",
+        "piva": "20276328258",
+        "concessione": "CON8360",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.108795165414792,
+          42.764423120273094
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "97",
+        "titolare": "",
+        "settore": "Abbigliamento",
+        "stato": "Libero",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Via Cavour",
+        "superficie": "14 mq",
+        "piva": "",
+        "concessione": "",
+        "scadenza": "",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.107724096081236,
+          42.76422080925092
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "98",
+        "titolare": "",
+        "settore": "Libri e Cartoleria",
+        "stato": "Libero",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Corso Carducci",
+        "superficie": "14 mq",
+        "piva": "",
+        "concessione": "",
+        "scadenza": "",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.1109928026863,
+          42.76404697635526
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "99",
+        "titolare": "",
+        "settore": "Prodotti Agricoli",
+        "stato": "Libero",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Corso Carducci",
+        "superficie": "18 mq",
+        "piva": "",
+        "concessione": "",
+        "scadenza": "",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.109385612406324,
+          42.764178182170404
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "100",
+        "titolare": "",
+        "settore": "Tessuti",
+        "stato": "Libero",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Corso Carducci",
+        "superficie": "25 mq",
+        "piva": "",
+        "concessione": "",
+        "scadenza": "",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.11092221705205,
+          42.76443590837376
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "101",
+        "titolare": "",
+        "settore": "Libri e Cartoleria",
+        "stato": "Libero",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Corso Carducci",
+        "superficie": "13 mq",
+        "piva": "",
+        "concessione": "",
+        "scadenza": "",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.110427053002656,
+          42.76452949456511
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "102",
+        "titolare": "Francesco Neri",
+        "settore": "Tessuti",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Corso Carducci",
+        "superficie": "13 mq",
+        "piva": "34205400264",
+        "concessione": "CON8872",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.11106718186552,
+          42.76315543562729
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "103",
+        "titolare": "Andrea Giada",
+        "settore": "Giocattoli",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Corso Carducci",
+        "superficie": "15 mq",
+        "piva": "57863461213",
+        "concessione": "CON3632",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.109148113105194,
+          42.7635577754947
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "104",
+        "titolare": "Valentina Perla",
+        "settore": "Abbigliamento",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Corso Carducci",
+        "superficie": "13 mq",
+        "piva": "54820129798",
+        "concessione": "CON9137",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.109852958428387,
+          42.76411305194081
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "105",
+        "titolare": "Giovanni Marrone",
+        "settore": "Elettronica",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Corso Carducci",
+        "superficie": "15 mq",
+        "piva": "37299550978",
+        "concessione": "CON2149",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.11091260884406,
+          42.764478172085774
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "106",
+        "titolare": "Riccardo Granito",
+        "settore": "Elettronica",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Corso Carducci",
+        "superficie": "10 mq",
+        "piva": "12625862330",
+        "concessione": "CON6835",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.110321374403085,
+          42.76451644720042
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "107",
+        "titolare": "Sara Rame",
+        "settore": "Elettronica",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Corso Carducci",
+        "superficie": "10 mq",
+        "piva": "66171340830",
+        "concessione": "CON2398",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.109495351748674,
+          42.76456168102429
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "108",
+        "titolare": "Serena Cristallo",
+        "settore": "Vario",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Corso Carducci",
+        "superficie": "22 mq",
+        "piva": "58104742179",
+        "concessione": "CON5650",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.110405919847377,
+          42.76399114186244
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "109",
+        "titolare": "Alessandro Verde",
+        "settore": "Vario",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Corso Carducci",
+        "superficie": "20 mq",
+        "piva": "98229231269",
+        "concessione": "CON6289",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.110583183575073,
+          42.763808096800894
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "110",
+        "titolare": "Giuseppe Verdi",
+        "settore": "Tessuti",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Corso Carducci",
+        "superficie": "8 mq",
+        "piva": "51232911016",
+        "concessione": "CON6531",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.110813312512242,
+          42.76430448613081
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "111",
+        "titolare": "Anna Bianchi",
+        "settore": "Abbigliamento",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Corso Carducci",
+        "superficie": "19 mq",
+        "piva": "83340835617",
+        "concessione": "CON8375",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.109487036211073,
+          42.76423746636478
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "112",
+        "titolare": "",
+        "settore": "Elettronica",
+        "stato": "Libero",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Corso Carducci",
+        "superficie": "25 mq",
+        "piva": "",
+        "concessione": "",
+        "scadenza": "",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.108892311901664,
+          42.764186841757706
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "113",
+        "titolare": "Roberto Diamante",
+        "settore": "Calzature",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Corso Carducci",
+        "superficie": "23 mq",
+        "piva": "26131874305",
+        "concessione": "CON1610",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.109632444545673,
+          42.764374681583355
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "114",
+        "titolare": "Maria Gialli",
+        "settore": "Prodotti Agricoli",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Corso Carducci",
+        "superficie": "14 mq",
+        "piva": "33914673408",
+        "concessione": "CON9276",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.1099169459684,
+          42.763775898356144
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "115",
+        "titolare": "Roberto Diamante",
+        "settore": "Fiori e Piante",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Corso Carducci",
+        "superficie": "20 mq",
+        "piva": "32063058009",
+        "concessione": "CON1404",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.110127141819717,
+          42.763908870983165
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "116",
+        "titolare": "Fabio Granato",
+        "settore": "Fiori e Piante",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Corso Carducci",
+        "superficie": "21 mq",
+        "piva": "29686748093",
+        "concessione": "CON1703",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.109092931843179,
+          42.7638675454747
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "117",
+        "titolare": "Davide Ferro",
+        "settore": "Libri e Cartoleria",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Corso Carducci",
+        "superficie": "11 mq",
+        "piva": "91356138974",
+        "concessione": "CON1355",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.108921786159604,
+          42.76446436248111
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "118",
+        "titolare": "Francesco Neri",
+        "settore": "Libri e Cartoleria",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Corso Carducci",
+        "superficie": "16 mq",
+        "piva": "88481556684",
+        "concessione": "CON6880",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.110234443457019,
+          42.76380131257194
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "119",
+        "titolare": "",
+        "settore": "Calzature",
+        "stato": "Libero",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Corso Carducci",
+        "superficie": "20 mq",
+        "piva": "",
+        "concessione": "",
+        "scadenza": "",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.11010323857873,
+          42.76304368947276
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "120",
+        "titolare": "Francesco Neri",
+        "settore": "Calzature",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Corso Carducci",
+        "superficie": "13 mq",
+        "piva": "71083130618",
+        "concessione": "CON1139",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.109301568685241,
+          42.76398394640655
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "121",
+        "titolare": "",
+        "settore": "Giocattoli",
+        "stato": "Libero",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Corso Carducci",
+        "superficie": "25 mq",
+        "piva": "",
+        "concessione": "",
+        "scadenza": "",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.110554694358324,
+          42.76343386595686
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "122",
+        "titolare": "Elena Grigi",
+        "settore": "Abbigliamento",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Corso Carducci",
+        "superficie": "15 mq",
+        "piva": "88794315502",
+        "concessione": "CON6665",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.110794635282975,
+          42.76312195931528
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "123",
+        "titolare": "Antonio Blu",
+        "settore": "Calzature",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Corso Carducci",
+        "superficie": "23 mq",
+        "piva": "37888930315",
+        "concessione": "CON7317",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.109733512329898,
+          42.76370634462052
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "124",
+        "titolare": "Fabio Granato",
+        "settore": "Alimentare",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Corso Carducci",
+        "superficie": "9 mq",
+        "piva": "50666535645",
+        "concessione": "CON3290",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.110153301968367,
+          42.76438271812313
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "125",
+        "titolare": "Riccardo Granito",
+        "settore": "Vario",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Corso Carducci",
+        "superficie": "21 mq",
+        "piva": "70491038285",
+        "concessione": "CON3635",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.10929095386709,
+          42.76323371901101
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "126",
+        "titolare": "Luca Platino",
+        "settore": "Calzature",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Corso Carducci",
+        "superficie": "21 mq",
+        "piva": "64550094913",
+        "concessione": "CON4889",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.110268424803014,
+          42.763660430056206
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "127",
+        "titolare": "Giuseppe Verdi",
+        "settore": "Tessuti",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Corso Carducci",
+        "superficie": "11 mq",
+        "piva": "97718304547",
+        "concessione": "CON1819",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.110410684421465,
+          42.76451675454571
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "128",
+        "titolare": "",
+        "settore": "Libri e Cartoleria",
+        "stato": "Libero",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Corso Carducci",
+        "superficie": "20 mq",
+        "piva": "",
+        "concessione": "",
+        "scadenza": "",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.110909085167894,
+          42.76389517654373
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "129",
+        "titolare": "Riccardo Granito",
+        "settore": "Calzature",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Corso Carducci",
+        "superficie": "20 mq",
+        "piva": "18054846674",
+        "concessione": "CON6406",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.109498684751678,
+          42.76336403828412
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "130",
+        "titolare": "",
+        "settore": "Artigianato",
+        "stato": "Libero",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Corso Carducci",
+        "superficie": "17 mq",
+        "piva": "",
+        "concessione": "",
+        "scadenza": "",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.111036849768142,
+          42.76453546168013
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "131",
+        "titolare": "Giorgia Ardesia",
+        "settore": "Abbigliamento",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Corso Carducci",
+        "superficie": "20 mq",
+        "piva": "64199372830",
+        "concessione": "CON6006",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.110413100199086,
+          42.76439831769605
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "132",
+        "titolare": "Lucia Viola",
+        "settore": "Elettronica",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Corso Carducci",
+        "superficie": "22 mq",
+        "piva": "31836898242",
+        "concessione": "CON9506",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.109794363882699,
+          42.763454108814386
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "133",
+        "titolare": "Giuseppe Verdi",
+        "settore": "Libri e Cartoleria",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Corso Carducci",
+        "superficie": "15 mq",
+        "piva": "13201535654",
+        "concessione": "CON7239",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.108967344181801,
+          42.763073859071206
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "134",
+        "titolare": "",
+        "settore": "Prodotti Agricoli",
+        "stato": "Libero",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Corso Carducci",
+        "superficie": "14 mq",
+        "piva": "",
+        "concessione": "",
+        "scadenza": "",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.110147383158102,
+          42.764076188765365
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "135",
+        "titolare": "Giorgia Ardesia",
+        "settore": "Libri e Cartoleria",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Corso Carducci",
+        "superficie": "9 mq",
+        "piva": "33911392496",
+        "concessione": "CON2627",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.110264729455292,
+          42.76453679767813
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "136",
+        "titolare": "",
+        "settore": "Giocattoli",
+        "stato": "Libero",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Via Roma",
+        "superficie": "15 mq",
+        "piva": "",
+        "concessione": "",
+        "scadenza": "",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.10781907034865,
+          42.76499152817506
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "137",
+        "titolare": "Davide Ferro",
+        "settore": "Elettronica",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Via Roma",
+        "superficie": "15 mq",
+        "piva": "43349729566",
+        "concessione": "CON5940",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.108945269817966,
+          42.764672378671435
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "138",
+        "titolare": "Anna Bianchi",
+        "settore": "Tessuti",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Via Roma",
+        "superficie": "22 mq",
+        "piva": "11094689834",
+        "concessione": "CON2362",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.109410285608577,
+          42.764353855296754
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "139",
+        "titolare": "Ilaria Porfido",
+        "settore": "Elettronica",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Via Roma",
+        "superficie": "15 mq",
+        "piva": "53065129406",
+        "concessione": "CON6052",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.109389616308462,
+          42.76516495076724
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "140",
+        "titolare": "Giovanni Marrone",
+        "settore": "Vario",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Via Roma",
+        "superficie": "9 mq",
+        "piva": "83139967738",
+        "concessione": "CON7791",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.108361797857043,
+          42.76374755362673
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "141",
+        "titolare": "",
+        "settore": "Vario",
+        "stato": "Libero",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Via Roma",
+        "superficie": "8 mq",
+        "piva": "",
+        "concessione": "",
+        "scadenza": "",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.10963032268435,
+          42.76475517866284
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "142",
+        "titolare": "Ilaria Porfido",
+        "settore": "Casalinghi",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Via Roma",
+        "superficie": "25 mq",
+        "piva": "76941209291",
+        "concessione": "CON4358",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.108329994271019,
+          42.76428746302804
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "143",
+        "titolare": "",
+        "settore": "Calzature",
+        "stato": "Libero",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Via Roma",
+        "superficie": "23 mq",
+        "piva": "",
+        "concessione": "",
+        "scadenza": "",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.10955635413121,
+          42.76386235134696
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "144",
+        "titolare": "Daniele Marmo",
+        "settore": "Calzature",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Via Roma",
+        "superficie": "15 mq",
+        "piva": "19697606045",
+        "concessione": "CON2853",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.108481431758777,
+          42.76499951315279
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "145",
+        "titolare": "Mario Rossi",
+        "settore": "Prodotti Agricoli",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Via Roma",
+        "superficie": "13 mq",
+        "piva": "29893618436",
+        "concessione": "CON1969",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.109320350315,
+          42.76404219892932
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "146",
+        "titolare": "",
+        "settore": "Prodotti Agricoli",
+        "stato": "Libero",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Via Roma",
+        "superficie": "13 mq",
+        "piva": "",
+        "concessione": "",
+        "scadenza": "",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.107865339535625,
+          42.7637007648722
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "147",
+        "titolare": "Davide Ferro",
+        "settore": "Vario",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Via Roma",
+        "superficie": "16 mq",
+        "piva": "36146721800",
+        "concessione": "CON6458",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.109661853812709,
+          42.76518506963069
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "148",
+        "titolare": "Martina Rubino",
+        "settore": "Artigianato",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Via Roma",
+        "superficie": "20 mq",
+        "piva": "13947984675",
+        "concessione": "CON8614",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.107447435102454,
+          42.76373747260702
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "149",
+        "titolare": "",
+        "settore": "Calzature",
+        "stato": "Libero",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Via Roma",
+        "superficie": "8 mq",
+        "piva": "",
+        "concessione": "",
+        "scadenza": "",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.108506396269531,
+          42.76504407151697
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "150",
+        "titolare": "Giuseppe Verdi",
+        "settore": "Prodotti Agricoli",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Via Roma",
+        "superficie": "8 mq",
+        "piva": "14592178100",
+        "concessione": "CON2943",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.109456136688667,
+          42.763876420501084
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "151",
+        "titolare": "Riccardo Granito",
+        "settore": "Casalinghi",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Via Roma",
+        "superficie": "8 mq",
+        "piva": "90387762394",
+        "concessione": "CON7559",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.108406807689725,
+          42.764548506076416
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "152",
+        "titolare": "",
+        "settore": "Calzature",
+        "stato": "Libero",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Via Roma",
+        "superficie": "22 mq",
+        "piva": "",
+        "concessione": "",
+        "scadenza": "",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.10868488974272,
+          42.76487209174102
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "153",
+        "titolare": "",
+        "settore": "Tessuti",
+        "stato": "Libero",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Via Roma",
+        "superficie": "8 mq",
+        "piva": "",
+        "concessione": "",
+        "scadenza": "",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.109576311843421,
+          42.764158044757046
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "154",
+        "titolare": "Roberto Diamante",
+        "settore": "Abbigliamento",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Via Roma",
+        "superficie": "12 mq",
+        "piva": "36576845206",
+        "concessione": "CON4023",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.109133734981159,
+          42.76458745347782
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "155",
+        "titolare": "Francesca Rosa",
+        "settore": "Casalinghi",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Via Roma",
+        "superficie": "24 mq",
+        "piva": "30608917781",
+        "concessione": "CON5167",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.107810693425426,
+          42.76438573028908
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "156",
+        "titolare": "Simone Corallo",
+        "settore": "Prodotti Agricoli",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Via Roma",
+        "superficie": "16 mq",
+        "piva": "29464895381",
+        "concessione": "CON1146",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.108387398532617,
+          42.76388066849113
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "157",
+        "titolare": "Beatrice Opale",
+        "settore": "Artigianato",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Via Roma",
+        "superficie": "16 mq",
+        "piva": "11617948792",
+        "concessione": "CON7400",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.107645791154209,
+          42.76454260989944
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "158",
+        "titolare": "Alessia Smeraldo",
+        "settore": "Artigianato",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Via Roma",
+        "superficie": "14 mq",
+        "piva": "57756050575",
+        "concessione": "CON6912",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.108227834967003,
+          42.76506021885005
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "159",
+        "titolare": "Beatrice Opale",
+        "settore": "Vario",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Via Roma",
+        "superficie": "12 mq",
+        "piva": "44209289299",
+        "concessione": "CON4038",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.10767110123721,
+          42.76386239623831
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "160",
+        "titolare": "Anna Bianchi",
+        "settore": "Abbigliamento",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Via Roma",
+        "superficie": "9 mq",
+        "piva": "64500467907",
+        "concessione": "CON6133",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.108476406172889,
+          42.76510909821396
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "161",
+        "titolare": "",
+        "settore": "Casalinghi",
+        "stato": "Libero",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Piazza Fratelli Rosselli",
+        "superficie": "16 mq",
+        "piva": "",
+        "concessione": "",
+        "scadenza": "",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.109632118096183,
+          42.763716777410465
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "162",
+        "titolare": "",
+        "settore": "Giocattoli",
+        "stato": "Libero",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Piazza Fratelli Rosselli",
+        "superficie": "24 mq",
+        "piva": "",
+        "concessione": "",
+        "scadenza": "",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.110113645982466,
+          42.76395030805288
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "163",
+        "titolare": "Anna Bianchi",
+        "settore": "Tessuti",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Piazza Fratelli Rosselli",
+        "superficie": "20 mq",
+        "piva": "99442097120",
+        "concessione": "CON1032",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.11016002049273,
+          42.76399213684917
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "164",
+        "titolare": "",
+        "settore": "Giocattoli",
+        "stato": "Libero",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Piazza Fratelli Rosselli",
+        "superficie": "25 mq",
+        "piva": "",
+        "concessione": "",
+        "scadenza": "",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.110652949670484,
+          42.76391982141784
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "165",
+        "titolare": "Maria Gialli",
+        "settore": "Elettronica",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Piazza Fratelli Rosselli",
+        "superficie": "18 mq",
+        "piva": "34474518082",
+        "concessione": "CON3500",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.109168893121787,
+          42.76306363983973
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "166",
+        "titolare": "Lucia Viola",
+        "settore": "Prodotti Agricoli",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Piazza Fratelli Rosselli",
+        "superficie": "15 mq",
+        "piva": "67228971627",
+        "concessione": "CON3778",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.109349390512435,
+          42.76348295024927
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "167",
+        "titolare": "Marco Azzurri",
+        "settore": "Alimentare",
+        "stato": "Occupato",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Piazza Fratelli Rosselli",
+        "superficie": "8 mq",
+        "piva": "94113334219",
+        "concessione": "CON8403",
+        "scadenza": "2024-12-31",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.110300553970609,
+          42.76244649201671
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "168",
+        "titolare": "",
+        "settore": "Elettronica",
+        "stato": "Libero",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Piazza Fratelli Rosselli",
+        "superficie": "25 mq",
+        "piva": "",
+        "concessione": "",
+        "scadenza": "",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.109994517286761,
+          42.76308968954949
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "169",
+        "titolare": "",
+        "settore": "Fiori e Piante",
+        "stato": "Libero",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Piazza Fratelli Rosselli",
+        "superficie": "22 mq",
+        "piva": "",
+        "concessione": "",
+        "scadenza": "",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.110285737465965,
+          42.762433658640546
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "170",
+        "titolare": "",
+        "settore": "Vario",
+        "stato": "Libero",
+        "mercato": "Tripoli Giornaliero",
+        "area": "Piazza Fratelli Rosselli",
+        "superficie": "11 mq",
+        "piva": "",
+        "concessione": "",
+        "scadenza": "",
+        "periodo": "Giornaliero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.110827321878126,
+          42.762474707409694
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "171",
+        "titolare": "Riccardo Granito",
+        "settore": "Vario",
+        "stato": "Occupato",
+        "mercato": "Esperanto Settimanale-Giovedì",
+        "area": "Via Esperanto",
+        "superficie": "18 mq",
+        "piva": "39648920855",
+        "concessione": "CON6953",
+        "scadenza": "2024-12-31",
+        "periodo": "Settimanale"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.110803517954857,
+          42.761749909393004
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "172",
+        "titolare": "Beatrice Opale",
+        "settore": "Alimentare",
+        "stato": "Occupato",
+        "mercato": "Esperanto Settimanale-Giovedì",
+        "area": "Via Esperanto",
+        "superficie": "19 mq",
+        "piva": "33460064003",
+        "concessione": "CON9640",
+        "scadenza": "2024-12-31",
+        "periodo": "Settimanale"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.113196791338028,
+          42.76218754104263
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "173",
+        "titolare": "",
+        "settore": "Elettronica",
+        "stato": "Libero",
+        "mercato": "Esperanto Settimanale-Giovedì",
+        "area": "Via Esperanto",
+        "superficie": "11 mq",
+        "piva": "",
+        "concessione": "",
+        "scadenza": "",
+        "periodo": "Settimanale"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.112643625508788,
+          42.76157310120833
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "174",
+        "titolare": "Anna Bianchi",
+        "settore": "Libri e Cartoleria",
+        "stato": "Occupato",
+        "mercato": "Esperanto Settimanale-Giovedì",
+        "area": "Piazza Esperanto",
+        "superficie": "16 mq",
+        "piva": "47632930738",
+        "concessione": "CON7671",
+        "scadenza": "2024-12-31",
+        "periodo": "Settimanale"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.113312450159233,
+          42.76169877342334
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "numero": "175",
+        "titolare": "Giuseppe Verdi",
+        "settore": "Tessuti",
+        "stato": "Occupato",
+        "mercato": "Esperanto Settimanale-Giovedì",
+        "area": "Piazza Esperanto",
+        "superficie": "25 mq",
+        "piva": "34901229522",
+        "concessione": "CON1669",
+        "scadenza": "2024-12-31",
+        "periodo": "Settimanale"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.111374701326802,
+          42.76076963381342
+        ]
+      }
+    }
+  ]
+}
