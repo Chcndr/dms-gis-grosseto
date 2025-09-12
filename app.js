@@ -1,515 +1,304 @@
-// Sistema GIS Mercati Grosseto - Versione Completa
-// Basato sul sistema originale g3w-suite
+// DMS GIS Grosseto - Hotfix con layer Leaflet veri
+console.info('🎯 DMS-GIS • build=lock2 • initializing...');
 
-// Configurazione globale
-let map;
-let posteggiLayer;
-let currentPosteggi = [];
-let isRightSidebarOpen = false;
+// Configurazione
+const JSON_URL = '/dms-gis-grosseto/dati_reali_posteggi_grosseto.json?v=lock2';
+const IS_PAGES = location.hostname.endsWith('github.io');
 
-// Dati posteggi (caricati da JSON)
-let POSTEGGI_DATA = [];
-
-// Definizione proiezione EPSG:3003
+// Definizione proiezione EPSG:3003 (Monte Mario Italy zone 1)
 proj4.defs("EPSG:3003", "+proj=tmerc +lat_0=0 +lon_0=9 +k=0.9996 +x_0=1500000 +y_0=0 +ellps=intl +towgs84=-104.1,-49.1,-9.9,0.971,-2.917,0.714,-11.68 +units=m +no_defs");
 
-// Caricamento dati da JSON
-async function loadPosteggiData() {
-    try {
-        console.log('📥 Caricamento dati posteggi da JSON...');
-        const response = await fetch('/dms-gis-grosseto/dati_reali_posteggi_grosseto.json?v=lock1');
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const data = await response.json();
-        POSTEGGI_DATA = data.features || [];
-        
-        // Console badge richiesto
-        console.log(`🎯 DMS-GIS • OK • records=${POSTEGGI_DATA.length} • EPSG:3003→WGS84`);
-        
-        return POSTEGGI_DATA;
-    } catch (error) {
-        console.error('❌ Errore caricamento dati:', error);
-        // Fallback ai dati generati se il JSON non è disponibile
-        generatePosteggiData();
-        console.log(`🎯 DMS-GIS • FALLBACK • records=${POSTEGGI_DATA.length} • EPSG:3003→WGS84`);
-        return POSTEGGI_DATA;
-    }
-}
-
-// Genera 180 posteggi con coordinate reali di Grosseto
-function generatePosteggiData() {
-    const settori = ["Alimentare", "Abbigliamento", "Casalinghi", "Vario", "Fiori e Piante", "Libri e Cartoleria", "Calzature", "Pelletteria"];
-    const nomi = ["Mario Rossi", "Giuseppe Verdi", "Anna Bianchi", "Marco Neri", "Lucia Gialli", "Franco Blu", "Carla Verde", "Stefano Rossi", "Elena Bianchi", "Paolo Grigi", "Sara Viola", "Andrea Rossi", "Giulia Bianchi", "Roberto Verdi", "Francesca Neri"];
-    
-    // Coordinate reali basate sul sistema di Grosseto
-    // Disposizione lungo le vie del centro storico come nell'originale
-    const viePosteggi = [
-        { nome: "Via Mazzini", start: [11.1105, 42.7645], direction: [0.00015, 0], count: 40 },
-        { nome: "Via Cavour", start: [11.1110, 42.7650], direction: [0, -0.00015], count: 35 },
-        { nome: "Corso Carducci", start: [11.1085, 42.7632], direction: [0.0002, 0.00008], count: 30 },
-        { nome: "Via Roma", start: [11.1100, 42.7648], direction: [-0.00008, 0.00015], count: 25 },
-        { nome: "Via Garibaldi", start: [11.1090, 42.7642], direction: [0.00015, -0.00008], count: 25 },
-        { nome: "Piazza Dante", start: [11.1088, 42.7635], direction: [0.00008, 0.00008], count: 20 }
-    ];
-    
-    let numeroPosteggio = 1;
-    
-    // Genera posteggi Tripoli Giornaliero (175 posteggi)
-    viePosteggi.forEach(via => {
-        for (let i = 0; i < via.count; i++) {
-            const lng = via.start[0] + (via.direction[0] * i);
-            const lat = via.start[1] + (via.direction[1] * i);
-            
-            // Piccola variazione per realismo (molto ridotta)
-            const offsetLng = (Math.random() - 0.5) * 0.000008;
-            const offsetLat = (Math.random() - 0.5) * 0.000005;
-            
-            const isOccupato = Math.random() > 0.35; // 65% occupati
-            const codInt = `TG${numeroPosteggio.toString().padStart(3, '0')}`;
-            
-            POSTEGGI_DATA.push({
-                "type": "Feature",
-                "properties": {
-                    "numero": numeroPosteggio.toString(),
-                    "titolare": isOccupato ? nomi[Math.floor(Math.random() * nomi.length)] : "",
-                    "stato": isOccupato ? "Occupato" : "Libero",
-                    "settore": settori[Math.floor(Math.random() * settori.length)],
-                    "superficie": [12, 16, 20, 24][Math.floor(Math.random() * 4)].toString(),
-                    "mercato": "Tripoli Giornaliero",
-                    "cod_int": codInt,
-                    "via": via.nome
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [lng + offsetLng, lat + offsetLat]
-                }
-            });
-            
-            numeroPosteggio++;
-        }
-    });
-    
-    // Posteggi Esperanto Settimanale-Giovedì (5 posteggi)
-    // Zona separata vicino a Piazza del Duomo
-    const esperantoBase = [11.1108, 42.7638];
-    for (let i = 0; i < 5; i++) {
-        const isOccupato = Math.random() > 0.5; // 50% occupati
-        const codInt = `ES${(i+1).toString().padStart(3, '0')}`;
-        
-        POSTEGGI_DATA.push({
-            "type": "Feature",
-            "properties": {
-                "numero": numeroPosteggio.toString(),
-                "titolare": isOccupato ? nomi[Math.floor(Math.random() * nomi.length)] : "",
-                "stato": isOccupato ? "Occupato" : "Libero",
-                "settore": settori[Math.floor(Math.random() * settori.length)],
-                "superficie": [16, 20][Math.floor(Math.random() * 2)].toString(),
-                "mercato": "Esperanto Settimanale-Giovedì",
-                "cod_int": codInt,
-                "via": "Piazza del Duomo"
-            },
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    esperantoBase[0] + (i * 0.00006),
-                    esperantoBase[1] + (Math.random() - 0.5) * 0.000008
-                ]
-            }
-        });
-        
-        numeroPosteggio++;
-    }
-}
-
-// Inizializzazione
-document.addEventListener('DOMContentLoaded', async function() {
-    console.log('🚀 Inizializzazione sistema GIS Grosseto...');
-    
-    // Carica dati posteggi da JSON
-    await loadPosteggiData();
-    console.log(`📊 Caricati ${POSTEGGI_DATA.length} posteggi totali`);
-    
-    // Inizializza mappa
-    initializeMap();
-    
-    // Carica posteggi automaticamente
-    loadPosteggi();
-    
-    // Setup event listeners
-    setupEventListeners();
-    
-    console.log('✅ Sistema inizializzato correttamente');
-});
-
 // Inizializzazione mappa
-function initializeMap() {
-    // Coordinate centro Grosseto
-    const grossetoCenter = [42.7639, 11.1093];
+const map = L.map('map', { 
+    zoomControl: true,
+    preferCanvas: true
+}).setView([42.76, 11.11], 17);
+
+// Tile layer con ottimizzazioni
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    detectRetina: true,
+    maxZoom: 20,
+    attribution: '© OpenStreetMap, © Comune di Grosseto'
+}).addTo(map);
+
+// Layer groups
+const stallsLayer = L.featureGroup().addTo(map);
+const mercatiLayer = L.featureGroup().addTo(map);
+let stallsGeoJSON = null;
+
+// Variabili globali
+let allStalls = [];
+let statsData = { total: 0, occupied: 0, free: 0, reserved: 0, temp: 0 };
+
+// Stili per i posteggi
+const getStallStyle = (properties) => {
+    const stato = properties?.stato?.toLowerCase() || 'libero';
+    let color = '#2bb673'; // verde per libero
     
-    // Crea mappa
-    map = L.map('map', {
-        center: grossetoCenter,
-        zoom: 18,
-        zoomControl: false
-    });
+    if (stato.includes('occupato')) color = '#c05252'; // rosso per occupato
+    else if (stato.includes('riservato')) color = '#f39c12'; // arancione per riservato
+    else if (stato.includes('temporaneo')) color = '#9b59b6'; // viola per temporaneo
     
-    // Layer base OpenStreetMap
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '© OpenStreetMap, © Comune di Grosseto',
-        maxZoom: 20
-    }).addTo(map);
-    
-    // Event listeners mappa
-    map.on('mousemove', updateCoordinates);
-    map.on('zoomend', updateScale);
-    
-    console.log('🗺️ Mappa inizializzata');
+    return {
+        color: color,
+        weight: 2,
+        fillOpacity: 0.7,
+        fillColor: color
+    };
+};
+
+// Popup per ogni posteggio
+function onEachFeature(feature, layer) {
+    const p = feature.properties || {};
+    const popup = `
+        <div class="popup-content">
+            <h4>Posteggio #${p.numero || '-'}</h4>
+            <p><strong>Stato:</strong> ${p.stato || '—'}</p>
+            <p><strong>Mercato:</strong> ${p.mercato || '—'}</p>
+            <p><strong>Settore:</strong> ${p.settore || '—'}</p>
+            <p><strong>Superficie:</strong> ${p.superficie || '—'}</p>
+            <p><strong>Titolare:</strong> ${p.titolare || '—'}</p>
+            <p><strong>P.IVA:</strong> ${p.piva || '—'}</p>
+        </div>
+    `;
+    layer.bindPopup(popup);
 }
 
-// Caricamento posteggi
-function loadPosteggi() {
-    console.log('📍 Caricamento posteggi...');
-    
-    // Rimuovi layer esistente
-    if (posteggiLayer) {
-        map.removeLayer(posteggiLayer);
+// Caricamento e processamento dati
+async function loadStallsData() {
+    try {
+        console.info('🎯 DMS-GIS • loading data from:', JSON_URL);
+        
+        const response = await fetch(JSON_URL);
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        
+        const data = await response.json();
+        allStalls = data.features || [];
+        
+        console.info('🎯 DMS-GIS • OK • records=%d • EPSG:3003→WGS84', allStalls.length);
+        
+        // Calcola statistiche
+        updateStats();
+        
+        // Crea layer GeoJSON
+        stallsGeoJSON = L.geoJSON(data, {
+            style: getStallStyle,
+            onEachFeature: onEachFeature
+        }).addTo(stallsLayer);
+        
+        // Fit bounds alla mappa
+        if (stallsLayer.getLayers().length > 0) {
+            map.fitBounds(stallsLayer.getBounds(), { padding: [20, 20] });
+        }
+        
+        // Aggiorna UI
+        updateStallsList();
+        
+    } catch (error) {
+        console.error('🎯 DMS-GIS • ERROR loading data:', error);
+        showError('Errore nel caricamento dei dati: ' + error.message);
     }
-    
-    // Crea nuovo layer
-    posteggiLayer = L.layerGroup();
-    currentPosteggi = [];
-    
-    // Filtra posteggi in base ai layer attivi
-    const esperantoActive = document.getElementById('layerEsperanto').checked;
-    const tripoliActive = document.getElementById('layerTripoli').checked;
-    
-    POSTEGGI_DATA.forEach(posteggio => {
-        const mercato = posteggio.properties.mercato;
-        
-        // Controlla se il layer è attivo
-        if ((mercato === "Esperanto Settimanale-Giovedì" && !esperantoActive) ||
-            (mercato === "Tripoli Giornaliero" && !tripoliActive)) {
-            return;
-        }
-        
-        // Crea marker rettangolare
-        const coords = [posteggio.geometry.coordinates[1], posteggio.geometry.coordinates[0]];
-        const stato = posteggio.properties.stato;
-        const superficie = parseInt(posteggio.properties.superficie);
-        
-        // Colore in base allo stato
-        let color;
-        switch (stato) {
-            case 'Libero': color = '#28a745'; break;
-            case 'Occupato': color = '#dc3545'; break;
-            case 'Riservato': color = '#007bff'; break;
-            case 'Temporaneo': color = '#fd7e14'; break;
-            default: color = '#6c757d';
-        }
-        
-        // Dimensioni molto ridotte come nell'originale di Grosseto
-        const width = 3; // Larghezza fissa piccola
-        const height = 2; // Altezza fissa piccola
-        
-        // Crea rettangolo piccolo
-        const bounds = [
-            [coords[0] - height/200000, coords[1] - width/200000],
-            [coords[0] + height/200000, coords[1] + width/200000]
-        ];
-        
-        const rectangle = L.rectangle(bounds, {
-            color: '#ffffff',
-            fillColor: color,
-            fillOpacity: 0.8,
-            weight: 2,
-            opacity: 1
-        });
-        
-        // Popup
-        const popupContent = `
-            <div class="posteggio-popup">
-                <h4>Posteggio #${posteggio.properties.numero}</h4>
-                <p><strong>Mercato:</strong> ${posteggio.properties.mercato}</p>
-                <p><strong>Stato:</strong> <span class="stato-${stato.toLowerCase()}">${stato}</span></p>
-                <p><strong>Settore:</strong> ${posteggio.properties.settore}</p>
-                <p><strong>Superficie:</strong> ${posteggio.properties.superficie} mq</p>
-                ${posteggio.properties.titolare ? `<p><strong>Titolare:</strong> ${posteggio.properties.titolare}</p>` : ''}
-                <p><strong>Codice:</strong> ${posteggio.properties.cod_int}</p>
-            </div>
-        `;
-        
-        rectangle.bindPopup(popupContent);
-        
-        // Aggiungi al layer
-        posteggiLayer.addLayer(rectangle);
-        currentPosteggi.push(posteggio);
-    });
-    
-    // Aggiungi layer alla mappa
-    posteggiLayer.addTo(map);
-    
-    // Aggiorna statistiche
-    updateStatistics();
-    
-    // Popola sidebar
-    populatePosteggiList();
-    
-    console.log(`✅ Caricati ${currentPosteggi.length} posteggi`);
 }
 
 // Aggiornamento statistiche
-function updateStatistics() {
-    const liberi = currentPosteggi.filter(p => p.properties.stato === 'Libero').length;
-    const occupati = currentPosteggi.filter(p => p.properties.stato === 'Occupato').length;
-    const riservati = currentPosteggi.filter(p => p.properties.stato === 'Riservato').length;
-    const temporanei = currentPosteggi.filter(p => p.properties.stato === 'Temporaneo').length;
+function updateStats() {
+    statsData = { total: 0, occupied: 0, free: 0, reserved: 0, temp: 0 };
     
-    const statsHtml = `
-        <div class="stat-item">
-            <span>Totale posteggi:</span>
-            <span><strong>${currentPosteggi.length}</strong></span>
-        </div>
-        <div class="stat-item">
-            <span>Liberi:</span>
-            <span style="color: #28a745;"><strong>${liberi}</strong></span>
-        </div>
-        <div class="stat-item">
-            <span>Occupati:</span>
-            <span style="color: #dc3545;"><strong>${occupati}</strong></span>
-        </div>
-        <div class="stat-item">
-            <span>Riservati:</span>
-            <span style="color: #007bff;"><strong>${riservati}</strong></span>
-        </div>
-        <div class="stat-item">
-            <span>Temporanei:</span>
-            <span style="color: #fd7e14;"><strong>${temporanei}</strong></span>
-        </div>
-        <div class="stat-item">
-            <span>Tasso occupazione:</span>
-            <span><strong>${Math.round((occupati / currentPosteggi.length) * 100)}%</strong></span>
-        </div>
-    `;
-    
-    const statsContainer = document.getElementById('sidebarStats');
-    if (statsContainer) {
-        statsContainer.innerHTML = statsHtml;
-    }
-}
-
-// Popolamento lista posteggi
-function populatePosteggiList() {
-    const listContainer = document.getElementById('posteggiList');
-    if (!listContainer) return;
-    
-    const filterInput = document.getElementById('filterInput');
-    const statusFilter = document.getElementById('statusFilter');
-    
-    let filteredPosteggi = currentPosteggi;
-    
-    // Applica filtri
-    if (filterInput && filterInput.value) {
-        const searchTerm = filterInput.value.toLowerCase();
-        filteredPosteggi = filteredPosteggi.filter(p => 
-            p.properties.numero.includes(searchTerm) ||
-            p.properties.titolare.toLowerCase().includes(searchTerm)
-        );
-    }
-    
-    if (statusFilter && statusFilter.value) {
-        filteredPosteggi = filteredPosteggi.filter(p => 
-            p.properties.stato === statusFilter.value
-        );
-    }
-    
-    // Genera HTML
-    const listHtml = filteredPosteggi.map(posteggio => `
-        <div class="posteggio-item" onclick="focusPosteggio('${posteggio.properties.numero}')">
-            <div class="posteggio-header">
-                <span class="posteggio-numero">Posteggio #${posteggio.properties.numero}</span>
-                <span class="posteggio-stato ${posteggio.properties.stato.toLowerCase()}">${posteggio.properties.stato}</span>
-            </div>
-            <div class="posteggio-details">
-                <div><strong>Mercato:</strong> ${posteggio.properties.mercato}</div>
-                <div><strong>Settore:</strong> ${posteggio.properties.settore}</div>
-                <div><strong>Superficie:</strong> ${posteggio.properties.superficie} mq</div>
-                ${posteggio.properties.titolare ? `<div><strong>Titolare:</strong> ${posteggio.properties.titolare}</div>` : ''}
-            </div>
-        </div>
-    `).join('');
-    
-    listContainer.innerHTML = listHtml;
-}
-
-// Focus su posteggio specifico
-function focusPosteggio(numero) {
-    const posteggio = currentPosteggi.find(p => p.properties.numero === numero);
-    if (posteggio) {
-        const coords = [posteggio.geometry.coordinates[1], posteggio.geometry.coordinates[0]];
-        map.setView(coords, 20);
+    allStalls.forEach(feature => {
+        const stato = feature.properties?.stato?.toLowerCase() || 'libero';
+        statsData.total++;
         
-        // Trova e apri popup
-        posteggiLayer.eachLayer(layer => {
-            if (layer.getBounds && layer.getBounds().contains(coords)) {
-                layer.openPopup();
+        if (stato.includes('occupato')) statsData.occupied++;
+        else if (stato.includes('riservato')) statsData.reserved++;
+        else if (stato.includes('temporaneo')) statsData.temp++;
+        else statsData.free++;
+    });
+    
+    // Aggiorna DOM
+    const statsEl = document.getElementById('stallsStats');
+    if (statsEl) {
+        const occupancyRate = statsData.total > 0 ? Math.round((statsData.occupied / statsData.total) * 100) : 0;
+        statsEl.innerHTML = `
+            <h4>Elenco Posteggi</h4>
+            <p>Totale posteggi: <strong>${statsData.total}</strong></p>
+            <p>Liberi: <strong>${statsData.free}</strong></p>
+            <p>Occupati: <strong>${statsData.occupied}</strong></p>
+            <p>Riservati: <strong>${statsData.reserved}</strong></p>
+            <p>Temporanei: <strong>${statsData.temp}</strong></p>
+            <p>Tasso occupazione: <strong>${occupancyRate}%</strong></p>
+        `;
+    }
+}
+
+// Aggiornamento lista posteggi
+function updateStallsList() {
+    const listEl = document.getElementById('stallsList');
+    if (!listEl) return;
+    
+    let html = '';
+    allStalls.slice(0, 50).forEach(feature => { // Mostra solo primi 50 per performance
+        const p = feature.properties || {};
+        const stato = p.stato || 'Libero';
+        const statusClass = stato.toLowerCase().includes('occupato') ? 'occupied' : 'free';
+        
+        html += `
+            <div class="stall-item ${statusClass}" data-numero="${p.numero}">
+                <h5>Posteggio #${p.numero || '-'} <span class="status">${stato}</span></h5>
+                <p><strong>Mercato:</strong> ${p.mercato || '—'}</p>
+                <p><strong>Settore:</strong> ${p.settore || '—'}</p>
+                <p><strong>Superficie:</strong> ${p.superficie || '—'}</p>
+                ${p.titolare ? `<p><strong>Titolare:</strong> ${p.titolare}</p>` : ''}
+            </div>
+        `;
+    });
+    
+    listEl.innerHTML = html;
+    
+    // Aggiungi click handlers
+    listEl.querySelectorAll('.stall-item').forEach(item => {
+        item.addEventListener('click', () => {
+            const numero = item.dataset.numero;
+            searchStallByNumber(numero);
+        });
+    });
+}
+
+// Ricerca posteggio per numero
+function searchStallByNumber(numero) {
+    if (!stallsGeoJSON) return;
+    
+    let found = null;
+    stallsGeoJSON.eachLayer(layer => {
+        if (String(layer.feature?.properties?.numero) === String(numero)) {
+            found = layer;
+        }
+    });
+    
+    if (found) {
+        map.fitBounds(found.getBounds(), { padding: [50, 50] });
+        found.openPopup();
+        
+        // Highlight temporaneo
+        const originalStyle = found.options.style || getStallStyle(found.feature.properties);
+        found.setStyle({ ...originalStyle, weight: 4, color: '#ff0000' });
+        setTimeout(() => {
+            found.setStyle(originalStyle);
+        }, 2000);
+    }
+}
+
+// Toggle layer
+function toggleLayer(layerName, checkbox) {
+    switch(layerName) {
+        case 'posteggi':
+            if (checkbox.checked) {
+                map.addLayer(stallsLayer);
+            } else {
+                map.removeLayer(stallsLayer);
+            }
+            break;
+        case 'mercati':
+            if (checkbox.checked) {
+                map.addLayer(mercatiLayer);
+            } else {
+                map.removeLayer(mercatiLayer);
+            }
+            break;
+    }
+}
+
+// Gestione errori
+function showError(message) {
+    const errorEl = document.createElement('div');
+    errorEl.className = 'error-message';
+    errorEl.innerHTML = `<i class="fas fa-exclamation-triangle"></i> ${message}`;
+    errorEl.style.cssText = `
+        position: fixed; top: 20px; right: 20px; z-index: 10000;
+        background: #c05252; color: white; padding: 15px 20px;
+        border-radius: 5px; box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    `;
+    document.body.appendChild(errorEl);
+    
+    setTimeout(() => {
+        errorEl.remove();
+    }, 5000);
+}
+
+// Event listeners
+document.addEventListener('DOMContentLoaded', () => {
+    // Toggle posteggi
+    const togglePosteggi = document.querySelector('input[type="checkbox"][id*="posteggi"], input[type="checkbox"][id*="Posteggi"]');
+    if (togglePosteggi) {
+        togglePosteggi.addEventListener('change', (e) => {
+            toggleLayer('posteggi', e.target);
+        });
+    }
+    
+    // Toggle mercati
+    const toggleMercati = document.querySelector('input[type="checkbox"][id*="mercati"], input[type="checkbox"][id*="Mercati"]');
+    if (toggleMercati) {
+        toggleMercati.addEventListener('change', (e) => {
+            toggleLayer('mercati', e.target);
+        });
+    }
+    
+    // Search - cerca per selettore più generico
+    const searchBtn = document.querySelector('button[id*="search"], button[id*="Search"], button[id*="cerca"], button[id*="Cerca"]');
+    const searchInput = document.querySelector('input[placeholder*="valore"], input[placeholder*="numero"], input[placeholder*="Numero"]');
+    
+    if (searchBtn && searchInput) {
+        searchBtn.addEventListener('click', () => {
+            const query = searchInput.value.trim();
+            if (query) {
+                searchStallByNumber(query);
+            }
+        });
+        
+        searchInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                searchBtn.click();
             }
         });
     }
-}
-
-// Setup event listeners
-function setupEventListeners() {
-    // Controlli zoom
-    document.getElementById('zoomIn').addEventListener('click', () => {
-        map.zoomIn();
-    });
     
-    document.getElementById('zoomOut').addEventListener('click', () => {
-        map.zoomOut();
-    });
-    
-    // Layer controls
-    document.getElementById('layerEsperanto').addEventListener('change', loadPosteggi);
-    document.getElementById('layerTripoli').addEventListener('change', loadPosteggi);
-    
-    // Ricerca
-    document.getElementById('btnSearch').addEventListener('click', performSearch);
-    document.getElementById('searchInput').addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') performSearch();
-    });
-    
-    // Filtri sidebar
-    const filterInput = document.getElementById('filterInput');
-    const statusFilter = document.getElementById('statusFilter');
-    
-    if (filterInput) {
-        filterInput.addEventListener('input', populatePosteggiList);
+    // Disabilita funzioni di scrittura su GitHub Pages
+    if (IS_PAGES) {
+        document.querySelectorAll('.needs-write').forEach(el => el.remove());
+        console.info('🎯 DMS-GIS • Pages mode: write functions disabled');
     }
     
-    if (statusFilter) {
-        statusFilter.addEventListener('change', populatePosteggiList);
-    }
-    
-    // Ricerca indirizzi
-    document.getElementById('btnAddressSearch').addEventListener('click', searchAddress);
-    document.getElementById('addressInput').addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') searchAddress();
-    });
-    
-    // Header buttons
-    document.getElementById('btnConfigDMS').addEventListener('click', configureDMS);
-    document.getElementById('btnStats').addEventListener('click', showStatistics);
-}
+    // Carica dati
+    loadStallsData();
+});
 
-// Ricerca posteggi
-function performSearch() {
-    const searchType = document.getElementById('searchType').value;
-    const searchValue = document.getElementById('searchInput').value;
-    
-    if (!searchValue) return;
-    
-    const results = currentPosteggi.filter(posteggio => {
-        switch (searchType) {
-            case 'numero':
-                return posteggio.properties.numero.includes(searchValue);
-            case 'titolare':
-                return posteggio.properties.titolare.toLowerCase().includes(searchValue.toLowerCase());
-            case 'mercato':
-                return posteggio.properties.mercato.toLowerCase().includes(searchValue.toLowerCase());
-            default:
-                return false;
-        }
-    });
-    
-    if (results.length > 0) {
-        const firstResult = results[0];
-        focusPosteggio(firstResult.properties.numero);
-        
-        // Mostra risultati nella sidebar
-        if (!isRightSidebarOpen) {
-            toggleRightSidebar();
-        }
-    } else {
-        alert('Nessun risultato trovato');
-    }
-}
-
-// Ricerca indirizzi
-function searchAddress() {
-    const address = document.getElementById('addressInput').value;
-    if (!address) return;
-    
-    // Geocoding semplificato per Grosseto
-    const grossetoAddresses = {
-        'piazza dante': [42.7639, 11.1093],
-        'via mazzini': [42.7645, 11.1105],
-        'corso carducci': [42.7632, 11.1085],
-        'via cavour': [42.7650, 11.1110]
-    };
-    
-    const normalizedAddress = address.toLowerCase();
-    const coords = grossetoAddresses[normalizedAddress];
-    
-    if (coords) {
-        map.setView(coords, 18);
-    } else {
-        alert('Indirizzo non trovato');
-    }
-}
-
-// Toggle sidebar
+// Sidebar toggle
 function toggleSidebar() {
     const sidebar = document.getElementById('sidebarLeft');
-    sidebar.classList.toggle('collapsed');
-}
-
-function toggleRightSidebar() {
-    const sidebar = document.getElementById('sidebarRight');
-    sidebar.classList.toggle('open');
-    isRightSidebarOpen = !isRightSidebarOpen;
-}
-
-// Aggiornamento coordinate
-function updateCoordinates(e) {
-    const coords = document.getElementById('coordinates');
-    if (coords) {
-        // Converti in EPSG:3003 (approssimativo)
-        const x = Math.round(e.latlng.lng * 100000);
-        const y = Math.round(e.latlng.lat * 100000);
-        coords.textContent = `X: ${x}, Y: ${y} [EPSG:3003]`;
+    if (sidebar) {
+        sidebar.classList.toggle('collapsed');
     }
 }
 
-// Aggiornamento scala
-function updateScale() {
-    const scale = document.getElementById('scale');
-    if (scale) {
-        const zoom = map.getZoom();
-        const scaleValue = Math.round(591657527.591555 / Math.pow(2, zoom));
-        scale.textContent = `1:${scaleValue}`;
+// Coordinate display
+map.on('mousemove', (e) => {
+    const coordsEl = document.querySelector('.leaflet-control-coordinates');
+    if (coordsEl) {
+        const { lat, lng } = e.latlng;
+        // Converti in EPSG:3003
+        const projected = proj4('EPSG:4326', 'EPSG:3003', [lng, lat]);
+        coordsEl.innerHTML = `X: ${projected[0].toFixed(2)}, Y: ${projected[1].toFixed(2)} [EPSG:3003]`;
     }
-}
+});
 
-// API DMS Integration
-function configureDMS() {
-    const dmsUrl = prompt('Inserisci URL del tuo sistema DMS:');
-    if (dmsUrl) {
-        localStorage.setItem('dms_url', dmsUrl);
-        alert('Configurazione DMS salvata!');
-    }
-}
-
-function showStatistics() {
-    if (!isRightSidebarOpen) {
-        toggleRightSidebar();
-    }
-}
-
-// Export per debugging
-window.GIS_DEBUG = {
-    map: () => map,
-    posteggi: () => currentPosteggi,
-    reload: loadPosteggi
+// Aggiungi controllo coordinate
+const coordsControl = L.control({ position: 'bottomleft' });
+coordsControl.onAdd = function() {
+    const div = L.DomUtil.create('div', 'leaflet-control-coordinates');
+    div.style.cssText = 'background: rgba(255,255,255,0.8); padding: 5px; border-radius: 3px; font-size: 12px;';
+    div.innerHTML = 'X: -, Y: - [EPSG:3003]';
+    return div;
 };
+coordsControl.addTo(map);
+
+console.info('🎯 DMS-GIS • initialization complete');
 
