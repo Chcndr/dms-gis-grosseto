@@ -205,15 +205,17 @@
         </div>
     </div>
 
-    <!-- Scripts -->
+    <!-- Dipendenze locali -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <script src="./libs/proj4.min.js?v=lock5a"></script>
-    <script src="./libs/turf.min.js?v=lock5a"></script>
-    <script src="./app.lock5a.js?v=lock5a"></script>
-    
+    <script src="./libs/proj4.min.js?v=lock6" defer></script>
+    <script src="./libs/turf.min.js?v=lock6" defer></script>
+
+    <!-- App nuova: nome diverso = cache bust -->
+    <script src="./app.lock6.js?v=lock6" defer></script>
+
     <style>
-      /* nasconde controlli top-right residui */
-      .leaflet-top.leaflet-right { display:none !important; }
+      /* nasconde eventuali controlli duplicati top-right di plugin legacy */
+      .leaflet-top.leaflet-right{display:none!important;}
     </style>
 </body>
 </html>
