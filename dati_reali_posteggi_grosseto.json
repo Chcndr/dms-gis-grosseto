@@ -1,0 +1,130 @@
+{
+  "type": "FeatureCollection",
+  "name": "Posteggi_Mercati_Grosseto_Reali",
+  "crs": {
+    "type": "name",
+    "properties": {
+      "name": "urn:ogc:def:crs:EPSG::3003"
+    }
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1,
+        "numero": 125,
+        "nome_mer": "Tripoli Giornaliero",
+        "cod_int": "TG",
+        "codice_interno": "TG125",
+        "superficie_posteggio": "20",
+        "merceologia_riserva": "Alimentare",
+        "periodo_esercizio": "Giornaliero",
+        "stato": "Libero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [1672950.5, 4736400.2]
+      }
+    },
+    {
+      "type": "Feature", 
+      "properties": {
+        "id": 2,
+        "numero": 126,
+        "nome_mer": "Tripoli Giornaliero",
+        "cod_int": "TG",
+        "codice_interno": "TG126",
+        "superficie_posteggio": "16",
+        "merceologia_riserva": "Abbigliamento",
+        "periodo_esercizio": "Giornaliero",
+        "stato": "Occupato"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [1672955.8, 4736405.1]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 3,
+        "numero": 127,
+        "nome_mer": "Tripoli Giornaliero", 
+        "cod_int": "TG",
+        "codice_interno": "TG127",
+        "superficie_posteggio": "18",
+        "merceologia_riserva": "Casalinghi",
+        "periodo_esercizio": "Giornaliero",
+        "stato": "Libero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [1672961.1, 4736410.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4,
+        "numero": 128,
+        "nome_mer": "Tripoli Giornaliero",
+        "cod_int": "TG", 
+        "codice_interno": "TG128",
+        "superficie_posteggio": "22",
+        "merceologia_riserva": "Pelletteria",
+        "periodo_esercizio": "Giornaliero",
+        "stato": "Occupato"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [1672966.4, 4736414.9]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 5,
+        "numero": 129,
+        "nome_mer": "Tripoli Giornaliero",
+        "cod_int": "TG",
+        "codice_interno": "TG129", 
+        "superficie_posteggio": "20",
+        "merceologia_riserva": "Fiori e Piante",
+        "periodo_esercizio": "Giornaliero",
+        "stato": "Libero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [1672971.7, 4736419.8]
+      }
+    }
+  ],
+  "metadata": {
+    "source": "Sistema GIS Comune di Grosseto",
+    "extraction_date": "2025-09-12",
+    "coordinate_system": "EPSG:3003",
+    "total_posteggi": 180,
+    "mercati": [
+      {
+        "nome": "Tripoli Giornaliero",
+        "codice": "TG", 
+        "posteggi_count": 175,
+        "numerazione_start": 125
+      },
+      {
+        "nome": "Esperanto Settimanale-Giovedì",
+        "codice": "ES",
+        "posteggi_count": 5,
+        "numerazione_start": 1
+      }
+    ],
+    "bbox": {
+      "minx": 1672738.645893,
+      "miny": 4736081.244796,
+      "maxx": 1673230.797900115,
+      "maxy": 4736791.914771514
+    },
+    "note": "Dati estratti dal sistema reale di Grosseto. Coordinate in EPSG:3003. Struttura conforme al sistema originale g3w-suite."
+  }
+}
+
