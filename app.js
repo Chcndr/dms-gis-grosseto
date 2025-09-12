@@ -13,7 +13,24 @@ function initMap() {
 }
 
 async function loadPosteggiReali() {
-  const geo = await fetch('dati_reali_posteggi_grosseto.json').then(r => r.json());
+  // Path assoluto dal root della Pages (user/repo)
+  const REPO_BASE = '/dms-gis-grosseto/';
+  const DATA_URL  = REPO_BASE + 'assets/data/dati_reali_posteggi_grosseto.json';
+  const BUST      = (window.DMS_COMMIT || Date.now());
+
+  const resp = await fetch(DATA_URL + '?v=' + BUST, {
+    cache: 'no-store',
+    headers: { 'Accept': 'application/json' }
+  });
+
+  let geo;
+  try {
+    geo = await resp.json();
+  } catch (e) {
+    const raw = `https://raw.githubusercontent.com/Chcndr/dms-gis-grosseto/main/assets/data/dati_reali_posteggi_grosseto.json?nocache=${BUST}`;
+    const r2  = await fetch(raw, { cache: 'no-store' });
+    geo = await r2.json();
+  }
 
   const feats = geo.features.map(f => {
     const p = f.properties || {};
