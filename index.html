@@ -226,7 +226,7 @@
     <!-- Scripts -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="https://unpkg.com/proj4@2.9.0/dist/proj4.js"></script>
-    <!-- Boot loader: ripulisce SW/caches e carica il JS versionato con path relativo -->
+    <!-- Boot loader: SOLO CDN jsDelivr per bypassare GitHub Pages -->
     <script>
     (async () => {
       try {
@@ -240,27 +240,19 @@
         }
       } catch(e) {}
 
-      // 1) Prova con path relativo (corretto per Project Pages)
-      const candidates = [
-        './assets/js/app-v20250912.js?v=' + Date.now(),
-        // 2) fallback assoluto verso la root del progetto (se manca <base>)
-        '/dms-gis-grosseto/assets/js/app-v20250912.js?v=' + Date.now(),
-        // 3) PIANO B: CDN jsDelivr puntando al tag stabile
-        'https://cdn.jsdelivr.net/gh/Chcndr/dms-gis-grosseto@STABLE-20250912-0554-LIVE/assets/js/app-v20250912.js'
-      ];
-
-      for (const url of candidates) {
-        try {
-          const res = await fetch(url, { cache: 'reload' });
-          const ct = (res.headers.get('content-type')||'').toLowerCase();
-          if (!res.ok || !ct.includes('javascript')) throw new Error('not js');
-          const s = document.createElement('script');
-          s.src = url; s.defer = true; document.body.appendChild(s);
-          console.log('JS OK:', url);
-          return;
-        } catch(e) { console.warn('fallback:', url); }
+      // SOLUZIONE IMMEDIATA: SOLO CDN jsDelivr (bypass GitHub Pages)
+      const url = 'https://cdn.jsdelivr.net/gh/Chcndr/dms-gis-grosseto@STABLE-20250912-0554-LIVE/assets/js/app-v20250912.js';
+      
+      try {
+        const res = await fetch(url, { cache: 'reload' });
+        const ct = (res.headers.get('content-type')||'').toLowerCase();
+        if (!res.ok || !ct.includes('javascript')) throw new Error('not js');
+        const s = document.createElement('script');
+        s.src = url; s.defer = true; document.body.appendChild(s);
+        console.log('✅ JS caricato da CDN:', url);
+      } catch(e) {
+        console.error('❌ Errore caricamento JS da CDN:', e);
       }
-      console.error('Impossibile caricare il JS (path/404).');
     })();
     </script>
 </body>
