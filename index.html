@@ -245,8 +245,8 @@
         }
       } catch(e) {}
 
-      // TORNO AL FUNZIONANTE
-      const url = 'https://cdn.jsdelivr.net/gh/Chcndr/dms-gis-grosseto@STABLE-20250912-0554-LIVE/assets/js/app-v20250912.js?v=' + Date.now();
+      // VERSIONE FINALE: logica semplice + dati reali + rettangoli corretti
+      const url = 'https://cdn.jsdelivr.net/gh/Chcndr/dms-gis-grosseto@STABLE-20250912-FINAL/assets/js/app-final.js?v=' + Date.now();
       
       try {
         const res = await fetch(url, { cache: 'reload' });
