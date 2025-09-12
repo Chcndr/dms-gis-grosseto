@@ -333,9 +333,75 @@ body {
 }
 
 /* Responsive Design */
+
+/* iPad e Tablet (768px - 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .main-header {
+        padding: 8px 16px;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+    
+    .header-left {
+        flex: 1;
+        min-width: 200px;
+    }
+    
+    .header-right {
+        flex-wrap: wrap;
+        gap: 6px;
+    }
+    
+    .btn-primary, .btn-secondary {
+        padding: 6px 10px;
+        font-size: 12px;
+        white-space: nowrap;
+    }
+    
+    .main-header h1 {
+        font-size: 16px;
+    }
+    
+    .sidebar-left {
+        width: 260px;
+    }
+    
+    .map-controls {
+        top: 12px;
+        right: 12px;
+    }
+    
+    .address-search input {
+        width: 180px;
+    }
+}
+
+/* iPad Portrait specifico */
+@media (min-width: 768px) and (max-width: 768px) and (orientation: portrait) {
+    .header-right {
+        flex-wrap: wrap;
+        gap: 4px;
+    }
+    
+    .btn-primary, .btn-secondary {
+        padding: 5px 8px;
+        font-size: 11px;
+        min-width: 80px;
+    }
+}
+
+/* Mobile (max-width: 768px) */
 @media (max-width: 768px) {
     .main-header {
         padding: 6px 12px;
+        flex-wrap: wrap;
+    }
+    
+    .header-right {
+        width: 100%;
+        justify-content: flex-start;
+        margin-top: 4px;
+        gap: 4px;
     }
     
     .main-header h1 {
@@ -345,6 +411,8 @@ body {
     .btn-primary, .btn-secondary {
         padding: 4px 8px;
         font-size: 12px;
+        flex: 1;
+        max-width: 120px;
     }
     
     .sidebar-left {
