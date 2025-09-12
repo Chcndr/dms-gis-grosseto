@@ -332,6 +332,10 @@ body {
     font-family: monospace;
 }
 
+/* CSS per LOCK5 */
+.dms-center { pointer-events:none }
+.leaflet-top.leaflet-right { display:none } /* nasconde eventuali vecchi controlli top-right */
+
 /* CSS per area mercato e hub */
 .dms-area { 
     background: rgba(15,74,78,.92); 
