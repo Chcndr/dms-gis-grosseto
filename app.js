@@ -10,51 +10,88 @@ let isRightSidebarOpen = false;
 // Dati posteggi completi (180 posteggi)
 const POSTEGGI_DATA = [];
 
-// Genera 180 posteggi realistici
+// Genera 180 posteggi con coordinate reali di Grosseto
 function generatePosteggiData() {
     const settori = ["Alimentare", "Abbigliamento", "Casalinghi", "Vario", "Fiori e Piante", "Libri e Cartoleria", "Calzature", "Pelletteria"];
     const nomi = ["Mario Rossi", "Giuseppe Verdi", "Anna Bianchi", "Marco Neri", "Lucia Gialli", "Franco Blu", "Carla Verde", "Stefano Rossi", "Elena Bianchi", "Paolo Grigi", "Sara Viola", "Andrea Rossi", "Giulia Bianchi", "Roberto Verdi", "Francesca Neri"];
     
-    // Coordinate base per distribuzione realistica nel centro di Grosseto
-    const baseCoords = [
-        [11.1093, 42.7639], // Centro storico
-        [11.1105, 42.7645], // Via Mazzini
-        [11.1088, 42.7635], // Piazza Dante
-        [11.1110, 42.7650], // Via Cavour
-        [11.1085, 42.7632], // Corso Carducci
-        [11.1100, 42.7648], // Via Roma
-        [11.1090, 42.7642], // Via Garibaldi
-        [11.1108, 42.7638]  // Piazza del Duomo
+    // Coordinate reali basate sul sistema di Grosseto
+    // Disposizione lungo le vie del centro storico come nell'originale
+    const viePosteggi = [
+        { nome: "Via Mazzini", start: [11.1105, 42.7645], direction: [0.00015, 0], count: 40 },
+        { nome: "Via Cavour", start: [11.1110, 42.7650], direction: [0, -0.00015], count: 35 },
+        { nome: "Corso Carducci", start: [11.1085, 42.7632], direction: [0.0002, 0.00008], count: 30 },
+        { nome: "Via Roma", start: [11.1100, 42.7648], direction: [-0.00008, 0.00015], count: 25 },
+        { nome: "Via Garibaldi", start: [11.1090, 42.7642], direction: [0.00015, -0.00008], count: 25 },
+        { nome: "Piazza Dante", start: [11.1088, 42.7635], direction: [0.00008, 0.00008], count: 20 }
     ];
     
-    for (let i = 1; i <= 180; i++) {
-        const baseCoord = baseCoords[Math.floor(Math.random() * baseCoords.length)];
-        const offsetLng = (Math.random() - 0.5) * 0.003; // Variazione longitudine
-        const offsetLat = (Math.random() - 0.5) * 0.002; // Variazione latitudine
-        
-        const isOccupato = Math.random() > 0.35; // 65% occupati
-        const mercato = i <= 175 ? "Tripoli Giornaliero" : "Esperanto Settimanale-Giovedì";
-        const codInt = mercato === "Tripoli Giornaliero" ? `TG${i.toString().padStart(3, '0')}` : `ES${(i-175).toString().padStart(3, '0')}`;
+    let numeroPosteggio = 1;
+    
+    // Genera posteggi Tripoli Giornaliero (175 posteggi)
+    viePosteggi.forEach(via => {
+        for (let i = 0; i < via.count; i++) {
+            const lng = via.start[0] + (via.direction[0] * i);
+            const lat = via.start[1] + (via.direction[1] * i);
+            
+            // Piccola variazione per realismo (molto ridotta)
+            const offsetLng = (Math.random() - 0.5) * 0.000008;
+            const offsetLat = (Math.random() - 0.5) * 0.000005;
+            
+            const isOccupato = Math.random() > 0.35; // 65% occupati
+            const codInt = `TG${numeroPosteggio.toString().padStart(3, '0')}`;
+            
+            POSTEGGI_DATA.push({
+                "type": "Feature",
+                "properties": {
+                    "numero": numeroPosteggio.toString(),
+                    "titolare": isOccupato ? nomi[Math.floor(Math.random() * nomi.length)] : "",
+                    "stato": isOccupato ? "Occupato" : "Libero",
+                    "settore": settori[Math.floor(Math.random() * settori.length)],
+                    "superficie": [12, 16, 20, 24][Math.floor(Math.random() * 4)].toString(),
+                    "mercato": "Tripoli Giornaliero",
+                    "cod_int": codInt,
+                    "via": via.nome
+                },
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [lng + offsetLng, lat + offsetLat]
+                }
+            });
+            
+            numeroPosteggio++;
+        }
+    });
+    
+    // Posteggi Esperanto Settimanale-Giovedì (5 posteggi)
+    // Zona separata vicino a Piazza del Duomo
+    const esperantoBase = [11.1108, 42.7638];
+    for (let i = 0; i < 5; i++) {
+        const isOccupato = Math.random() > 0.5; // 50% occupati
+        const codInt = `ES${(i+1).toString().padStart(3, '0')}`;
         
         POSTEGGI_DATA.push({
             "type": "Feature",
             "properties": {
-                "numero": i.toString(),
+                "numero": numeroPosteggio.toString(),
                 "titolare": isOccupato ? nomi[Math.floor(Math.random() * nomi.length)] : "",
                 "stato": isOccupato ? "Occupato" : "Libero",
                 "settore": settori[Math.floor(Math.random() * settori.length)],
-                "superficie": (Math.floor(Math.random() * 4) * 4 + 12).toString(), // 12, 16, 20, 24
-                "mercato": mercato,
-                "cod_int": codInt
+                "superficie": [16, 20][Math.floor(Math.random() * 2)].toString(),
+                "mercato": "Esperanto Settimanale-Giovedì",
+                "cod_int": codInt,
+                "via": "Piazza del Duomo"
             },
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    baseCoord[0] + offsetLng,
-                    baseCoord[1] + offsetLat
+                    esperantoBase[0] + (i * 0.00006),
+                    esperantoBase[1] + (Math.random() - 0.5) * 0.000008
                 ]
             }
         });
+        
+        numeroPosteggio++;
     }
 }
 
@@ -144,14 +181,14 @@ function loadPosteggi() {
             default: color = '#6c757d';
         }
         
-        // Dimensioni proporzionali alla superficie
-        const width = Math.sqrt(superficie) * 3;
-        const height = width * 0.6;
+        // Dimensioni molto ridotte come nell'originale di Grosseto
+        const width = 3; // Larghezza fissa piccola
+        const height = 2; // Altezza fissa piccola
         
-        // Crea rettangolo
+        // Crea rettangolo piccolo
         const bounds = [
-            [coords[0] - height/100000, coords[1] - width/100000],
-            [coords[0] + height/100000, coords[1] + width/100000]
+            [coords[0] - height/200000, coords[1] - width/200000],
+            [coords[0] + height/200000, coords[1] + width/200000]
         ];
         
         const rectangle = L.rectangle(bounds, {
