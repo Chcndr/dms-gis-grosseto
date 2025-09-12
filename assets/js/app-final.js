@@ -1,7 +1,11 @@
-/* DMS–GIS Grosseto • "logica semplice" come la prima versione,
+/*
+   DMS-GIS Grosseto • "logica semplice" come la prima versione,
    ma con DATI REALI auto-caricati e rettangoli corretti in METRI.
    Requisiti inclusi in index.html: leaflet 1.9.x + proj4 2.11.x
 */
+
+// Disattiva SEMPRE demo/seed
+window.DMS_DEMO = false;
 
 (() => {
   // ====== CONFIG ======
@@ -210,20 +214,42 @@
     if (allBounds.isValid()) map.fitBounds(allBounds.pad(0.15));
   }
 
-  // ====== AVVIO ======
-  (async function run() {
+  // ===== ENTRYPOINT UNICO: niente render finché non arrivano i dati =====
+  (async function runDMS() {
     try {
-      const raw = await fetchJsonSmart();
-      const recs = normalize(raw);
+      // pulizia prudente: togli sovrapposizioni precedenti (seed/vecchi layer)
+      if (window.map) {
+        window.map.eachLayer(l => {
+          if (!(l instanceof L.TileLayer)) window.map.removeLayer(l);
+        });
+      }
+      // (ri)crea overlay principali
+      window.LAYERS = {
+        'Tripoli Giornaliero': L.layerGroup().addTo(map),
+        'Esperanto Settimanale-Giovedì': L.layerGroup().addTo(map),
+        '__altri__': L.layerGroup().addTo(map)
+      };
+
+      // 1) carica i dati REALI (JSON/API)
+      const raw = await fetchJsonSmart();           // <= tua funzione
+      const recs = normalize(raw);                  // <= tua funzione
       if (!recs.length) throw new Error('Dataset vuoto');
-      drawAll(recs);
-      console.info(`DMS-GIS: OK • records=${recs.length}`);
+
+      // 2) disegna SOLO i reali
+      drawAll(recs);                                // <= tua funzione
+
+      // 3) badge diagnostico: quanti record ho davvero disegnato?
+      const b = document.createElement('div');
+      b.textContent = `DMS-GIS • record=${recs.length}`;
+      b.style.cssText = 'position:fixed;right:8px;bottom:8px;background:#0b6f3a;color:#fff;padding:6px 8px;border-radius:6px;font:12px system-ui;z-index:9999;opacity:.9';
+      document.body.appendChild(b);
+      console.info('DMS-GIS • OK • records=', recs.length);
     } catch (e) {
-      console.error('DMS-GIS errore dati:', e);
-      const badge = document.createElement('div');
-      badge.textContent = 'Dati non disponibili';
-      badge.style.cssText = 'position:fixed;left:8px;bottom:8px;background:#c00;color:#fff;padding:4px 8px;border-radius:6px;font:12px system-ui;z-index:9999';
-      document.body.appendChild(badge);
+      console.error('DMS-GIS • errore:', e);
+      const b = document.createElement('div');
+      b.textContent = 'DMS-GIS • errore caricamento dati';
+      b.style.cssText = 'position:fixed;right:8px;bottom:8px;background:#c00;color:#fff;padding:6px 8px;border-radius:6px;font:12px system-ui;z-index:9999;opacity:.9';
+      document.body.appendChild(b);
     }
   })();
 

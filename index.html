@@ -382,6 +382,15 @@
     // Avvia il join dopo un breve delay per assicurarsi che i posteggi siano caricati
     setTimeout(enrichWithOwners, 2000);
     </script>
+
+    <script>
+      const btn = document.getElementById('btn-reload');
+      if (btn) btn.addEventListener('click', () => {
+        const u = new URL(location.href);
+        u.searchParams.set('r', Date.now()); // bust cache
+        location.href = u.toString();
+      });
+    </script>
 </body>
 </html>
 
