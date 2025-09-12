@@ -1,0 +1,10 @@
+<!doctype html><meta charset="utf-8"><title>404</title>
+<script>
+  const p = location.pathname;
+  if (/\.(js|css|json|map|png|jpg|jpeg|gif|svg|webp|ico|txt)$/i.test(p)) {
+    document.write('<h1>404 asset</h1><p>'+p+' non trovato.</p>');
+  } else {
+    location.replace('./');
+  }
+</script>
+

@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DMS • GIS Mercati Grosseto (clean)</title>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="" crossorigin="">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="" crossorigin=""></script>
+<script src="https://unpkg.com/proj4@2.11.0/dist/proj4.js"></script>
+
+<style>
+  :root{
+    --dms-bg:#072C2E; --dms-green:#0B6F3A; --dms-accent:#0FA3A3; --dms-text:#D5F0E6;
+    --glass:rgba(7,44,46,.86); --line:rgba(15,163,163,.35);
+  }
+  html,body,#map{height:100%;margin:0}
+  #map{background:#001a1b}
+  .dms-sidebar{
+    position:fixed; z-index:600; top:12px; left:12px; width:300px; max-width:calc(100vw - 24px);
+    color:var(--dms-text); background:var(--glass); border:1px solid var(--line);
+    border-radius:12px; padding:12px; box-shadow:0 8px 20px rgba(0,0,0,.25); backdrop-filter:blur(6px);
+  }
+  .dms-sidebar h3{margin:0 0 8px; font:600 15px/1.2 system-ui; letter-spacing:.2px}
+  .dms-btn{display:inline-flex;align-items:center;gap:8px;padding:10px 12px;border-radius:10px;
+    background:var(--dms-green);color:#fff;border:1px solid #0a5a2b;cursor:pointer;font:600 13px/1 system-ui}
+  .dms-btn:hover{filter:brightness(1.06)}
+  .dms-row{display:flex;gap:8px;align-items:center;margin-top:8px}
+  .dms-input{flex:1;padding:8px 10px;border-radius:8px;border:1px solid #0a5a2b;background:#083335;color:#eafff7}
+  .dms-chk{display:flex;gap:8px;align-items:center;color:#cfeee6;font:13px system-ui;margin-top:6px}
+  .posteggio-label>div{
+    background:var(--dms-green)!important;border-color:var(--dms-green)!important;color:#fff!important
+  }
+  .dms-table{width:100%;border-collapse:collapse;color:#eafff7;font:12px system-ui;margin-top:8px}
+  .dms-table th,.dms-table td{border-bottom:1px solid rgba(255,255,255,.08);padding:4px 6px;text-align:left}
+  .badge{position:fixed;right:8px;bottom:8px;background:var(--dms-green);color:#fff;padding:6px 8px;
+    border-radius:6px;font:12px system-ui;z-index:9999;opacity:.92}
+</style>
+</head>
+<body>
+
+<div id="map"></div>
+
+<aside class="dms-sidebar">
+  <h3>GIS Mercati • Grosseto</h3>
+  <div class="dms-row">
+    <button class="dms-btn" id="btn-reload">⟲ Carica mappa</button>
+    <input class="dms-input" id="search-num" type="search" placeholder="Cerca posteggio #">
+  </div>
+  <label class="dms-chk"><input type="checkbox" id="cb-tripoli" checked> Tripoli Giornaliero</label>
+  <label class="dms-chk"><input type="checkbox" id="cb-esperanto" checked> Esperanto Settimanale-Giovedì</label>
+  <div id="tabella-posteggi"></div>
+</aside>
+
+<script>
+/* ========== JS INLINE (cache-proof) ========== */
+(function(){
+  // ---- cache buster SW/CacheStorage
+  (async()=>{try{
+    if('serviceWorker'in navigator){const r=await navigator.serviceWorker.getRegistrations();await Promise.all(r.map(x=>x.unregister()))}
+    if(window.caches){const ks=await caches.keys();await Promise.all(ks.map(k=>caches.delete(k)))}
+  }catch(e){}})();
+
+  // ---- config
+  const DATA_URL = './assets/data/dati_reali_posteggi_grosseto.json?v='+Date.now();
+
+  // ---- proiezioni
+  if(!proj4.defs['EPSG:3003']){
+    proj4.defs('EPSG:3003','+proj=tmerc +lat_0=0 +lon_0=9 +k=0.9996 +x_0=1500000 +y_0=0 +ellps=intl +units=m +no_defs +towgs84=-225,-65,9,0,0,0,0');
+  }
+  if(!proj4.defs['EPSG:3857']){
+    proj4.defs('EPSG:3857','+proj=merc +a=6378137 +b=6378137 +lat_ts=0 +lon_0=0 +x_0=0 +y_0=0 +k=1 +units=m +no_defs');
+  }
+  const to3857 = (xy)=>proj4('EPSG:3003','EPSG:3857',xy);
+  const to4326 = (xy)=>proj4('EPSG:3857','WGS84',xy);
+
+  // ---- mappa
+  const map = L.map('map',{zoomControl:true,preferCanvas:true});
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxNativeZoom:19,maxZoom:22,detectRetina:true}).addTo(map);
+
+  const LAYERS={
+    'Tripoli Giornaliero': L.layerGroup().addTo(map),
+    'Esperanto Settimanale-Giovedì': L.layerGroup().addTo(map),
+    '__altri__': L.layerGroup().addTo(map)
+  };
+
+  // ---- utils rettangoli
+  const rot = (x,y,deg)=>{const a=deg*Math.PI/180,c=Math.cos(a),s=Math.sin(a);return [x*c-y*s,x*s+y*c]};
+  function rectMeters(cx,cy,w=4,h=3,deg=0){
+    const hx=w/2, hy=h/2;
+    const pts=[[+hx,+hy],[-hx,+hy],[-hx,-hy],[+hx,-hy]].map(([dx,dy])=>{
+      const [rx,ry]=rot(dx,dy,deg); return [cx+rx,cy+ry];
+    }); pts.push(pts[0]); return pts;
+  }
+  function angleByNeighbors(centers){
+    if(centers.length<2) return 0;
+    const ang=[];
+    for(let i=0;i<centers.length;i++){
+      let j=-1,d=1e15; const [xi,yi]=centers[i];
+      for(let k=0;k<centers.length;k++){ if(i===k) continue;
+        const [xk,yk]=centers[k], dx=xk-xi, dy=yk-yi, dd=dx*dx+dy*dy; if(dd<d){d=dd;j=k;}
+      }
+      if(j>=0){const [xk,yk]=centers[j]; ang.push(Math.atan2(yk-yi,xk-xi)*180/Math.PI);}
+    }
+    ang.sort((a,b)=>a-b); const m=ang[Math.floor(ang.length/2)];
+    return Number.isFinite(m)?m:0;
+  }
+  function dimsFromArea(a){
+    const A=+a||20; if(A<=12) return {w:3,d:4}; if(A<=15) return {w:3,d:5};
+    if(A<=20) return {w:4,d:5}; if(A<=24) return {w:4,d:6}; if(A<=30) return {w:5,d:6};
+    return {w:4,d:8};
+  }
+  function styleByState(s){
+    const t=String(s||'').toLowerCase();
+    if(t.includes('occ')||t.includes('assegn')) return {color:'#e25252',fillColor:'#ff8d8d'};
+    if(t.includes('riserv')) return {color:'#f2c94c',fillColor:'#ffe18a'};
+    return {color:'#0B6F3A',fillColor:'#20c997'};
+  }
+
+  // ---- fetch + normalize
+  async function getData(){
+    const r=await fetch(DATA_URL,{cache:'no-store',headers:{'Accept':'application/json'}});
+    if(!r.ok) throw new Error('JSON non accessibile');
+    return r.json();
+  }
+  function normalize(gj){
+    const out=[];
+    if(gj?.type==='FeatureCollection'){
+      gj.features.forEach(f=>{
+        const p=f.properties||{}, g=f.geometry||{};
+        let x=null,y=null;
+        if(g.type==='Point'&&Array.isArray(g.coordinates)){x=+g.coordinates[0];y=+g.coordinates[1];}
+        if((x==null||y==null)&&p.E!=null&&p.N!=null){x=+p.E;y=+p.N;}
+        if(x==null||y==null) return;
+        out.push({
+          E:x,N:y,
+          mercato:p.nome_mer||'Mercato',
+          numero:(p.numero!=null?String(p.numero).trim():''),
+          cod:p.codice_interno||p.cod_int||'',
+          stato:p.stato||'',
+          area:p.superficie_posteggio!=null?+p.superficie_posteggio:null,
+          w:p.larghezza_m!=null?+p.larghezza_m:null,
+          h:p.profondita_m!=null?+p.profondita_m:null,
+          rot:p.rotazione_deg!=null?+p.rotazione_deg:null
+        });
+      });
+    }
+    return out;
+  }
+
+  // ---- draw
+  function drawAll(records){
+    const groups=new Map();
+    records.forEach(r=>{const k=r.mercato||'__altri__'; if(!groups.has(k)) groups.set(k,[]); groups.get(k).push(r);});
+    const all=L.latLngBounds();
+    groups.forEach((arr,mercato)=>{
+      const layer=LAYERS[mercato]||LAYERS['__altri__'];
+      const centers3857=arr.map(r=>to3857([r.E,r.N]));
+      const ang=angleByNeighbors(centers3857);
+      arr.forEach((r,i)=>{
+        const [x,y]=centers3857[i];
+        const dims=(r.w&&r.h)?{w:r.w,d:r.h}:dimsFromArea(r.area);
+        const A=(r.rot!=null)?r.rot:ang;
+        const poly3857=rectMeters(x,y,dims.w,dims.d,A);
+        const poly4326=poly3857.map(to4326).map(([lon,lat])=>[lat,lon]);
+        const st=styleByState(r.stato);
+        const poly=L.polygon(poly4326,{color:st.color,fillColor:st.fillColor,fillOpacity:.85,weight:1}).addTo(layer);
+        const [lon,lat]=to4326([x,y]);
+        L.marker([lat,lon],{icon:L.divIcon({className:'posteggio-label',html:`<div>${r.numero||''}</div>`}),interactive:false}).addTo(layer);
+        poly.bindPopup(`<div style="min-width:240px"><b>${mercato}</b> — <b>#${r.numero||'—'}</b> <small>${r.cod||''}</small><br>Stato: ${r.stato||'—'} • Superficie: ${r.area??'—'} m²</div>`);
+        all.extend(poly.getBounds());
+      });
+    });
+    if(all.isValid()) map.fitBounds(all.pad(0.15));
+  }
+
+  // ---- sidebar UX
+  const cbTrip=document.getElementById('cb-tripoli');
+  const cbEsp =document.getElementById('cb-esperanto');
+  function syncLayer(cb,name){ const LYR=LAYERS[name]; if(!cb||!LYR) return; if(cb.checked) LYR.addTo(map); else map.removeLayer(LYR); }
+  cbTrip&&cbTrip.addEventListener('change',()=>syncLayer(cbTrip,'Tripoli Giornaliero'));
+  cbEsp &&cbEsp .addEventListener('change',()=>syncLayer(cbEsp ,'Esperanto Settimanale-Giovedì'));
+
+  const input=document.getElementById('search-num');
+  function searchNum(){
+    if(!input) return;
+    const target=String(input.value||'').trim();
+    if(!target) return;
+    let found=null, bounds=L.latLngBounds();
+    Object.values(LAYERS).forEach(grp=>{
+      grp.eachLayer(l=>{
+        if(l instanceof L.Polygon){
+          const html=l.getPopup()?.getContent()||'';
+          if(html.includes(`#${target}</b>`)){ found=l; bounds.extend(l.getBounds()); }
+        }
+      });
+    });
+    if(found){ map.fitBounds(bounds.pad(0.3)); found.openPopup(); }
+    else alert('Posteggio non trovato: '+target);
+  }
+  input&&input.addEventListener('keydown',e=>{if(e.key==='Enter')searchNum();});
+
+  document.getElementById('btn-reload')?.addEventListener('click',()=>{
+    const u=new URL(location.href); u.searchParams.set('r',Date.now()); location.href=u.toString();
+  });
+
+  // ---- run
+  (async()=>{
+    const gj=await getData();
+    const recs=normalize(gj);
+    drawAll(recs);
+    const b=document.createElement('div'); b.className='badge'; b.textContent='DMS-GIS • records='+recs.length; document.body.appendChild(b);
+  })().catch(e=>{
+    console.error(e);
+    const b=document.createElement('div'); b.className='badge'; b.style.background='#c00'; b.textContent='DMS-GIS • errore dati'; document.body.appendChild(b);
+  });
+})();
+</script>
+</body>
+</html>
+
