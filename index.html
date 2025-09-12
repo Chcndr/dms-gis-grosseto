@@ -8,6 +8,18 @@
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     
+    <!-- Proj4 per conversioni coordinate -->
+    <script src="https://cdn.jsdelivr.net/npm/proj4@2.11.0/dist/proj4.min.js"></script>
+    
+    <!-- Definizione proiezione EPSG:3003 (Gauss-Boaga Ovest) -->
+    <script>
+    /* Gauss–Boaga Ovest (Toscana / Grosseto) */
+    proj4.defs('EPSG:3003',
+      '+proj=tmerc +lat_0=0 +lon_0=9 +k=0.9996 +x_0=1500000 +y_0=0 ' +
+      '+ellps=intl +towgs84=-104.1,-49.1,-9.9,0.971,-2.917,0.714,11.68 ' +
+      '+units=m +no_defs +axis=neu');
+    </script>
+    
     <!-- Font Awesome per icone -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
