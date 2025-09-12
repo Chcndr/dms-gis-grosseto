@@ -246,7 +246,7 @@
       } catch(e) {}
 
       // SOLUZIONE IMMEDIATA: SOLO CDN jsDelivr (bypass GitHub Pages)
-      const url = 'https://cdn.jsdelivr.net/gh/Chcndr/dms-gis-grosseto@STABLE-20250912-0557-COMPATTI/assets/js/app-v20250912-fix.js';
+      const url = 'https://cdn.jsdelivr.net/gh/Chcndr/dms-gis-grosseto@STABLE-20250912-0557-COMPATTI/assets/js/app-v20250912-fix.js?v=' + Date.now();
       
       try {
         const res = await fetch(url, { cache: 'reload' });
