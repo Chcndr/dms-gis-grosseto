@@ -18,15 +18,15 @@ function generatePosteggiData() {
     // Coordinate reali basate sul sistema di Grosseto
     // Disposizione lungo le vie del centro storico come nell'originale
     const viePosteggi = [
-        { nome: "Via Mazzini", start: [11.1105, 42.7645], direction: [0.00015, 0], count: 40 },
-        { nome: "Via Cavour", start: [11.1110, 42.7650], direction: [0, -0.00015], count: 35 },
-        { nome: "Corso Carducci", start: [11.1085, 42.7632], direction: [0.0002, 0.00008], count: 30 },
-        { nome: "Via Roma", start: [11.1100, 42.7648], direction: [-0.00008, 0.00015], count: 25 },
-        { nome: "Via Garibaldi", start: [11.1090, 42.7642], direction: [0.00015, -0.00008], count: 25 },
-        { nome: "Piazza Dante", start: [11.1088, 42.7635], direction: [0.00008, 0.00008], count: 20 }
+        { nome: "Via Mazzini", start: [11.1105, 42.7645], direction: [0.0001, 0], count: 40 },
+        { nome: "Via Cavour", start: [11.1110, 42.7650], direction: [0, -0.0001], count: 35 },
+        { nome: "Corso Carducci", start: [11.1085, 42.7632], direction: [0.00015, 0.00005], count: 30 },
+        { nome: "Via Roma", start: [11.1100, 42.7648], direction: [-0.00005, 0.0001], count: 25 },
+        { nome: "Via Garibaldi", start: [11.1090, 42.7642], direction: [0.0001, -0.00005], count: 25 },
+        { nome: "Piazza Dante", start: [11.1088, 42.7635], direction: [0.00005, 0.00005], count: 20 }
     ];
     
-    let numeroPosteggio = 1;
+    let numeroPosteggio = 125; // Inizia da 125 come nel sistema originale di Grosseto
     
     // Genera posteggi Tripoli Giornaliero (175 posteggi)
     viePosteggi.forEach(via => {
@@ -34,9 +34,7 @@ function generatePosteggiData() {
             const lng = via.start[0] + (via.direction[0] * i);
             const lat = via.start[1] + (via.direction[1] * i);
             
-            // Piccola variazione per realismo (molto ridotta)
-            const offsetLng = (Math.random() - 0.5) * 0.000008;
-            const offsetLat = (Math.random() - 0.5) * 0.000005;
+            // Posizionamento preciso senza offset casuali
             
             const isOccupato = Math.random() > 0.35; // 65% occupati
             const codInt = `TG${numeroPosteggio.toString().padStart(3, '0')}`;
@@ -55,7 +53,7 @@ function generatePosteggiData() {
                 },
                 "geometry": {
                     "type": "Point",
-                    "coordinates": [lng + offsetLng, lat + offsetLat]
+                    "coordinates": [lng, lat]
                 }
             });
             
@@ -64,16 +62,17 @@ function generatePosteggiData() {
     });
     
     // Posteggi Esperanto Settimanale-Giovedì (5 posteggi)
-    // Zona separata vicino a Piazza del Duomo
+    // Zona separata vicino a Piazza del Duomo - numerazione separata da 1
     const esperantoBase = [11.1108, 42.7638];
     for (let i = 0; i < 5; i++) {
+        const numeroEsperanto = i + 1; // Numerazione separata da 1 a 5
         const isOccupato = Math.random() > 0.5; // 50% occupati
-        const codInt = `ES${(i+1).toString().padStart(3, '0')}`;
+        const codInt = `ES${numeroEsperanto.toString().padStart(3, '0')}`;
         
         POSTEGGI_DATA.push({
             "type": "Feature",
             "properties": {
-                "numero": numeroPosteggio.toString(),
+                "numero": numeroEsperanto.toString(),
                 "titolare": isOccupato ? nomi[Math.floor(Math.random() * nomi.length)] : "",
                 "stato": isOccupato ? "Occupato" : "Libero",
                 "settore": settori[Math.floor(Math.random() * settori.length)],
@@ -181,22 +180,43 @@ function loadPosteggi() {
             default: color = '#6c757d';
         }
         
-        // Dimensioni molto ridotte come nell'originale di Grosseto
-        const width = 3; // Larghezza fissa piccola
-        const height = 2; // Altezza fissa piccola
+        // Dimensioni come nel sistema originale di Grosseto
+        const width = 2.5; // Larghezza adeguata per mostrare i numeri
+        const height = 1.8; // Altezza adeguata
         
-        // Crea rettangolo piccolo
+        // Crea rettangolo con dimensioni appropriate per mostrare i numeri
         const bounds = [
-            [coords[0] - height/200000, coords[1] - width/200000],
-            [coords[0] + height/200000, coords[1] + width/200000]
+            [coords[0] - height/100000, coords[1] - width/100000],
+            [coords[0] + height/100000, coords[1] + width/100000]
         ];
         
         const rectangle = L.rectangle(bounds, {
             color: '#ffffff',
             fillColor: color,
-            fillOpacity: 0.8,
-            weight: 2,
+            fillOpacity: 0.9,
+            weight: 1,
             opacity: 1
+        });
+        
+        // Aggiungi etichetta con numero come nel sistema originale
+        const marker = L.marker(coords, {
+            icon: L.divIcon({
+                className: 'posteggio-label',
+                html: `<div class="posteggio-number" style="
+                    background-color: ${color}; 
+                    color: white; 
+                    border: 1px solid white;
+                    border-radius: 3px;
+                    padding: 2px 4px;
+                    font-size: 10px;
+                    font-weight: bold;
+                    text-align: center;
+                    min-width: 20px;
+                    box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+                ">${posteggio.properties.numero}</div>`,
+                iconSize: [25, 15],
+                iconAnchor: [12, 7]
+            })
         });
         
         // Popup
@@ -213,9 +233,11 @@ function loadPosteggi() {
         `;
         
         rectangle.bindPopup(popupContent);
+        marker.bindPopup(popupContent);
         
-        // Aggiungi al layer
+        // Aggiungi entrambi al layer
         posteggiLayer.addLayer(rectangle);
+        posteggiLayer.addLayer(marker);
         currentPosteggi.push(posteggio);
     });
     
