@@ -277,3 +277,4 @@ document.addEventListener('DOMContentLoaded', () => {
   console.log('🚀 DMS GIS Grosseto inizializzato con rettangoli corretti');
 });
 
+/* Force GitHub Pages update Thu Sep 11 23:56:39 EDT 2025 */
