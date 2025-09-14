@@ -1,8 +1,12 @@
 (function(){
-  const BADGE = '🎯 DMS-GIS • lock6e3';
+  const BADGE = '🎯 DMS-GIS • lock6e4';
+  
+  // EPSG:3003 Monte Mario / Italy zone 1 (Toscana)
+  const EPSG3003 = '+proj=tmerc +lat_0=0 +lon_0=9 +k=0.9996 +x_0=1500000 +y_0=0 +ellps=intl +towgs84=-104.1,-49.1,-9.9,0.971,2.917,0.714,-11.68 +units=m +no_defs';
+  function toWGS84(x, y){ const ll = proj4(EPSG3003, proj4.WGS84, [x, y]); return [ll[1], ll[0]]; } // [lat, lng]
   
   function waitForLibs(cb){
-    const ok = () => (window.L && window.turf);
+    const ok = () => (window.L && window.turf && window.proj4);
     if (ok()) return cb();
     const t = setInterval(()=>{ if(ok()){ clearInterval(t); cb(); }}, 60);
     setTimeout(()=>clearInterval(t), 8000);
@@ -21,16 +25,20 @@
         return;
       }
       
-      // Inizializza mappa con controlli zoom solo a sinistra (LOCK6e3)
+      // Inizializza mappa con controlli zoom solo a sinistra (LOCK6e4)
       const map = L.map(mapEl, { zoomControl: false, preferCanvas: true }).setView([42.76, 11.11], 15);
       L.control.zoom({ position: 'topleft' }).addTo(map);
+      
+      // Vista iniziale Italia (evita zoom mondiale)
+      const ITALY_BOUNDS = L.latLngBounds([ [36.6, 6.5], [47.2, 18.6] ]); // rough box
+      map.fitBounds(ITALY_BOUNDS, { padding: [10,10], animate: false, maxZoom: 7 });
       
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; OpenStreetMap contributors'
       }).addTo(map);
       
       // Carica dati JSON con cache busting
-      const url = './dati_reali_posteggi_grosseto.json?v=lock6e3';
+      const url = './dati_reali_posteggi_grosseto.json?v=lock6e4';
       fetch(url, {cache: 'no-store'})
         .then(r => {
           if (!r.ok) throw new Error(`HTTP ${r.status}`);
@@ -50,6 +58,30 @@
             }
             return f;
           });
+          
+          // Funzione per creare marker rettangolari (LOCK6e4)
+          function makeSlotIcon(num){
+            return L.divIcon({
+              className:'slot-rect',
+              html: String(num ?? ''),
+              iconSize:[28,20],
+              iconAnchor:[14,10] // centrato
+            });
+          }
+          
+          // Funzione per verificare se un punto è dentro l'area (LOCK6e4)
+          function insideArea(latlng, areaPoly){
+            if (!areaPoly) return false;
+            try {
+              return turf.booleanPointInPolygon(
+                turf.point([latlng[1], latlng[0]]),
+                turf.polygon([ areaPoly.getLatLngs()[0].map(ll => [ll.lng, ll.lat]) ])
+              );
+            } catch(e) {
+              console.warn(BADGE, 'insideArea error:', e);
+              return false;
+            }
+          }
           
           // Filtro mercati
           const ptsTripoli = allPts.filter(f => /Tripoli/i.test(f.properties.mercato || ''));

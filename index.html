@@ -212,7 +212,16 @@
     <script defer src="./app.lock6e4.js?v=lock6e4"></script>
 
     <style>
-      /* LOCK6e3: Fix z-index e sblocco click */
+      /* LOCK6e4: Marker rettangolari + Fix z-index e sblocco click */
+      .slot-rect {
+        background:#0FA3A3; border:2px solid #0b6c6c; color:#093b3b;
+        width:28px; height:20px; line-height:20px; text-align:center;
+        font-weight:700; font-size:12px; border-radius:3px;
+        box-shadow:0 0 0 1px rgba(0,0,0,.15);
+      }
+      .slot-rect--sel { outline:2px solid #C8F560; }
+      .leaflet-marker-icon.slot-rect { pointer-events:auto; }
+      
       html, body { height:100%; margin:0; }
       #map { height:100vh; position:relative; z-index:1; }
       
@@ -225,11 +234,11 @@
       /* nasconde eventuali controlli duplicati top-right di plugin legacy */
       .leaflet-top.leaflet-right{display:none!important;}
       
-      /* Fix UI LOCK6e3 */
+      /* Fix UI LOCK6e4 */
       #coords, .debug-coords{display:none!important;}      /* eventuale riga X,Y */
       .dms-bottombar{display:none!important;}              /* "Elenco Posteggi" chiuso al 1° load */
       
-      /* CSS per LOCK6e3 */
+      /* CSS per LOCK6e4 */
       .dms-banner{position:fixed;left:50%;top:18px;transform:translateX(-50%);background:#1f2937;color:#fff;padding:8px 12px;border-radius:8px;z-index:9999;font:600 13px/1.2 system-ui;}
       .hub-label{background:transparent!important;border:none!important;color:#fff!important;text-shadow:0 1px 2px rgba(0,0,0,.5);font-weight:700!important;}
       .hub-dot{z-index:1000;}
