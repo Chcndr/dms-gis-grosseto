@@ -205,17 +205,21 @@
         </div>
     </div>
 
-    <!-- Dipendenze ordine corretto -->
+    <!-- Dipendenze ordine corretto LOCK6e -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <script>window.DMS_BUILD='lock6c';</script>
-    <script src="./libs/turf.min.js?v=lock6c"></script>
-    <script defer src="./app.lock6c.js?v=lock6c"></script>
+    <script>window.DMS_BUILD='lock6e';</script>
+    <script src="./libs/turf.min.js?v=lock6e"></script>
+    <script defer src="./app.lock6e.js?v=lock6e"></script>
 
     <style>
       /* nasconde eventuali controlli duplicati top-right di plugin legacy */
       .leaflet-top.leaflet-right{display:none!important;}
       
-      /* CSS per LOCK6c */
+      /* Fix UI LOCK6e */
+      #coords, .debug-coords{display:none!important;}      /* eventuale riga X,Y */
+      .dms-bottombar{display:none!important;}              /* "Elenco Posteggi" chiuso al 1° load */
+      
+      /* CSS per LOCK6e */
       .dms-banner{position:fixed;left:50%;top:18px;transform:translateX(-50%);background:#1f2937;color:#fff;padding:8px 12px;border-radius:8px;z-index:9999;font:600 13px/1.2 system-ui;}
       .hub-label{background:transparent!important;border:none!important;color:#fff!important;text-shadow:0 1px 2px rgba(0,0,0,.5);font-weight:700!important;}
       .hub-dot{z-index:1000;}
