@@ -203,30 +203,27 @@
         </div>
     </div>
 
-    <!-- Dipendenze ordine corretto LOCK6e4 -->
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <script>window.DMS_BUILD='lock6e4';</script>
-    <script src="./libs/turf.min.js?v=lock6e4"></script>
-    <script src="./libs/proj4.min.js?v=lock6e4"></script>
-    <script src="./libs/proj4leaflet.min.js?v=lock6e4"></script>
-    <script defer src="./app.lock6e4.js?v=lock6e4"></script>
+    <script src="libs/leaflet.js"></script>
+    <script src="libs/proj4.min.js"></script>
+    <script src="libs/proj4leaflet.min.js"></script>
+    <script src="libs/turf.min.js"></script>
+    <script src="app.lock7.js?v=lock7"></script>
 
     <style>
-      /* LOCK6e4: Marker rettangolari + Fix z-index e sblocco click */
-      .slot-rect {
-        background:#0FA3A3; border:2px solid #0b6c6c; color:#093b3b;
-        width:28px; height:20px; line-height:20px; text-align:center;
-        font-weight:700; font-size:12px; border-radius:3px;
-        box-shadow:0 0 0 1px rgba(0,0,0,.15);
-      }
-      .slot-rect--sel { outline:2px solid #C8F560; }
-      .leaflet-marker-icon.slot-rect { pointer-events:auto; }
+      /* Header fisso e mappa full-viewport (iPad safe) */
+      #appHeader{position:fixed;top:0;left:0;right:0;height:46px;z-index:1100}
+      #map{position:absolute;top:46px;left:0;right:0;bottom:0}
+      /* Evita overlay non cliccabili su iPad */
+      .btn,.btn *{pointer-events:auto}
+      /* Disattiva i controlli duplicati a destra se presenti */
+      .leaflet-right .leaflet-control{display:none!important}
+      /* Stile posteggi rettangolari + label numero */
+      .dms-stand{stroke:#267E3E;stroke-width:1;fill:#A6F7A9;fill-opacity:.45}
+      .leaflet-tooltip.dms-num{background:#46C962;color:#0b3215;border:0;
+        font-weight:700;padding:2px 4px;border-radius:2px;box-shadow:none}
       
+      /* Fix UI LOCK7 */
       html, body { height:100%; margin:0; }
-      #map { height:100vh; position:relative; z-index:1; }
-      
-      /* Fallback: se qualcosa resta in alto a destra, disattiva interazione */
-      .leaflet-top.leaflet-right { pointer-events:none; z-index:0; }
       
       /* Sidebar sempre "cliccabile" sopra la mappa */
       .sidebar, .layers-panel, .sidebar-left { z-index:1000; }
@@ -234,18 +231,10 @@
       /* nasconde eventuali controlli duplicati top-right di plugin legacy */
       .leaflet-top.leaflet-right{display:none!important;}
       
-      /* Fix UI LOCK6e4 */
-      #coords, .debug-coords{display:none!important;}      /* eventuale riga X,Y */
-      .dms-bottombar{display:none!important;}              /* "Elenco Posteggi" chiuso al 1° load */
-      
-      /* CSS per LOCK6e4 */
+      /* CSS per LOCK7 */
       .dms-banner{position:fixed;left:50%;top:18px;transform:translateX(-50%);background:#1f2937;color:#fff;padding:8px 12px;border-radius:8px;z-index:9999;font:600 13px/1.2 system-ui;}
       .hub-label{background:transparent!important;border:none!important;color:#fff!important;text-shadow:0 1px 2px rgba(0,0,0,.5);font-weight:700!important;}
       .hub-dot{z-index:1000;}
-      
-      /* Stili per tooltip posteggi */
-      .posteggio-tooltip{background:rgba(0,0,0,0.8)!important;border:none!important;color:#fff!important;font-weight:bold!important;font-size:11px!important;padding:2px 6px!important;border-radius:3px!important;}
-      .posteggio-tooltip:before{border-top-color:rgba(0,0,0,0.8)!important;}
     </style>
 </body>
 </html>
