@@ -1,5 +1,5 @@
 (function(){
-  const BADGE = '🎯 DMS-GIS • lock6e2';
+  const BADGE = '🎯 DMS-GIS • lock6e3';
   
   function waitForLibs(cb){
     const ok = () => (window.L && window.turf);
@@ -21,14 +21,16 @@
         return;
       }
       
-      // Inizializza mappa con fallback robusto su Grosseto
-      const map = L.map(mapEl).setView([42.76, 11.11], 15);
+      // Inizializza mappa con controlli zoom solo a sinistra (LOCK6e3)
+      const map = L.map(mapEl, { zoomControl: false, preferCanvas: true }).setView([42.76, 11.11], 15);
+      L.control.zoom({ position: 'topleft' }).addTo(map);
+      
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; OpenStreetMap contributors'
       }).addTo(map);
       
       // Carica dati JSON con cache busting
-      const url = './dati_reali_posteggi_grosseto.json?v=lock6e2';
+      const url = './dati_reali_posteggi_grosseto.json?v=lock6e3';
       fetch(url, {cache: 'no-store'})
         .then(r => {
           if (!r.ok) throw new Error(`HTTP ${r.status}`);
@@ -164,6 +166,30 @@
           document.body.appendChild(banner);
           setTimeout(() => banner.remove(), 5000);
         });
+      
+      // Safety-kill controlli a destra (LOCK6e3)
+      function removeRightOverlays() {
+        document.querySelectorAll(
+          '.leaflet-top.leaflet-right, .leaflet-control-geocoder, .leaflet-control-search, .map-search, .dms-right, #search, #searchBox'
+        ).forEach(el => el.remove());
+      }
+      
+      map.whenReady(() => {
+        removeRightOverlays();
+        setTimeout(removeRightOverlays, 100);
+        requestAnimationFrame(removeRightOverlays);
+      });
+      
+      // Fit iniziale stabile (LOCK6e3)
+      function forceFit() {
+        if (window.__dmsBounds) map.fitBounds(window.__dmsBounds, { padding:[20,20], maxZoom:18, animate:false });
+      }
+      map.whenReady(() => {
+        forceFit();
+        setTimeout(forceFit, 50);
+        requestAnimationFrame(forceFit);
+      });
+      new ResizeObserver(forceFit).observe(document.getElementById('map'));
         
     }catch(err){ 
       console.error(BADGE, 'init error:', err); 

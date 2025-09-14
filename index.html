@@ -119,7 +119,7 @@
 
         <!-- Area mappa principale -->
         <div class="map-container">
-            <!-- Controlli mappa -->
+            <!-- Controlli mappa RIMOSSI per LOCK6e3 - causavano conflitti
             <div class="map-controls">
                 <div class="zoom-controls">
                     <button id="zoomIn" class="zoom-btn">
@@ -130,7 +130,6 @@
                     </button>
                 </div>
                 
-                <!-- Search box indirizzi -->
                 <div class="address-search">
                     <input type="text" id="addressInput" placeholder="Indirizzo ...">
                     <button id="btnAddressSearch">
@@ -138,6 +137,7 @@
                     </button>
                 </div>
             </div>
+            -->
             
             <!-- Mappa -->
             <div id="map"></div>
@@ -150,7 +150,7 @@
         </div>
     </div>
 
-    <!-- Sidebar destra per elenco posteggi -->
+    <!-- Sidebar destra RIMOSSA per LOCK6e3 - causava conflitti con i click
     <div class="sidebar-right" id="sidebarRight">
         <div class="sidebar-header">
             <h3><i class="fas fa-list"></i> Elenco Posteggi</h3>
@@ -160,7 +160,6 @@
         </div>
         
         <div class="sidebar-stats" id="sidebarStats">
-            <!-- Statistiche dinamiche -->
         </div>
         
         <div class="sidebar-filters">
@@ -173,14 +172,13 @@
         </div>
         
         <div class="posteggi-list" id="posteggiList">
-            <!-- Lista posteggi dinamica -->
         </div>
     </div>
 
-    <!-- Pulsante per aprire elenco posteggi -->
     <button class="list-toggle" onclick="toggleRightSidebar()">
         <i class="fas fa-list"></i> Elenco
     </button>
+    -->
 
     <!-- Legenda -->
     <div class="legend">
@@ -212,14 +210,24 @@
     <script defer src="./app.lock6e3.js?v=lock6e3"></script>
 
     <style>
+      /* LOCK6e3: Fix z-index e sblocco click */
+      html, body { height:100%; margin:0; }
+      #map { height:100vh; position:relative; z-index:1; }
+      
+      /* Fallback: se qualcosa resta in alto a destra, disattiva interazione */
+      .leaflet-top.leaflet-right { pointer-events:none; z-index:0; }
+      
+      /* Sidebar sempre "cliccabile" sopra la mappa */
+      .sidebar, .layers-panel, .sidebar-left { z-index:1000; }
+      
       /* nasconde eventuali controlli duplicati top-right di plugin legacy */
       .leaflet-top.leaflet-right{display:none!important;}
       
-      /* Fix UI LOCK6e2 */
+      /* Fix UI LOCK6e3 */
       #coords, .debug-coords{display:none!important;}      /* eventuale riga X,Y */
       .dms-bottombar{display:none!important;}              /* "Elenco Posteggi" chiuso al 1° load */
       
-      /* CSS per LOCK6e2 */
+      /* CSS per LOCK6e3 */
       .dms-banner{position:fixed;left:50%;top:18px;transform:translateX(-50%);background:#1f2937;color:#fff;padding:8px 12px;border-radius:8px;z-index:9999;font:600 13px/1.2 system-ui;}
       .hub-label{background:transparent!important;border:none!important;color:#fff!important;text-shadow:0 1px 2px rgba(0,0,0,.5);font-weight:700!important;}
       .hub-dot{z-index:1000;}
